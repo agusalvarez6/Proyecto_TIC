@@ -15,7 +15,7 @@
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #243a69;">
          <children>
-            <Text fill="WHITE" layoutX="259.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenidos">
+            <Text fill="WHITE" layoutX="259.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenidos" textAlignment="CENTER" AnchorPane.leftAnchor="258.009765625" AnchorPane.rightAnchor="258.990234375">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font>
@@ -29,7 +29,7 @@
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ffffff;">
          <children>
             <ImageView fitHeight="85.0" fitWidth="103.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Pane layoutX="313.0" layoutY="50.0" prefHeight="249.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);; -fx-border-color: #243a69;">
+            <Pane layoutX="313.0" layoutY="50.0" prefHeight="249.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);; -fx-border-color: #243a69;" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="50.0">
                <children>
                   <TextField layoutX="28.0" layoutY="51.0" promptText="Usuario" />
                   <PasswordField layoutX="28.0" layoutY="88.0" promptText="Contraseña" />
