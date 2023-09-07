@@ -60,6 +60,11 @@
             <version>${rest.assured.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>azure-storage</artifactId>
+            <version>12.8.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
