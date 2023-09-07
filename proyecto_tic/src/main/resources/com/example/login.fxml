@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<SplitPane dividerPositions="0.11809045226130653" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.11809045226130653" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="logincontroller">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #243a69;">
          <children>
@@ -32,14 +32,14 @@
             <ImageView fitHeight="85.0" fitWidth="103.0" layoutX="8.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
             <Pane layoutX="313.0" layoutY="50.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="249.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);; -fx-border-color: #243a69;" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="313.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="50.0">
                <children>
-                  <TextField id="usuario_field" layoutX="28.0" layoutY="51.0" promptText="Usuario" />
-                  <PasswordField id="contrasena_field" layoutX="28.0" layoutY="88.0" promptText="Contraseña" />
-                  <Button id="login_button" layoutX="28.0" layoutY="140.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #5b88a5; -fx-border-color: #ffffff;" text="Iniciar Sesión" textFill="WHITE">
+                  <TextField id="usuario_field" fx:id="usuario_field" layoutX="28.0" layoutY="51.0" promptText="Usuario" />
+                  <PasswordField id="contrasena_field" fx:id="contrasena_field" layoutX="28.0" layoutY="88.0" promptText="Contraseña" />
+                  <Button id="login_button" fx:id="login_button" layoutX="28.0" layoutY="140.0" mnemonicParsing="false" onAction="#login_try" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #5b88a5; -fx-border-color: #ffffff;" text="Iniciar Sesión" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Button>
-                  <Button id="signin_view_button" layoutX="26.0" layoutY="179.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #5b88a5; -fx-border-color: #ffffff;" text="Crear cuenta nueva" textFill="WHITE">
+                  <Button id="signin_view_button" fx:id="signin_view_button" layoutX="26.0" layoutY="179.0" mnemonicParsing="false" onAction="#signin_view" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #5b88a5; -fx-border-color: #ffffff;" text="Crear cuenta nueva" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
