@@ -60,10 +60,29 @@
             <version>${rest.assured.version}</version>
             <scope>test</scope>
         </dependency>
+        
+ 
         <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-storage</artifactId>
-            <version>12.8.0</version>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-controls</artifactId>
+        <version>16</version> <!-- Cambia esto a la versión de JavaFX que deseas usar -->
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>16</version> <!-- Cambia esto a la versión de JavaFX que deseas usar -->
+        </dependency>
+        <!-- Agrega más dependencias de JavaFX si es necesario -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.5.5</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <!--<scope>runtime</scope>-->
+            <version>2.2.220</version>
         </dependency>
     </dependencies>
     <build>
