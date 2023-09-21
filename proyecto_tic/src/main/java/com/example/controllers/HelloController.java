@@ -1,4 +1,4 @@
-package com.example;
+package com.example.controllers;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;

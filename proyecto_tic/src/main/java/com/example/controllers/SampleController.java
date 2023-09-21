@@ -1,8 +1,11 @@
-package com.example;
+package com.example.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.collections.ObservableList;
+
+import com.example.DataBase;
+
 import javafx.collections.FXCollections;
 
 public class SampleController {

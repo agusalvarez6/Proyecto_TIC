@@ -1,4 +1,4 @@
-package com.example;
+package com.example.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,6 +12,8 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.example.DataBase;
 
 public class SignInController  {
     /* 
