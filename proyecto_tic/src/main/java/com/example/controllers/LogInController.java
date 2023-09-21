@@ -1,8 +1,10 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
 
 public class logincontroller {
 
@@ -20,12 +22,24 @@ public class logincontroller {
 
     @FXML
     void login_try(ActionEvent event) {
-
+        // Here, you can add login logic if needed.
     }
 
     @FXML
     void signin_view(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/signIn.fxml"));
+            Parent signInRoot = loader.load();
 
+            Stage signInStage = new Stage();
+            signInStage.setTitle("Sign In"); // Set a title for the new window
+
+            Scene signInScene = new Scene(signInRoot);
+
+            signInStage.setScene(signInScene);
+            signInStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
 }
