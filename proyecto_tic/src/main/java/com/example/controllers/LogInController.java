@@ -35,7 +35,7 @@ public class LogInController {
     @FXML
     void signin_view(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/signIn.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/controllers/signIn.fxml"));
             Parent signInRoot = loader.load();
 
             Stage signInStage = new Stage();

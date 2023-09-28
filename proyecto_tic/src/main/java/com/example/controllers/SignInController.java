@@ -1,21 +1,19 @@
 package com.example.controllers;
 
+import com.example.entities.User;
+import com.example.services.UserService;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import com.example.DataBase;
-
-public class SignInController  {
+@Component
+public class SignInController {
+    @Autowired
+    UserService userService;
     /* 
     @FXML
     private AnchorPane welcomePane;
@@ -55,16 +53,18 @@ public class SignInController  {
     */
 
     @FXML
-    protected void crearCuenta() throws Exception {
+    public void saveUser(javafx.event.ActionEvent actionEvent)  {
+        User user = new User();
         String usuario = usuario_signin_field.getText();
         String contrasena = contrasena1_signin_field.getText();
         String confirmContrasena = contrasena2_signin_field.getText();
         if (contrasena.equals(confirmContrasena)) {
-            DataBase.save(usuario, contrasena);
-            usuario_signin_field.clear();
-            contrasena1_signin_field.clear();
-            contrasena2_signin_field.clear();
-            DataBase.print();
+            user.setUsername(usuario);
+            user.setPassword(contrasena);
+            user.setRole("Client");
+            userService.saveUser(user);
+
         }
     }
+
 }
