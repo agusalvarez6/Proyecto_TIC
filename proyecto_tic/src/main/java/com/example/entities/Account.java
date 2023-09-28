@@ -3,10 +3,10 @@ package com.example.entities;
 import javax.persistence.*;
 
 @Entity
-public class User {
+public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) // Configura la estrategia de generación de identificadores
-    private Long IdUser;
+    private Long IdAccount;
 
     @Column
     private String Username;
@@ -18,11 +18,11 @@ public class User {
     private String Role;
 
     public Long getIdUser() {
-        return IdUser;
+        return IdAccount;
     }
 
     public void setIdUser(Long idUser) {
-        IdUser = idUser;
+        IdAccount = idUser;
     }
 
     public String getUsername() {

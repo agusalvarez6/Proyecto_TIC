@@ -1,7 +1,7 @@
 package com.example.controllers;
 
-import com.example.entities.User;
-import com.example.services.UserService;
+import com.example.entities.Account;
+import com.example.services.AccountService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -10,10 +10,12 @@ import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static jdk.nashorn.internal.objects.Global.print;
+
 @Component
 public class SignInController {
     @Autowired
-    UserService userService;
+    AccountService accountService;
     /* 
     @FXML
     private AnchorPane welcomePane;
@@ -54,16 +56,15 @@ public class SignInController {
 
     @FXML
     public void saveUser(javafx.event.ActionEvent actionEvent)  {
-        User user = new User();
+        Account account = new Account();
         String usuario = usuario_signin_field.getText();
         String contrasena = contrasena1_signin_field.getText();
         String confirmContrasena = contrasena2_signin_field.getText();
         if (contrasena.equals(confirmContrasena)) {
-            user.setUsername(usuario);
-            user.setPassword(contrasena);
-            user.setRole("Client");
-            userService.saveUser(user);
-
+            account.setUsername(usuario);
+            account.setPassword(contrasena);
+            account.setRole("Client");
+            accountService.saveAccount(account);
         }
     }
 
