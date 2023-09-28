@@ -17,12 +17,12 @@
                   <Image url="@imagenes/abf180964abb052f91529589b8433ce6%20(4).png" />
                </image>
             </ImageView>
-            <Label layoutX="467.0" layoutY="13.0" text="Ingresar" textFill="WHITE" underline="true">
+            <Label layoutX="467.0" layoutY="13.0" text="Ingresar" textFill="WHITE" underline="true" onAction="#GoToLogIn">
                <font>
                   <Font name="System Bold Italic" size="11.0" />
                </font>
             </Label>
-            <Label layoutX="525.0" layoutY="13.0" text="Registrarse" textFill="WHITE" underline="true">
+            <Label layoutX="525.0" layoutY="13.0" text="Registrarse" textFill="WHITE" underline="true"  onAction="#GoToSignIn">
                <font>
                   <Font name="System Bold Italic" size="11.0" />
                </font>
