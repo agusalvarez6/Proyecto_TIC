@@ -28,9 +28,5 @@ public class AppConfig {
         return dataSource;
     }
 
-    @Bean
-    @Primary
-    DataSource dataSource() {
-        return new DataSourceSpy(realDataSource());
-    }
+
 }
