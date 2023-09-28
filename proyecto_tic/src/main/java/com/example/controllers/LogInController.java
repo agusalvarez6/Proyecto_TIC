@@ -27,8 +27,51 @@ public class LogInController {
 
     @FXML
     void login_try(ActionEvent event) {
-        // Here, you can add login logic if needed.
+    int rol = 1;
+
+    try {
+        FXMLLoader loader = new FXMLLoader();
+        Parent root = null;
+        Stage stage = new Stage();
+        Scene scene;
+
+        switch (rol) {
+            case 1:
+                loader.setLocation(getClass().getResource("/com/example/landing_page.fxml"));
+                root = loader.load();
+                stage.setTitle("Usuario");
+                break;
+            case 2:
+                loader.setLocation(getClass().getResource("/com/example/aereolineas.fxml"));
+                root = loader.load();
+                stage.setTitle("Aerolínea");
+                break;
+            case 3:
+                loader.setLocation(getClass().getResource("/com/example/aeropuerto.fxml"));
+                root = loader.load();
+                stage.setTitle("Aeropuerto");
+                break;
+            case 4:
+                loader.setLocation(getClass().getResource("/com/example/admin.fxml"));
+                root = loader.load();
+                stage.setTitle("Administrador");
+                break;
+            default:
+                // Manejo de rol no válido
+                break;
+        }
+
+        if (root != null) {
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+            // Cerrar la ventana de inicio de sesión si es necesario
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+}
 
     @FXML
     void signin_view(ActionEvent event) {
