@@ -1,13 +1,22 @@
+package com.example.controllers;
+
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class InicioController {
 
     @FXML
-    private Label Registrarse_label;
+    private Button ingresar_button;
 
     @FXML
-    private Label ingresar_label;
+    private Button registrarse_button;
 
     @FXML
     void GoToLogIn(ActionEvent event) {
@@ -30,7 +39,7 @@ public class InicioController {
     @FXML
     void GoToSignIn(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/signIn.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/signin.fxml"));
             Parent signInRoot = loader.load();
 
             Stage signInStage = new Stage();

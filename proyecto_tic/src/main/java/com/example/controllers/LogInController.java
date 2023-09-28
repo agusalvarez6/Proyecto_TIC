@@ -27,7 +27,7 @@ public class LogInController {
 
     @FXML
     void login_try(ActionEvent event) {
-    int rol = 1;
+    int rol = 4;
 
     try {
         FXMLLoader loader = new FXMLLoader();
@@ -42,7 +42,7 @@ public class LogInController {
                 stage.setTitle("Usuario");
                 break;
             case 2:
-                loader.setLocation(getClass().getResource("/com/example/aereolineas.fxml"));
+                loader.setLocation(getClass().getResource("/com/example/inicio.fxml"));
                 root = loader.load();
                 stage.setTitle("Aerolínea");
                 break;
@@ -66,7 +66,7 @@ public class LogInController {
             stage.setScene(scene);
             stage.show();
             // Cerrar la ventana de inicio de sesión si es necesario
-            ((Node) (event.getSource())).getScene().getWindow().hide();
+            //((Node) (event.getSource())).getScene().getWindow().hide();
         }
     } catch (IOException e) {
         e.printStackTrace();
