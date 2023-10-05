@@ -27,7 +27,16 @@ public class LogInController {
 
     @FXML
     void login_try(ActionEvent event) {
-    int rol = 4;
+    int rol = 0;
+    if (usuario_field.getText().equals("usuario")) {
+        rol = 1;
+    } else if (usuario_field.getText().equals("aerolinea")) {
+        rol = 2;
+    } else if (usuario_field.getText().equals("aeropuerto")) {
+        rol = 3;
+    } else if (usuario_field.getText().equals("admin")) {
+        rol = 4;
+    }
 
     try {
         FXMLLoader loader = new FXMLLoader();
@@ -42,7 +51,7 @@ public class LogInController {
                 stage.setTitle("Usuario");
                 break;
             case 2:
-                loader.setLocation(getClass().getResource("/com/example/inicio.fxml"));
+                loader.setLocation(getClass().getResource("/com/example/landing_aerolinea.fxml"));
                 root = loader.load();
                 stage.setTitle("Aerolínea");
                 break;
