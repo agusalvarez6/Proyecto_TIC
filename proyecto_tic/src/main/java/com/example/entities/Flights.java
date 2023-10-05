@@ -1,5 +1,7 @@
 package com.example.entities;
 
+import java.time.LocalDate;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,10 +20,10 @@ public class Flights {
     private String Destination;
 
     @Column
-    private String Departure_time;
+    private LocalDate Departure_time;
 
     @Column
-    private String Arrival_time;
+    private LocalDate Arrival_time;
 
     @Column
     private Long Departure_door;
@@ -30,7 +32,18 @@ public class Flights {
     private Long Arrival_door;
 
     @Column
+    private String Code;
+
+    @Column
     private Long IdPlane;
+
+	public String getCode() {
+		return this.Code;
+	}
+
+	public void setCode(String Code) {
+		this.Code = Code;
+	}
 
 	public Long getIdFlights() {
 		return this.IdFlights;
@@ -64,19 +77,19 @@ public class Flights {
 		this.Destination = Destination;
 	}
 
-	public String getDeparture_time() {
+	public LocalDate getDeparture_time() {
 		return this.Departure_time;
 	}
 
-	public void setDeparture_time(String Departure_time) {
+	public void setDeparture_time(LocalDate Departure_time) {
 		this.Departure_time = Departure_time;
 	}
 
-	public String getArrival_time() {
+	public LocalDate getArrival_time() {
 		return this.Arrival_time;
 	}
 
-	public void setArrival_time(String Arrival_time) {
+	public void setArrival_time(LocalDate Arrival_time) {
 		this.Arrival_time = Arrival_time;
 	}
 
