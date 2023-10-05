@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import static jdk.nashorn.internal.objects.Global.print;
+// import static jdk.nashorn.internal.objects.Global.print;
 
 @Component
 public class SignInController {

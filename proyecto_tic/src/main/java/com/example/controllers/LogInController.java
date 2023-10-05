@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 
+import com.example.entities.Account;
+
 import java.io.IOException;
 @Component
 public class LogInController {
@@ -29,7 +31,11 @@ public class LogInController {
 
     @FXML
     void login_try(ActionEvent event) {
-        // Here, you can add login logic if needed.
+        Account account = new Account();
+        String usuario = usuario_field.getText();
+        String contrasena = contrasena_field.getText();
+        //accountService.save(account);
+        //accountService.print();
     }
 
     @FXML
