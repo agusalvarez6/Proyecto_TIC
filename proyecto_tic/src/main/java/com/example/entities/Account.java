@@ -1,6 +1,6 @@
 package com.example.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Account {

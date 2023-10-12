@@ -2,7 +2,7 @@ package com.example.entities;
 
 import java.time.LocalDate;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Flights {

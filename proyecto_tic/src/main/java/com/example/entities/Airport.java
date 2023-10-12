@@ -1,8 +1,6 @@
 package com.example.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Airport {

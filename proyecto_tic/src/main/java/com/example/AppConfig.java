@@ -1,4 +1,4 @@
-package com.example;
+/*package com.example;
 
 import net.sf.log4jdbc.sql.jdbcapi.DataSourceSpy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +29,4 @@ public class AppConfig {
     }
 
 
-}
+}*/
