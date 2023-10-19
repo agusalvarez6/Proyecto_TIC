@@ -4,11 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 
+import com.example.Main;
 import com.example.entities.Account;
 import com.example.services.AccountService;
 
@@ -46,7 +49,7 @@ public class SignInController {
         Account nuevoUsuario = new Account();
         nuevoUsuario.setUsername(username);
         nuevoUsuario.setPassword(password);
-
+        nuevoUsuario.setRole("usuario");
         // Llama al servicio para guardar el usuario
         Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
 
@@ -55,6 +58,9 @@ public class SignInController {
         } else {
             // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
         }
+        FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+        Parent root = fxWeaver.loadView(LogInController.class);
+        signin_button.getScene().setRoot(root);
     }
 }
 

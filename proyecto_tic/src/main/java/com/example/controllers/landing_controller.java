@@ -12,6 +12,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import net.rgielen.fxweaver.core.FxmlView;
+
 import org.springframework.stereotype.Component;
 
 import com.example.entities.Account;
@@ -19,6 +21,7 @@ import com.example.entities.Account;
 import java.io.IOException;
 
 @Component
+@FxmlView("/com/example/controllers/landing_page.fxml")
 public class landing_controller {
 
     @FXML

@@ -5,9 +5,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import net.rgielen.fxweaver.core.FxmlView;
+
 import java.io.IOException;
 import org.springframework.stereotype.Component;
 @Component
+@FxmlView("/com/example/controllers/admin.fxml")
 public class adminController {
 
     @FXML

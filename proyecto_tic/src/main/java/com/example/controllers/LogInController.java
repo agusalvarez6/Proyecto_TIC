@@ -9,10 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 
 import org.springframework.stereotype.Component;
 
+import com.example.Main;
 import com.example.entities.Account;
 
 import java.io.IOException;
@@ -44,42 +46,28 @@ public class LogInController {
          rol = 4;
       }
 
-      try {
-         FXMLLoader loader = new FXMLLoader();
-         Parent root = null;
-         Stage stage = new Stage();
+         FxWeaver fxWeaver = InicioController.getContext().getBean(FxWeaver.class);
          switch (rol) {
             case 1:
-               loader.setLocation(this.getClass().getResource("/com/example/controllers/landing_page.fxml"));
-               root = (Parent)loader.load();
-               stage.setTitle("Usuario");
+               Parent root = fxWeaver.loadView(landing_controller.class);
+               login_button.getScene().setRoot(root);
                break;
             case 2:
-               loader.setLocation(this.getClass().getResource("/com/example/controllers/landing_aerolinea.fxml"));
-               root = (Parent)loader.load();
-               stage.setTitle("Aerolinea");
+               fxWeaver = Main.getContext().getBean(FxWeaver.class);
+               root = fxWeaver.loadView(LandingAerolineaController.class);
                break;
             case 3:
-               loader.setLocation(this.getClass().getResource("/com/example/controllers/aeropuerto.fxml"));
-               root = (Parent)loader.load();
-               stage.setTitle("Aeropuerto");
+               fxWeaver = Main.getContext().getBean(FxWeaver.class);
+               root = fxWeaver.loadView(adminController.class);
                break;
             case 4:
-               loader.setLocation(this.getClass().getResource("/com/example/controllers/admin.fxml"));
-               root = (Parent)loader.load();
-               stage.setTitle("Administrador");
+               fxWeaver = Main.getContext().getBean(FxWeaver.class);
+                root = fxWeaver.loadView(adminController.class);
          }
-
-         if (root != null) {
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-         }
-      } catch (IOException var7) {
-         var7.printStackTrace();
+      
       }
 
-   }
+   
 
    @FXML
    void signin_view(ActionEvent event) {

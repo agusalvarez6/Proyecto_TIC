@@ -5,10 +5,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import net.rgielen.fxweaver.core.FxmlView;
+
 import java.io.IOException;
 import org.springframework.stereotype.Component;
 @Component
-
+@FxmlView("/com/example/controllers/landing_aerolinea.fxml")
 public class LandingAerolineaController {
 
     @FXML

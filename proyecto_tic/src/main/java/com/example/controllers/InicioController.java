@@ -43,7 +43,9 @@ public class InicioController {
     void GoToSignIn(ActionEvent event) {
         FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
         Parent root = fxWeaver.loadView(SignInController.class);
-        ingresar_button.getScene().setRoot(root);
+        registrarse_button.getScene().setRoot(root);
             
     }
+
+    
 }
