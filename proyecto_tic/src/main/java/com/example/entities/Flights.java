@@ -32,6 +32,9 @@ public class Flights {
     private Long Arrival_door;
 
     @Column
+    private int state;
+
+    @Column
     private String Code;
 
     @Column
@@ -116,6 +119,12 @@ public class Flights {
 	public void setIdPlane(Long IdPlane) {
 		this.IdPlane = IdPlane;
 	}
+	public int getState() {
+		return this.state;
+	}
 
+	public void setState(int state) {
+		this.state = state;
+	}
 
 }
