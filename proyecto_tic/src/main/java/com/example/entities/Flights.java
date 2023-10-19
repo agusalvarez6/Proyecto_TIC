@@ -31,7 +31,7 @@ public class Flights {
     @Column
     private Long Arrival_door;
 
-	@Column
+    @Column
     private int state;
 
     @Column
