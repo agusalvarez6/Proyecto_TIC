@@ -1,37 +1,15 @@
 package com.example.controllers;
 
-import com.example.entities.Account;
-import com.example.services.AccountService;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-// import static jdk.nashorn.internal.objects.Global.print;
-
 @Component
 public class SignInController {
-    @Autowired
-    AccountService accountService;
-    /* 
-    @FXML
-    private AnchorPane welcomePane;
-
-    @FXML
-    private Text welcomeText;
-
-    @FXML
-    private ImageView logoImageView;
-
-    @FXML
-    private Pane loginPane;
-    */
-
-    @FXML
-    private TextField usuario_signin_field;
 
     @FXML
     private PasswordField contrasena1_signin_field;
@@ -40,7 +18,18 @@ public class SignInController {
     private PasswordField contrasena2_signin_field;
 
     @FXML
-    private Button crearCuentaButton;
+    private Button signin_button;
+
+    @FXML
+    private TextField usuario_signin_field;
+
+    @FXML
+    void saveUser(ActionEvent event) {
+
+    }
+
+}
+
     /*
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -52,7 +41,7 @@ public class SignInController {
         confirmContrasenaPasswordField.setStyle("-fx-background-color: #FFFFFF");
         crearCuentaButton.setStyle("-fx-background-color: #FFFFFF");
     }
-    */
+    
 
     @FXML
     public void saveUser(javafx.event.ActionEvent actionEvent)  {
@@ -67,5 +56,5 @@ public class SignInController {
             accountService.saveAccount(account);
         }
     }
+    */
 
-}

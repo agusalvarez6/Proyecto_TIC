@@ -20,7 +20,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setControllerFactory(Main.getContext()::getBean);
-        root = fxmlLoader.load(LogInController.class.getResourceAsStream("login.fxml"));
+        root = fxmlLoader.load(LogInController.class.getResourceAsStream("inicio.fxml"));
         scene = new Scene(root, 600, 400);
 
 

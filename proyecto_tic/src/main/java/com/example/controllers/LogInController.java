@@ -54,7 +54,7 @@ public class LogInController {
             case 2:
                loader.setLocation(this.getClass().getResource("/com/example/controllers/landing_aerolinea.fxml"));
                root = (Parent)loader.load();
-               stage.setTitle("Aerol\u00ednea");
+               stage.setTitle("Aerolinea");
                break;
             case 3:
                loader.setLocation(this.getClass().getResource("/com/example/controllers/aeropuerto.fxml"));

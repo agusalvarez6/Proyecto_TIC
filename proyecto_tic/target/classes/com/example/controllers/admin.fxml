@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.adminController">
+  <tabs>
+    <Tab fx:id="crearaerop_tab" text="Aeropuerto">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="ingresaraeropuerto_button" layoutX="468.0" layoutY="287.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="102.0" text="Ingresar" />
+                  <TextField fx:id="nameaeropuerto_field" layoutX="130.0" layoutY="59.0" />
+                  <Text layoutX="73.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="48.80340576171875" />
+                  <Text layoutX="97.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="País:" wrappingWidth="27.470062255859375" />
+                  <TextField fx:id="paisaeropuerto_field" layoutX="130.0" layoutY="101.0" />
+                  <TextField fx:id="ciudadaeropuerto_field" layoutX="130.0" layoutY="143.0" />
+                  <Text layoutX="83.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad:" />
+                  <TextField fx:id="contrasenaaeropuerto_field" layoutX="130.0" layoutY="185.0" prefWidth="149.0" />
+                  <Text layoutX="59.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" />
+                  <TextField fx:id="codigoiata_field" layoutX="130.0" layoutY="225.0" />
+                  <Text layoutX="51.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código IATA:" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab fx:id="crearaeroli_tab" text="Aerolínea">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="usuarioaerolinea_field" layoutX="130.0" layoutY="101.0" />
+                  <Text layoutX="73.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="48.80340576171875" />
+                  <TextField fx:id="contrasenaaerolinea_field" layoutX="130.0" layoutY="143.0" />
+                  <TextField fx:id="nameaerolinea_field" layoutX="130.0" layoutY="59.0" prefWidth="149.0" />
+                  <Text layoutX="59.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" />
+                  <Button fx:id="ingresaraerolinea_button" layoutX="468.0" layoutY="287.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="102.0" text="Ingresar" />
+                  <Text layoutX="79.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab fx:id="crearlocal_tab" text="Local comercial">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="contrasenalocal_field" layoutX="130.0" layoutY="143.0" />
+                  <Text layoutX="73.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="48.80340576171875" />
+                  <Text layoutX="56.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" wrappingWidth="73.47006225585938" />
+                  <TextField fx:id="tipolocal_field" layoutX="130.0" layoutY="185.0" />
+                  <TextField fx:id="usuariolocal_field" layoutX="130.0" layoutY="101.0" />
+                  <Text layoutX="48.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de local:" />
+                  <TextField fx:id="namelocal_field" layoutX="130.0" layoutY="59.0" prefWidth="149.0" />
+                  <Text layoutX="76.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" />
+                  <Button fx:id="ingresarlocal_field" layoutX="468.0" layoutY="287.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="102.0" text="Ingresar" />
+                  <Text layoutX="31.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IATA aeropuerto:" />
+                  <TextField fx:id="iatalocal_field" layoutX="130.0" layoutY="226.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="crearempleado_tab" text="Empleado">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="ingresarempleado_field" layoutX="468.0" layoutY="287.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="102.0" text="Ingresar" />
+                  <TextField fx:id="rolempleado_field" layoutX="130.0" layoutY="185.0" />
+                  <Text layoutX="73.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="48.80340576171875" />
+                  <Text layoutX="97.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rol:" wrappingWidth="27.470062255859375" />
+                  <TextField fx:id="contrasenaempleado_field" layoutX="130.0" layoutY="143.0" />
+                  <TextField fx:id="usuarioempleado_field" layoutX="130.0" layoutY="101.0" />
+                  <Text layoutX="55.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" wrappingWidth="73.33331298828125" />
+                  <TextField fx:id="nameempleado_field" layoutX="130.0" layoutY="59.0" prefWidth="149.0" />
+                  <Text layoutX="78.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sueldo:" />
+                  <Text layoutX="79.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" />
+                  <TextField fx:id="sueldoempleado_field" layoutX="130.0" layoutY="226.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="verusuarios_tab" text="Ver usuarios">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextArea fx:id="mostrarusuarios_area" layoutX="52.0" layoutY="55.0" prefHeight="274.0" prefWidth="459.0" />
+                  <TextField fx:id="buscarusuarios_field" layoutX="173.0" layoutY="20.0" />
+                  <Text layoutX="129.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar" />
+                  <Button fx:id="buscarusuarios_button" layoutX="361.0" layoutY="20.0" mnemonicParsing="false" text="Buscar" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>
