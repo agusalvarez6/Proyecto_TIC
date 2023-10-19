@@ -9,12 +9,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import net.rgielen.fxweaver.core.FxmlView;
+
 import org.springframework.stereotype.Component;
 
 import com.example.entities.Account;
 
 import java.io.IOException;
 @Component
+@FxmlView("/com/example/controllers/login.fxml")
 public class LogInController {
    @FXML
    private PasswordField contrasena_field;

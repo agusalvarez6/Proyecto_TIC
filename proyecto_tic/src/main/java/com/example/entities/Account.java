@@ -5,47 +5,47 @@ import jakarta.persistence.*;
 @Entity
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE) // Configura la estrategia de generación de identificadores
-    private Long IdAccount;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long idAccount; // Cambiado de IdAccount a idAccount
 
     @Column
-    private String Username;
+    private String username; // Cambiado de Username a username
 
     @Column
-    private String Password;
+    private String password; // Cambiado de Password a password
 
     @Column
-    private String Role;
+    private String role;
 
-    public Long getIdUser() {
-        return IdAccount;
+    public Long getIdAccount() { // Cambiado de getIdUser a getIdAccount
+        return idAccount;
     }
 
-    public void setIdUser(Long idUser) {
-        IdAccount = idUser;
+    public void setIdAccount(Long idAccount) { // Cambiado de setIdUser a setIdAccount
+        this.idAccount = idAccount;
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public String getRole() {
-        return Role;
+        return role;
     }
 
     public void setRole(String role) {
-        Role = role;
+        this.role = role;
     }
 }

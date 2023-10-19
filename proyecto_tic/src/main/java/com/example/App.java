@@ -1,11 +1,13 @@
 package com.example;
 
+import com.example.controllers.InicioController;
 import com.example.controllers.LogInController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import net.rgielen.fxweaver.core.FxWeaver;
 
 
 public class App extends Application {
@@ -18,9 +20,8 @@ public class App extends Application {
     private Scene scene;
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setControllerFactory(Main.getContext()::getBean);
-        root = fxmlLoader.load(LogInController.class.getResourceAsStream("inicio.fxml"));
+        FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+        root = fxWeaver.loadView(InicioController.class);
         scene = new Scene(root, 600, 400);
 
 

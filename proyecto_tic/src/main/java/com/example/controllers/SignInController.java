@@ -1,3 +1,5 @@
+package com.example.controllers;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import javafx.event.ActionEvent;
@@ -5,10 +7,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import net.rgielen.fxweaver.core.FxmlView;
+
 import com.example.entities.Account;
 import com.example.services.AccountService;
 
 @Component
+@FxmlView("/com/example/controllers/signIn.fxml")
 public class SignInController {
 
     @FXML
@@ -46,7 +51,7 @@ public class SignInController {
         Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
 
         if (usuarioGuardado != null) {
-            // El usuario se ha guardado con éxito, puedes realizar acciones adicionales si es necesario.
+            System.out.println("todo anda bien");
         } else {
             // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
         }
