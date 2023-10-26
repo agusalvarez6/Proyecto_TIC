@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class FlightsService {
+    /* 
     @Autowired
     FlightsRepository flightsRepository;
 
@@ -71,6 +72,6 @@ public class FlightsService {
 
     public List<Plane> verTodosLosAviones(Long idAerolinea){
         return planeRepository.findByAerolinea(idAerolinea);
-    }
+    }*/
 
 }
