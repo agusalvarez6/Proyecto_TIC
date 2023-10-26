@@ -62,18 +62,41 @@ public class Main {
             }
         }
         // Usuario de prueba
-        if (accountRepository.findByUsername("prueba") == null) {
-            Account nuevoUsuario2 = new Account();
-            nuevoUsuario2.setUsername("prueba");
-            nuevoUsuario2.setPassword("prueba");
-            nuevoUsuario2.setRole("usuario");
-            Account usuarioGuardado2 = accountService.saveAccount(nuevoUsuario2);
+        if (accountRepository.findByUsername("usuario") == null) {
+            Account nuevoUsuario = new Account();
+            nuevoUsuario.setUsername("usuario");
+            nuevoUsuario.setPassword("usuario");
+            nuevoUsuario.setRole("usuario");
+            Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
 
-            if (usuarioGuardado2 != null) {
-                System.out.println("prueba created");
+            if (usuarioGuardado != null) {
+                System.out.println("usuario created");
             }
         }
-        
+        // Aerolinea de prueba
+        if (accountRepository.findByUsername("aerolinea") == null) {
+            Account nuevoUsuario = new Account();
+            nuevoUsuario.setUsername("aerolinea");
+            nuevoUsuario.setPassword("aerolinea");
+            nuevoUsuario.setRole("aerolinea");
+            Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
+
+            if (usuarioGuardado != null) {
+                System.out.println("aerolinea created");
+            }
+        }
+        // Aeropuerto de prueba
+        if (accountRepository.findByUsername("aeropuerto") == null) {
+            Account nuevoUsuario = new Account();
+            nuevoUsuario.setUsername("aeropuerto");
+            nuevoUsuario.setPassword("aeropuerto");
+            nuevoUsuario.setRole("aeropuerto");
+            Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
+
+            if (usuarioGuardado != null) {
+                System.out.println("aeropuerto created");
+            }
+        }
         
     }
 }
