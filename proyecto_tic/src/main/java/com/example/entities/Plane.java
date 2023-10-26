@@ -14,8 +14,8 @@ public class Plane {
     @Column
     private String Current_Airport;
 
-    @Column
-    private Long IdTypePlane;
+	@Column
+    private String Capacity;
 
 	public Long getIdPlane() {
 		return this.IdPlane;
@@ -41,14 +41,12 @@ public class Plane {
 		this.Current_Airport = Current_Airport;
 	}
 
-	public Long getIdTypePlane() {
-		return this.IdTypePlane;
+	public String getCapacity() {
+		return this.Capacity;
 	}
 
-	public void setIdTypePlane(Long IdTypePlane) {
-		this.IdTypePlane = IdTypePlane;
+	public void setCapacity(String Capacity) {
+		this.Capacity = Capacity;
 	}
-
-
 
 }
