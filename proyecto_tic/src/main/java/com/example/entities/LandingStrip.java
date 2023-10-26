@@ -3,10 +3,10 @@ package com.example.entities;
 import jakarta.persistence.*;
 
 @Entity
-public class ShipmentDoor {
+public class LandingStrip {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) // Configura la estrategia de generación de identificadores
-    private Long IdDoor;
+    private Long IdLandingStrip;
 
     @Column
     private Long IdAirport;
@@ -14,12 +14,12 @@ public class ShipmentDoor {
     @Column
     private String Status;
 
-	public Long getIdDoor() {
-		return this.IdDoor;
+	public Long getIdLandingStrip() {
+		return this.IdLandingStrip;
 	}
 
-	public void setIdDoor(Long IdDoor) {
-		this.IdDoor = IdDoor;
+	public void setIdLandingStrip(Long IdLandingStrip) {
+		this.IdLandingStrip = IdLandingStrip;
 	}
 
 	public Long getIdAirport() {
