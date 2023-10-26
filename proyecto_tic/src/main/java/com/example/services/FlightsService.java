@@ -13,6 +13,10 @@ public class FlightsService {
     @Autowired
     private PendingFlightsRepository pendingFlightsRepository;
 
+    @Autowired
+    private PlaneRepository planeRepository;
+
+
     public Flights saveFlights(Flights flights) {
         PendingFlights pendingFlights = new PendingFlights();
         pendingFlights.setIdFlights(flights.getIdFlights());
@@ -54,6 +58,14 @@ public class FlightsService {
         PendingFlights pendingFlights = pendingFlightsRepository.findPendingFlightByid(flights.getIdFlights());
         pendingFlightsRepository.delete(pendingFlights);
         flightsRepository.delete(flights);
+    }
+
+    public Plane savePlane(Plane plane){
+        return PlaneRepository.save(plane);
+    }
+
+    public List<Plane> verTodosLosAviones(Long idAerolinea){
+        return PlaneRepository.findByAerolinea(idAerolinea);
     }
 
 }
