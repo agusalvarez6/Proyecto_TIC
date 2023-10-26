@@ -61,6 +61,9 @@ public class landing_controller {
     private DatePicker salida_field;
 
     @FXML
+    private Button salir_button;
+
+    @FXML
     void login_try(ActionEvent event) {
 
     }

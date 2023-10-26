@@ -21,6 +21,9 @@ import com.example.services.AccountService;
 public class adminController {
 
     @FXML
+    private Button atras_button;
+    
+    @FXML
     private Button buscarusuarios_button;
 
     @FXML

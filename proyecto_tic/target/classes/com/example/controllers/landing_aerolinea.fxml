@@ -4,40 +4,51 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.LandingAerolineaController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
     <Tab fx:id="vuelosagendados_tab" text="Vuelos agendados">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="atras_button" layoutX="44.0" layoutY="308.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Atrás" />
+                  <TableView fx:id="vuelosagendados_table" layoutX="44.0" layoutY="57.0" prefHeight="200.0" prefWidth="511.0">
+                    <columns>
+                      <TableColumn fx:id="numerovuelo_col" prefWidth="111.99996948242188" text="Número de vuelo" />
+                      <TableColumn fx:id="origen_col" prefWidth="64.0" text="Origen" />
+                        <TableColumn fx:id="destino_col" prefWidth="70.00006103515625" text="Destino" />
+                        <TableColumn fx:id="salida_col" prefWidth="71.33331298828125" text="Salida" />
+                        <TableColumn fx:id="llegada_col" prefWidth="79.3333740234375" text="Llegada" />
+                        <TableColumn fx:id="estadovuelo_col" prefWidth="114.00006103515625" text="Estado" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
       </content>
     </Tab>
     <Tab fx:id="agendarvuelo_tab" text="Agendar vuelo">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="numeroavionvuelo_field" layoutX="429.0" layoutY="71.0" />
-                  <Text layoutX="330.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número de avión:" />
-                  <Text layoutX="59.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha:" />
-                  <DatePicker fx:id="datepicker" layoutX="97.0" layoutY="107.0" />
-                  <Text layoutX="39.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora de salida:" />
-                  <Text layoutX="31.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora de llegada:" />
-                  <TextField fx:id="horasalida_field" layoutX="122.0" layoutY="150.0" />
-                  <TextField fx:id="horallegada_field" layoutX="122.0" layoutY="193.0" />
-                  <Text layoutX="296.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Puerta embarque salida:" />
-                  <Text layoutX="289.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Puerta embarque llegada:" />
-                  <Text layoutX="1.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aeropuerto de origen:" />
-                  <Text layoutX="11.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aeropuerto destino:" />
-                  <TextField fx:id="aeroporigen_field" layoutX="122.0" layoutY="236.0" />
-                  <TextField fx:id="aeropdestino_field" layoutX="122.0" layoutY="279.0" />
-                  <TextField fx:id="puertasalida_field" layoutX="429.0" layoutY="118.0" />
-                  <TextField fx:id="puertallegada_field" layoutX="429.0" layoutY="165.0" />
+                  <TextField fx:id="numerovuelo_field" layoutX="129.0" layoutY="64.0" />
+                  <Text layoutX="28.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número de vuelo:" />
+                  <Text layoutX="64.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha:" />
+                  <DatePicker fx:id="datepicker" layoutX="103.0" layoutY="115.0" />
+                  <Text layoutX="330.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora de salida:" />
+                  <Text layoutX="324.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora de llegada:" />
+                  <TextField fx:id="horasalida_field" layoutX="413.0" layoutY="63.0" />
+                  <TextField fx:id="horallegada_field" layoutX="413.0" layoutY="115.0" />
+                  <Text layoutX="8.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aeropuerto de origen:" />
+                  <Text layoutX="19.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aeropuerto destino:" />
+                  <TextField fx:id="aeroporigen_field" layoutX="129.0" layoutY="167.0" />
+                  <TextField fx:id="aeropdestino_field" layoutX="129.0" layoutY="216.0" />
                   <Button fx:id="agendarvuelo_button" layoutX="361.0" layoutY="276.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="141.0" text="Agendar vuelo" />
-                  <Text layoutX="25.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código de vuelo:" />
-                  <TextField layoutX="122.0" layoutY="64.0" />
+                  <TextField fx:id="nroavion_field" layoutX="413.0" layoutY="166.0" />
+                  <Text layoutX="315.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número de avión:" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -45,13 +56,11 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Text layoutX="175.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número: " />
-                  <Text layoutX="163.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad:" />
-                  <Text layoutX="178.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modelo:" />
-                  <TextField fx:id="numeroavion_field" layoutX="226.0" layoutY="120.0" />
-                  <TextField fx:id="capacidadavion_field" layoutX="225.0" layoutY="170.0" />
-                  <TextField fx:id="modeloavion_field" layoutX="226.0" layoutY="220.0" />
-                  <Button fx:id="ingresaravion_field" layoutX="271.0" layoutY="283.0" mnemonicParsing="false" text="Ingresar" />
+                  <Text layoutX="173.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número:" />
+                  <Text layoutX="162.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad:" />
+                  <TextField fx:id="numeroavion_field" layoutX="225.0" layoutY="103.0" />
+                  <TextField fx:id="capacidadavion_field" layoutX="225.0" layoutY="143.0" />
+                  <Button fx:id="agregaravion_button" layoutX="247.0" layoutY="193.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" text="Agregar" />
                </children></AnchorPane>
         </content>
       </Tab>
