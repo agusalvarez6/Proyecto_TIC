@@ -20,6 +20,12 @@ import com.example.entities.Account;
 
 import java.io.IOException;
 
+import net.rgielen.fxweaver.core.FxWeaver;
+
+import com.example.Main;
+import com.example.entities.Account;
+import com.example.services.AccountService;
+
 @Component
 @FxmlView("/com/example/controllers/landing_page.fxml")
 public class landing_controller {

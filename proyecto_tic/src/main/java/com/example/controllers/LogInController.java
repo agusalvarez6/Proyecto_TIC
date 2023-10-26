@@ -12,10 +12,12 @@ import javafx.stage.Stage;
 import net.rgielen.fxweaver.core.FxWeaver;
 import net.rgielen.fxweaver.core.FxmlView;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.Main;
 import com.example.entities.Account;
+import com.example.services.AccountService;
 
 import java.io.IOException;
 @Component
@@ -29,40 +31,56 @@ public class LogInController {
    private Button signin_view_button;
    @FXML
    private TextField usuario_field;
-
+   @Autowired
+    private AccountService accountService;
    public LogInController() {
    }
 
    @FXML
    void login_try(ActionEvent event) {
       int rol = 0;
-      if (this.usuario_field.getText().equals("usuario")) {
-         rol = 1;
-      } else if (this.usuario_field.getText().equals("aerolinea")) {
-         rol = 2;
-      } else if (this.usuario_field.getText().equals("aeropuerto")) {
-         rol = 3;
-      } else if (this.usuario_field.getText().equals("admin")) {
-         rol = 4;
+      String username = usuario_field.getText();
+      String password = contrasena_field.getText();
+      Account usuarioGuardado = accountService.userAuthentication(username, password);
+      if (usuarioGuardado != null){
+         System.out.println("todo anda bien");
+         
+         if (usuarioGuardado.getRole().equals("usuario")) {
+            rol = 1;
+         } else if (usuarioGuardado.getRole().equals("aerolinea")) {
+            rol = 2;
+         } else if (usuarioGuardado.getRole().equals("aeropuerto")) {
+            rol = 3;
+         } else if (usuarioGuardado.getRole().equals("admin")) {
+            rol = 4;
+         }
       }
+         else{
+         System.out.println("todo anda mal");
+      }
+      
 
-         FxWeaver fxWeaver = InicioController.getContext().getBean(FxWeaver.class);
+         
          switch (rol) {
             case 1:
+               FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
                Parent root = fxWeaver.loadView(landing_controller.class);
                login_button.getScene().setRoot(root);
                break;
             case 2:
                fxWeaver = Main.getContext().getBean(FxWeaver.class);
                root = fxWeaver.loadView(LandingAerolineaController.class);
+               login_button.getScene().setRoot(root);
                break;
             case 3:
                fxWeaver = Main.getContext().getBean(FxWeaver.class);
                root = fxWeaver.loadView(adminController.class);
+               login_button.getScene().setRoot(root);
                break;
             case 4:
                fxWeaver = Main.getContext().getBean(FxWeaver.class);
                 root = fxWeaver.loadView(adminController.class);
+                login_button.getScene().setRoot(root);
          }
       
       }
@@ -71,17 +89,8 @@ public class LogInController {
 
    @FXML
    void signin_view(ActionEvent event) {
-      try {
-         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/com/example/signIn.fxml"));
-         Parent signInRoot = (Parent)loader.load();
-         Stage signInStage = new Stage();
-         signInStage.setTitle("Sign In");
-         Scene signInScene = new Scene(signInRoot);
-         signInStage.setScene(signInScene);
-         signInStage.show();
-      } catch (IOException var6) {
-         var6.printStackTrace();
-      }
-
+      FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+      Parent root = fxWeaver.loadView(SignInController.class);
+      login_button.getScene().setRoot(root);
    }
 }

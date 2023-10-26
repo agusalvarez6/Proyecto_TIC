@@ -47,5 +47,10 @@ public class InicioController {
             
     }
 
+    public static ConfigurableApplicationContext getContext() {
+        return Main.getContext();
+    }
+   
+
     
 }

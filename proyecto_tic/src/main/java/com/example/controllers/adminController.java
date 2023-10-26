@@ -9,6 +9,13 @@ import net.rgielen.fxweaver.core.FxmlView;
 
 import java.io.IOException;
 import org.springframework.stereotype.Component;
+
+import net.rgielen.fxweaver.core.FxWeaver;
+import net.rgielen.fxweaver.core.FxmlView;
+
+import com.example.Main;
+import com.example.entities.Account;
+import com.example.services.AccountService;
 @Component
 @FxmlView("/com/example/controllers/admin.fxml")
 public class adminController {

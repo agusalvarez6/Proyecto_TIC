@@ -13,7 +13,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import com.example.App;
 @SpringBootApplication
 public class Main {
     private static ConfigurableApplicationContext context;
