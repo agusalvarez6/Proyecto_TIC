@@ -19,10 +19,10 @@ public class PendingFlights {
     private String Destination;
 
     @Column
-    private String StateOrigin;
+    private int StateOrigin;
 
     @Column
-    private String StateDestination;
+    private int StateDestination;
 
     public Long getIdPendingFlights() {
 		return this.IdPendingFlights;
@@ -54,19 +54,19 @@ public class PendingFlights {
 		this.Destination = Destination;
 	}
 
-    public String getStateOrigin() {
+    public int getStateOrigin() {
 		return this.StateOrigin;
 	}
 
-	public void setStateOrigin(String StateOrigin) {
+	public void setStateOrigin(int StateOrigin) {
 		this.StateOrigin = StateOrigin;
 	}
 
-	public String getStateDestination() {
+	public int getStateDestination() {
 		return this.StateDestination;
 	}
 
-	public void setStateDestination(String StateDestination) {
-		this.StateDestination = StateDestination;
+	public void setStateDestination(int i) {
+		this.StateDestination = i;
 	}
 }

@@ -47,6 +47,6 @@ public class Plane {
 
 	public void setCapacity(String Capacity) {
 		this.Capacity = Capacity;
-
+	}
 
 }

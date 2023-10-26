@@ -2,11 +2,16 @@ package com.example.services;
 
 import com.example.entities.*;
 import com.example.repository.*;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class FlightsService {
+    /* 
     @Autowired
     FlightsRepository flightsRepository;
 
@@ -42,30 +47,31 @@ public class FlightsService {
     public List<Flights> verVuelosDeAerolinea(Long idAerolinea) {
         return flightsRepository.findByIdAirline(idAerolinea);
     }
-    public Flights confirmarVuelo(Flights flights,String locate) {
+    public void confirmarVuelo(Flights flights,String locate) {
         PendingFlights pendingFlights = pendingFlightsRepository.findPendingFlightByid(flights.getIdFlights());
         if(flights.getDestination()==locate){
             pendingFlights.setStateDestination(1);
+
         }else if(flights.getOrigin()==locate){
             pendingFlights.setStateOrigin(1);
         }
-        if(pendingFlights.getStateDestination()==1 and pendingFlights.getStateOrigin()==1){
+        if(pendingFlights.getStateDestination()==1 && pendingFlights.getStateOrigin()==1){
             flights.setState(1);
         }
     }
 
-    public Flights RechazarVuelo(Flights flights){
+    public void RechazarVuelo(Flights flights){
         PendingFlights pendingFlights = pendingFlightsRepository.findPendingFlightByid(flights.getIdFlights());
         pendingFlightsRepository.delete(pendingFlights);
         flightsRepository.delete(flights);
     }
 
     public Plane savePlane(Plane plane){
-        return PlaneRepository.save(plane);
+        return planeRepository.save(plane);
     }
 
     public List<Plane> verTodosLosAviones(Long idAerolinea){
-        return PlaneRepository.findByAerolinea(idAerolinea);
-    }
+        return planeRepository.findByAerolinea(idAerolinea);
+    }*/
 
 }
