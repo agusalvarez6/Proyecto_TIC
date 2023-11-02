@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class FlightsService {
-    /* 
+     
     @Autowired
     FlightsRepository flightsRepository;
 
@@ -37,18 +37,20 @@ public class FlightsService {
         return flightsRepository.findAll();
     }
 
-    public List<Flights> verVuelosAprobadoso(String origen, String destino) {
+    public List<Flights> verVuelosAprobadoso(Long origen, Long destino) {
         return flightsRepository.findByOriginAndDestinationAndState(origen, destino, 1);
     }
-
-    public List<Flights> verVuelosDeAeropuerto(Long idAeropuerto) {
+ 
+    public List<PendingFlights> verVuelosDeAeropuerto(Long idAeropuerto) {
         return pendingFlightsRepository.findByOriginOrDestination(idAeropuerto, idAeropuerto);
     }
+    
     public List<Flights> verVuelosDeAerolinea(Long idAerolinea) {
         return flightsRepository.findByIdAirline(idAerolinea);
     }
-    public void confirmarVuelo(Flights flights,String locate) {
-        PendingFlights pendingFlights = pendingFlightsRepository.findPendingFlightByid(flights.getIdFlights());
+     
+    public void confirmarVuelo(Flights flights,Long locate) {
+        PendingFlights pendingFlights = pendingFlightsRepository.findByIdPendingFlights(flights.getIdFlights());
         if(flights.getDestination()==locate){
             pendingFlights.setStateDestination(1);
 
@@ -61,7 +63,7 @@ public class FlightsService {
     }
 
     public void RechazarVuelo(Flights flights){
-        PendingFlights pendingFlights = pendingFlightsRepository.findPendingFlightByid(flights.getIdFlights());
+        PendingFlights pendingFlights = pendingFlightsRepository.findByIdPendingFlights(flights.getIdFlights());
         pendingFlightsRepository.delete(pendingFlights);
         flightsRepository.delete(flights);
     }
@@ -71,7 +73,7 @@ public class FlightsService {
     }
 
     public List<Plane> verTodosLosAviones(Long idAerolinea){
-        return planeRepository.findByAerolinea(idAerolinea);
-    }*/
+        return planeRepository.findByIdAirline(idAerolinea);
+    }
 
 }

@@ -8,116 +8,116 @@ import jakarta.persistence.*;
 public class Flights {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) // Configura la estrategia de generación de identificadores
-    private Long IdFlights;
+    private Long idFlights;
 
     @Column
-    private Long IdAirline;
+    private Long idAirline;
 
     @Column
-    private String Origin;
+    private Long origin;
 
     @Column
-    private String Destination;
+    private Long destination;
 
     @Column
-    private LocalDate Departure_time;
+    private LocalDate departure_time;
 
     @Column
-    private LocalDate Arrival_time;
+    private LocalDate arrival_time;
 
     @Column
-    private Long Departure_door;
+    private Long departure_door;
 
     @Column
-    private Long Arrival_door;
+    private Long arrival_door;
 
     @Column
     private int state;
 
     @Column
-    private String Code;
+    private String code;
 
     @Column
-    private Long IdPlane;
+    private Long idPlane;
 
 	public String getCode() {
-		return this.Code;
+		return this.code;
 	}
 
 	public void setCode(String Code) {
-		this.Code = Code;
+		this.code = Code;
 	}
 
 	public Long getIdFlights() {
-		return this.IdFlights;
+		return this.idFlights;
 	}
 
 	public void setIdFlights(Long IdFlights) {
-		this.IdFlights = IdFlights;
+		this.idFlights = IdFlights;
 	}
 
 	public Long getIdAirline() {
-		return this.IdAirline;
+		return this.idAirline;
 	}
 
 	public void setIdAirline(Long IdAirline) {
-		this.IdAirline = IdAirline;
+		this.idAirline = IdAirline;
 	}
 
-	public String getOrigin() {
-		return this.Origin;
+	public Long getOrigin() {
+		return this.origin;
 	}
 
-	public void setOrigin(String Origin) {
-		this.Origin = Origin;
+	public void setOrigin(Long Origin) {
+		this.origin = Origin;
 	}
 
-	public String getDestination() {
-		return this.Destination;
+	public Long getDestination() {
+		return this.destination;
 	}
 
-	public void setDestination(String Destination) {
-		this.Destination = Destination;
+	public void setDestination(Long Destination) {
+		this.destination = Destination;
 	}
 
 	public LocalDate getDeparture_time() {
-		return this.Departure_time;
+		return this.departure_time;
 	}
 
 	public void setDeparture_time(LocalDate Departure_time) {
-		this.Departure_time = Departure_time;
+		this.departure_time = Departure_time;
 	}
 
 	public LocalDate getArrival_time() {
-		return this.Arrival_time;
+		return this.arrival_time;
 	}
 
 	public void setArrival_time(LocalDate Arrival_time) {
-		this.Arrival_time = Arrival_time;
+		this.arrival_time = Arrival_time;
 	}
 
 	public Long getDeparture_door() {
-		return this.Departure_door;
+		return this.departure_door;
 	}
 
 	public void setDeparture_door(Long Departure_door) {
-		this.Departure_door = Departure_door;
+		this.departure_door = Departure_door;
 	}
 
 	public Long getArrival_door() {
-		return this.Arrival_door;
+		return this.arrival_door;
 	}
 
 	public void setArrival_door(Long Arrival_door) {
-		this.Arrival_door = Arrival_door;
+		this.arrival_door = Arrival_door;
 	}
 
 	public Long getIdPlane() {
-		return this.IdPlane;
+		return this.idPlane;
 	}
 
 	public void setIdPlane(Long IdPlane) {
-		this.IdPlane = IdPlane;
+		this.idPlane = IdPlane;
 	}
 	public int getState() {
 		return this.state;

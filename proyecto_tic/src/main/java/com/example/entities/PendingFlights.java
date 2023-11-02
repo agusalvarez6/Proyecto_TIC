@@ -7,66 +7,66 @@ import jakarta.persistence.*;
 public class PendingFlights {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) // Configura la estrategia de generación de identificadores
-    private Long IdPendingFlights;
+    private Long idPendingFlights;
 
     @Column
-    private Long IdFlights;
+    private Long idFlights;
 
     @Column
-    private String Origin;
+    private Long origin;
 
     @Column
-    private String Destination;
+    private Long destination;
 
     @Column
-    private int StateOrigin;
+    private int stateOrigin;
 
     @Column
-    private int StateDestination;
+    private int stateDestination;
 
     public Long getIdPendingFlights() {
-		return this.IdPendingFlights;
+		return this.idPendingFlights;
 	}
 
 	public void setIdPendingFlights(Long IdPendingFlights) {
-		this.IdPendingFlights = IdPendingFlights;
+		this.idPendingFlights = IdPendingFlights;
 	}
     public Long getIdFlights() {
-		return this.IdFlights;
+		return this.idFlights;
 	}
 
 	public void setIdFlights(Long IdFlights) {
-		this.IdFlights = IdFlights;
+		this.idFlights = IdFlights;
 	}
-    public String getOrigin() {
-		return this.Origin;
-	}
-
-	public void setOrigin(String Origin) {
-		this.Origin = Origin;
+    public Long getOrigin() {
+		return this.origin;
 	}
 
-	public String getDestination() {
-		return this.Destination;
+	public void setOrigin(Long Origin) {
+		this.origin = Origin;
 	}
 
-	public void setDestination(String Destination) {
-		this.Destination = Destination;
+	public Long getDestination() {
+		return this.destination;
+	}
+
+	public void setDestination(Long Destination) {
+		this.destination = Destination;
 	}
 
     public int getStateOrigin() {
-		return this.StateOrigin;
+		return this.stateOrigin;
 	}
 
 	public void setStateOrigin(int StateOrigin) {
-		this.StateOrigin = StateOrigin;
+		this.stateOrigin = StateOrigin;
 	}
 
 	public int getStateDestination() {
-		return this.StateDestination;
+		return this.stateDestination;
 	}
 
 	public void setStateDestination(int i) {
-		this.StateDestination = i;
+		this.stateDestination = i;
 	}
 }

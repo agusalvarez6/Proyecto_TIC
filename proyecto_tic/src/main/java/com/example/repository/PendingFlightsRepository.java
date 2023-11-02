@@ -6,12 +6,11 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-/* 
+
 @Repository
 public interface PendingFlightsRepository extends JpaRepository<PendingFlights, Long> {
+ 
+    List<PendingFlights> findByOriginOrDestination(Long idAeropuerto, Long idAeropuerto2);
 
-    List<Flights> findByOriginOrDestination(Long idAeropuerto, Long idAeropuerto2);
-
-    PendingFlights findPendingFlightByid(Long idFlights);
+    PendingFlights findByIdPendingFlights(Long idFlights);
 }
-*/
