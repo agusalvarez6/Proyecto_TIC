@@ -5,7 +5,11 @@ import jakarta.persistence.*;
 @Entity
 public class Airport {
     @Id
-    private String iATA;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE) // Configura la estrategia de generación de identificadores
+    private Long IdAirport;
+
+    @Column
+    private String IATA;
     @Column
     private String name;
     @Column
@@ -16,33 +20,33 @@ public class Airport {
     private Long idUser;
 
     public String getIATA(){
-        return this.iATA
+        return this.IATA;
     }
     public void setIATA(String IATA){
-        this.iATA = IATA
+        this.IATA = IATA;
     }
     public String getName(){
-        return this.name 
+        return this.name; 
     }
     public void setName(String Name){
-        this.name = Name
+        this.name = Name;
     }
     public String getLocation(){
-        return this.location
+        return this.location;
     }
     public void setLocation(String Location){
-        this.location = Location
+        this.location = Location;
     }
     public int getJetBridgeNum(){
-        return this.jetBridgeNum 
+        return this.jetBridgeNum; 
     }
     public void setJetBridgeNum(int JetBridgeNum){
-        this.jetBridgeNum = JetBridgeNum
+        this.jetBridgeNum = JetBridgeNum;
     }
     public Long getIdUser(){
-        return this.idUser 
+        return this.idUser; 
     }
     public void setIdUser(Long IdUser){
-        this.idUser = IdUser
+        this.idUser = IdUser;
     }
 }
