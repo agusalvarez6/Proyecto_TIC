@@ -46,4 +46,3 @@ public class Airport {
         this.idUser = IdUser
     }
 }
-
