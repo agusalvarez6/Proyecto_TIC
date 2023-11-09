@@ -1,6 +1,5 @@
 package com.example.entities;
 
-import java.time.LocalDate;
 
 import jakarta.persistence.*;
 
@@ -14,16 +13,16 @@ public class Flights {
     private Long idAirline;
 
     @Column
-    private Long origin;
+    private String origin;
 
     @Column
-    private Long destination;
+    private String destination;
 
     @Column
-    private LocalDate departure_time;
+    private Long departure_time;
 
     @Column
-    private LocalDate arrival_time;
+    private Long arrival_time;
 
     @Column
     private Long departure_door;
@@ -64,35 +63,35 @@ public class Flights {
 		this.idAirline = IdAirline;
 	}
 
-	public Long getOrigin() {
+	public String getOrigin() {
 		return this.origin;
 	}
 
-	public void setOrigin(Long Origin) {
+	public void setOrigin(String Origin) {
 		this.origin = Origin;
 	}
 
-	public Long getDestination() {
+	public String getDestination() {
 		return this.destination;
 	}
 
-	public void setDestination(Long Destination) {
+	public void setDestination(String Destination) {
 		this.destination = Destination;
 	}
 
-	public LocalDate getDeparture_time() {
+	public Long getDeparture_time() {
 		return this.departure_time;
 	}
 
-	public void setDeparture_time(LocalDate Departure_time) {
+	public void setDeparture_time(Long Departure_time) {
 		this.departure_time = Departure_time;
 	}
 
-	public LocalDate getArrival_time() {
+	public Long getArrival_time() {
 		return this.arrival_time;
 	}
 
-	public void setArrival_time(LocalDate Arrival_time) {
+	public void setArrival_time(Long Arrival_time) {
 		this.arrival_time = Arrival_time;
 	}
 
