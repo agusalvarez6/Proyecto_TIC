@@ -68,4 +68,11 @@ public class landing_controller {
 
     }
 
+    @FXML
+    void salir(ActionEvent event) {
+        FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+        Parent root = fxWeaver.loadView(InicioController.class);
+        salir_button.getScene().setRoot(root);
+    }
+
 }
