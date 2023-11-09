@@ -1,12 +1,17 @@
 package com.example.services;
 
-import com.example.entities.*;
-import com.example.repository.*;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.example.entities.Flights;
+import com.example.entities.PendingFlights;
+import com.example.entities.Plane;
+import com.example.repository.AirportRepository;
+import com.example.repository.FlightsRepository;
+import com.example.repository.PendingFlightsRepository;
+import com.example.repository.PlaneRepository;
 
 
 @Service
@@ -44,7 +49,7 @@ public class FlightsService {
         return flightsRepository.findByOriginAndDestinationAndState(origen, destino, 1);
     }
  
-    public List<PendingFlights> verVuelosDeAeropuerto(Long idAeropuerto) {
+    public List<PendingFlights> verVuelosDeAeropuerto(String idAeropuerto) {
         return pendingFlightsRepository.findByOriginOrDestination(idAeropuerto, idAeropuerto);
     }
     
@@ -78,9 +83,9 @@ public class FlightsService {
     public List<Plane> verTodosLosAviones(Long idAerolinea){
         return planeRepository.findByIdAirline(idAerolinea);
     }
-
+    
    public boolean VerificarDestino(String IATA){
-        boolean airportRepository.findByIATA(IATA) != null;
+        return (airportRepository.findByIATA(IATA) != null);
     }
 
 }
