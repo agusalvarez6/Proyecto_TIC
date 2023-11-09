@@ -91,4 +91,8 @@ public class landing_aeropuertoController {
         Parent root = fxWeaver.loadView(InicioController.class);
         atras_button.getScene().setRoot(root);
     }
+
+    void initialize(String username) {
+        System.out.println("username: " + username);
+    }
 }

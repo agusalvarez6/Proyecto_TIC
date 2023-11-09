@@ -125,4 +125,7 @@ public class adminController {
         atras_button.getScene().setRoot(root);
     }
 
+    void initialize(String username) {
+        System.out.println("username: " + username);
+    }
 }

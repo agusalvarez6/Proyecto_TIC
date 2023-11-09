@@ -64,24 +64,42 @@ public class LogInController {
       switch (rol) {
          case 1:
             FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+            Object controller = fxWeaver.loadController(landing_controller.class);
+            if (controller instanceof landing_controller) {
+               ((landing_controller) controller).initialize(username);
+           }
             Parent root = fxWeaver.loadView(landing_controller.class);
             login_button.getScene().setRoot(root);
             break;
          case 2:
             fxWeaver = Main.getContext().getBean(FxWeaver.class);
+            Object controller2 = fxWeaver.loadController(LandingAerolineaController.class);
+            if (controller2 instanceof LandingAerolineaController) {
+               ((LandingAerolineaController) controller2).initialize(username);
+            }
             root = fxWeaver.loadView(LandingAerolineaController.class);
             login_button.getScene().setRoot(root);
             break;
          case 3:
             fxWeaver = Main.getContext().getBean(FxWeaver.class);
+            Object controller3 = fxWeaver.loadController(landing_aeropuertoController.class);
+            if (controller3 instanceof landing_aeropuertoController) {
+               ((landing_aeropuertoController) controller3).initialize(username);
+            }
             root = fxWeaver.loadView(landing_aeropuertoController.class);
             login_button.getScene().setRoot(root);
             break;
          case 4:
             fxWeaver = Main.getContext().getBean(FxWeaver.class);
-               root = fxWeaver.loadView(adminController.class);
-               login_button.getScene().setRoot(root);
+            Object controller4 = fxWeaver.loadController(adminController.class);
+            if (controller4 instanceof adminController) {
+               ((adminController) controller4).initialize(username);
+            }
+            root = fxWeaver.loadView(adminController.class);
+            login_button.getScene().setRoot(root);
+               
       }
+      
       
    }
 
