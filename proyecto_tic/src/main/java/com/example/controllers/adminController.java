@@ -23,6 +23,9 @@ import com.example.services.AccountService;
 public class adminController {
 
     @FXML
+    private TextField usuarioaerop_field;
+
+    @FXML
     private Button atras_button;
     
     @FXML

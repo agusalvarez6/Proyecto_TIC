@@ -1,6 +1,8 @@
 package com.example.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Tab;
@@ -89,4 +91,11 @@ public class LandingAerolineaController {
     @FXML
     private TableView<?> vuelosagendados_table;
 
+    @FXML
+    void salir(ActionEvent event) {
+        FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+        Parent root = fxWeaver.loadView(InicioController.class);
+        atras_button.getScene().setRoot(root);
+    }
+    
 }
