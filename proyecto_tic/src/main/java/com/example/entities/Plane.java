@@ -6,47 +6,47 @@ import jakarta.persistence.*;
 public class Plane {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) // Configura la estrategia de generación de identificadores
-    private Long IdPlane;
+    private Long idPlane;
 
     @Column
-    private Long IdAirline;
+    private Long idAirline;
 
     @Column
-    private String Current_Airport;
+    private String current_Airport;
 
 	@Column
-    private String Capacity;
+    private String capacity;
 
 	public Long getIdPlane() {
-		return this.IdPlane;
+		return this.idPlane;
 	}
 
 	public void setIdPlane(Long IdPlane) {
-		this.IdPlane = IdPlane;
+		this.idPlane = IdPlane;
 	}
 
 	public Long getIdAirline() {
-		return this.IdAirline;
+		return this.idAirline;
 	}
 
 	public void setIdAirline(Long IdAirline) {
-		this.IdAirline = IdAirline;
+		this.idAirline = IdAirline;
 	}
 
 	public String getCurrent_Airport() {
-		return this.Current_Airport;
+		return this.current_Airport;
 	}
 
 	public void setCurrent_Airport(String Current_Airport) {
-		this.Current_Airport = Current_Airport;
+		this.current_Airport = Current_Airport;
 	}
 
 	public String getCapacity() {
-		return this.Capacity;
+		return this.capacity;
 	}
 
 	public void setCapacity(String Capacity) {
-		this.Capacity = Capacity;
+		this.capacity = Capacity;
 	}
 
 }
