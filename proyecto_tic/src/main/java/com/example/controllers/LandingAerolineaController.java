@@ -97,6 +97,18 @@ public class LandingAerolineaController {
         Parent root = fxWeaver.loadView(InicioController.class);
         atras_button.getScene().setRoot(root);
     }
+    void saveFlight(ActionEvent event){
+        String destino = aeropdestino_field.getText();
+        String origen = aeroporigen_field.getText();
+        String code = numerovuelo_field.getText();
+        int state = 0;
+
+        /*if(FlightsService.VerificarDestino(destino) && FlightsService.VerificarDestino(origen)){
+            
+        }*/
+    }
+}
+
 
     void initialize(String username) {
         System.out.println("username: " + username);

@@ -79,8 +79,8 @@ public class FlightsService {
         return planeRepository.findByIdAirline(idAerolinea);
     }
 
-    public Airport VerificarDestino(String IATA){
-        return airportRepository.findByIATA(IATA);
+   public boolean VerificarDestino(String IATA){
+        boolean airportRepository.findByIATA(IATA) != null;
     }
 
 }
