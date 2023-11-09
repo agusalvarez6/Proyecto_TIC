@@ -25,7 +25,7 @@
                   <Text layoutX="59.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" />
                   <TextField fx:id="codigoiata_field" layoutX="130.0" layoutY="225.0" />
                   <Text layoutX="51.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código IATA:" />
-                  <Button fx:id="atras_button" layoutX="57.0" layoutY="308.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="119.0" text="Atrás" />
+                  <Button fx:id="atras_button" layoutX="57.0" layoutY="308.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="119.0" text="Atrás" onAction="#salir"/>
                </children></AnchorPane>
       </content>
     </Tab>

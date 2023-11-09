@@ -1,6 +1,8 @@
 package com.example.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
@@ -112,5 +114,12 @@ public class adminController {
 
     @FXML
     private Tab verusuarios_tab;
+
+    @FXML
+    void salir(ActionEvent event) {
+        FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+        Parent root = fxWeaver.loadView(InicioController.class);
+        atras_button.getScene().setRoot(root);
+    }
 
 }
