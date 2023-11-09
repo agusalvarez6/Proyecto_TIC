@@ -107,7 +107,6 @@ public class LandingAerolineaController {
             
         }*/
     }
-}
 
 
     void initialize(String username) {
