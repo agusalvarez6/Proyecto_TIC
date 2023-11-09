@@ -85,4 +85,14 @@ public class landing_aeropuertoController {
     @FXML
     private TableView<?> vuelosaprobados_table;
 
+    @FXML
+    void salir(ActionEvent event) {
+        FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+        Parent root = fxWeaver.loadView(InicioController.class);
+        atras_button.getScene().setRoot(root);
+    }
+
+    void initialize(String username) {
+        System.out.println("username: " + username);
+    }
 }

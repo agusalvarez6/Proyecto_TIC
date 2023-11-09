@@ -28,6 +28,9 @@ import com.example.services.AirlineService;
 public class adminController {
 
     @FXML
+    private TextField usuarioaerop_field;
+
+    @FXML
     private Button atras_button;
     
     @FXML
@@ -173,4 +176,7 @@ public class adminController {
         ingresaraerolinea_button.getScene().setRoot(root);
     }
 
+    void initialize(String username) {
+        System.out.println("username: " + username);
+    }
 }

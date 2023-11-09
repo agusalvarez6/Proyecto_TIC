@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PendingFlightsRepository extends JpaRepository<PendingFlights, Long> {
+public interface PendingFlightsRepository extends JpaRepository<PendingFlights, String> {
  
-    List<PendingFlights> findByOriginOrDestination(Long idAeropuerto, Long idAeropuerto2);
+    List<PendingFlights> findByOriginOrDestination(String idAeropuerto, String idAeropuerto2);
 
     PendingFlights findByIdPendingFlights(Long idFlights);
 }

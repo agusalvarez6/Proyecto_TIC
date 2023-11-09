@@ -16,6 +16,9 @@ public class FlightsService {
     FlightsRepository flightsRepository;
 
     @Autowired
+    AirportRepository airportRepository;
+
+    @Autowired
     private PendingFlightsRepository pendingFlightsRepository;
 
     @Autowired
@@ -37,7 +40,7 @@ public class FlightsService {
         return flightsRepository.findAll();
     }
 
-    public List<Flights> verVuelosAprobadoso(Long origen, Long destino) {
+    public List<Flights> verVuelosAprobadoso(String origen, String destino) {
         return flightsRepository.findByOriginAndDestinationAndState(origen, destino, 1);
     }
  
@@ -49,7 +52,7 @@ public class FlightsService {
         return flightsRepository.findByIdAirline(idAerolinea);
     }
      
-    public void confirmarVuelo(Flights flights,Long locate) {
+    public void confirmarVuelo(Flights flights,String locate) {
         PendingFlights pendingFlights = pendingFlightsRepository.findByIdPendingFlights(flights.getIdFlights());
         if(flights.getDestination()==locate){
             pendingFlights.setStateDestination(1);
@@ -74,6 +77,10 @@ public class FlightsService {
 
     public List<Plane> verTodosLosAviones(Long idAerolinea){
         return planeRepository.findByIdAirline(idAerolinea);
+    }
+
+   public boolean VerificarDestino(String IATA){
+        boolean airportRepository.findByIATA(IATA) != null;
     }
 
 }

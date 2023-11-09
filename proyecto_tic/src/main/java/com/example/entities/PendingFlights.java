@@ -13,10 +13,10 @@ public class PendingFlights {
     private Long idFlights;
 
     @Column
-    private Long origin;
+    private String origin;
 
     @Column
-    private Long destination;
+    private String destination;
 
     @Column
     private int stateOrigin;
@@ -38,19 +38,19 @@ public class PendingFlights {
 	public void setIdFlights(Long IdFlights) {
 		this.idFlights = IdFlights;
 	}
-    public Long getOrigin() {
+    public String getOrigin() {
 		return this.origin;
 	}
 
-	public void setOrigin(Long Origin) {
+	public void setOrigin(String Origin) {
 		this.origin = Origin;
 	}
 
-	public Long getDestination() {
+	public String getDestination() {
 		return this.destination;
 	}
 
-	public void setDestination(Long Destination) {
+	public void setDestination(String Destination) {
 		this.destination = Destination;
 	}
 

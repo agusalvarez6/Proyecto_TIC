@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FlightsRepository extends JpaRepository<Flights, Long> {
 
-    List<Flights> findByOriginAndDestinationAndState(Long origen, Long destino, int i);
+    List<Flights> findByOriginAndDestinationAndState(String origen, String destino, int i);
 
     List<Flights> findByIdAirline(Long idAerolinea);
     
