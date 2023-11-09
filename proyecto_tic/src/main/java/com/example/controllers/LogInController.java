@@ -59,31 +59,31 @@ public class LogInController {
          System.out.println("todo anda mal");
       }
       
-      rol = 1;
-         
-         switch (rol) {
-            case 1:
-               FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
-               Parent root = fxWeaver.loadView(landing_controller.class);
-               login_button.getScene().setRoot(root);
-               break;
-            case 2:
-               fxWeaver = Main.getContext().getBean(FxWeaver.class);
-               root = fxWeaver.loadView(LandingAerolineaController.class);
-               login_button.getScene().setRoot(root);
-               break;
-            case 3:
-               fxWeaver = Main.getContext().getBean(FxWeaver.class);
-               root = fxWeaver.loadView(landing_aeropuertoController.class);
-               login_button.getScene().setRoot(root);
-               break;
-            case 4:
-               fxWeaver = Main.getContext().getBean(FxWeaver.class);
-                root = fxWeaver.loadView(adminController.class);
-                login_button.getScene().setRoot(root);
-         }
       
+         
+      switch (rol) {
+         case 1:
+            FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+            Parent root = fxWeaver.loadView(landing_controller.class);
+            login_button.getScene().setRoot(root);
+            break;
+         case 2:
+            fxWeaver = Main.getContext().getBean(FxWeaver.class);
+            root = fxWeaver.loadView(LandingAerolineaController.class);
+            login_button.getScene().setRoot(root);
+            break;
+         case 3:
+            fxWeaver = Main.getContext().getBean(FxWeaver.class);
+            root = fxWeaver.loadView(landing_aeropuertoController.class);
+            login_button.getScene().setRoot(root);
+            break;
+         case 4:
+            fxWeaver = Main.getContext().getBean(FxWeaver.class);
+               root = fxWeaver.loadView(adminController.class);
+               login_button.getScene().setRoot(root);
       }
+      
+   }
 
    
 
