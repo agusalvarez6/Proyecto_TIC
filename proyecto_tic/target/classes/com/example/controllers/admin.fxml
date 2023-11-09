@@ -14,7 +14,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="ingresaraeropuerto_button" layoutX="468.0" layoutY="287.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="102.0" text="Ingresar" />
+                  <Button fx:id="ingresaraeropuerto_button" layoutX="468.0" layoutY="287.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="102.0" text="Ingresar" onAction="#saveAirport"/>
                   <TextField fx:id="nameaeropuerto_field" layoutX="130.0" layoutY="59.0" />
                   <Text layoutX="73.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="48.80340576171875" />
                   <Text layoutX="95.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="País:" wrappingWidth="27.470062255859375" />

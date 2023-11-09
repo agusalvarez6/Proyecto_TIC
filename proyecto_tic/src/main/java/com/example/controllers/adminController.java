@@ -21,7 +21,9 @@ import com.example.Main;
 import com.example.entities.Account;
 import com.example.services.AccountService;
 import com.example.entities.Airline;
+import com.example.entities.Airport;
 import com.example.services.AirlineService;
+import com.example.services.AirportService;
 
 @Component
 @FxmlView("/com/example/controllers/admin.fxml")
@@ -129,6 +131,9 @@ public class adminController {
     @Autowired
     private AirlineService airlineService;
 
+    @Autowired
+    private AirportService airportService;
+
     @FXML
     void salir(ActionEvent event) {
         FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
@@ -174,6 +179,47 @@ public class adminController {
         FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
         Parent root = fxWeaver.loadView(LogInController.class);
         ingresaraerolinea_button.getScene().setRoot(root);
+    }
+    @FXML
+    void saveAirport(ActionEvent event){
+        String username = usuarioaerop_field.getText();
+        String password = contrasenaaeropuerto_field.getText();
+        String name = nameaeropuerto_field.getText();
+        String city = ciudadaeropuerto_field.getText();
+        String country = paisaeropuerto_field.getText();
+        String iata = codigoiata_field.getText();
+        // Verifica que las contraseñas coincidan (puedes agregar más validaciones si es necesario)
+        if (!password.equals(contrasenaaeropuerto_field.getText())) {
+            // Muestra un mensaje de error o realiza alguna acción apropiada.
+            return;
+        }
+
+        // Crea un nuevo objeto de usuario
+        Account nuevoUsuario = new Account();
+        nuevoUsuario.setUsername(username);
+        nuevoUsuario.setPassword(password);
+        nuevoUsuario.setRole("aeropuerto");
+        // Llama al servicio para guardar el usuario
+        Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
+
+        if (usuarioGuardado != null) {
+            System.out.println("usuario guardado");
+        } else {
+            // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+        }
+
+        Airport newAirport = new Airport();
+        newAirport.setName(name);
+        newAirport.setCity(city);
+        newAirport.setCountry(country);
+        newAirport.setIATA(iata);
+        newAirport.setIdUser(usuarioGuardado.getIdAccount());
+        Airport airportGuardado = airportService.saveAirport(newAirport);
+        if (airportGuardado != null) {
+            System.out.println("aeropuerto guardado");
+        } else {
+            // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+        }
     }
 
     void initialize(String username) {
