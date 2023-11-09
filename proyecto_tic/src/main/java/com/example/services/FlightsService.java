@@ -75,5 +75,8 @@ public class FlightsService {
     public List<Plane> verTodosLosAviones(Long idAerolinea){
         return planeRepository.findByIdAirline(idAerolinea);
     }
+     public Airport VerificarDestino(String IATA){
+        return airportRepository.findByIATA(IATA);
+    }
 
 }
