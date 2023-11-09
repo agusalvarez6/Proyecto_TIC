@@ -19,6 +19,7 @@ import net.rgielen.fxweaver.core.FxmlView;
 
 import com.example.Main;
 import com.example.entities.Account;
+import com.example.entities.Flights;
 import com.example.services.AccountService;
 @Component
 @FxmlView("/com/example/controllers/landing_aerolinea.fxml")
@@ -50,7 +51,10 @@ public class LandingAerolineaController {
     private TextField capacidadavion_field;
 
     @FXML
-    private DatePicker datepicker;
+    private TextField salida_field;
+
+    @FXML
+    private TextField llegada_field;
 
     @FXML
     private TableColumn<?, ?> destino_col;
@@ -97,18 +101,28 @@ public class LandingAerolineaController {
         Parent root = fxWeaver.loadView(InicioController.class);
         atras_button.getScene().setRoot(root);
     }
-    void saveFlight(ActionEvent event){
-        String destino = aeropdestino_field.getText();
-        String origen = aeroporigen_field.getText();
-        String code = numerovuelo_field.getText();
+    /*void saveFlight(ActionEvent event){
         int state = 0;
-
-        /*if(FlightsService.VerificarDestino(destino) && FlightsService.VerificarDestino(origen)){
+        Flights vuelo  = new Flights();
+        
+        vuelo.setDestination(aeropdestino_field.getText());
+        vuelo.setOrigin(aeroporigen_field.getText());
+        vuelo.setArrival_time(llegada_field.getText());
+        
+        
+        vuelo.setCode(numerovuelo_field.getText());
+        vuelo.setArrival_time(llegada_field.getText());
+        
+        vuelo.setDeparture_time(salida_field.getText());
+        Plane avion = FlightsService.getPlane(nroavion_field.getText(), );
+        vuelo.setIdPlane(nroavion_field.getText());
+        vuelo.setState(0);
+        if(FlightsService.VerificarDestino(destino) && FlightsService.VerificarDestino(origen)){
             
-        }*/
-    }
+        }
+    } */
 
-
+    Long id;
     void initialize(String username) {
         System.out.println("username: " + username);
     }

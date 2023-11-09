@@ -23,11 +23,12 @@ public class FlightsService {
     @Autowired
     AirportRepository airportRepository;
 
+
     @Autowired
     private PendingFlightsRepository pendingFlightsRepository;
 
     @Autowired
-    private PlaneRepository planeRepository;
+    PlaneRepository planeRepository;
 
 
     public Flights saveFlights(Flights flights) {
@@ -86,6 +87,10 @@ public class FlightsService {
     
    public boolean VerificarDestino(String IATA){
         return (airportRepository.findByIATA(IATA) != null);
+    }
+
+    public Plane ComprobarAvion(String Numero,Long idAereolinea){
+        return planeRepository.findByNumeroAndIdAirline(Numero, idAereolinea);
     }
 
 }
