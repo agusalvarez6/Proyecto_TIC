@@ -19,10 +19,10 @@ public class Flights {
     private String destination;
 
     @Column
-    private Long departure_time;
+    private String departure_time;
 
     @Column
-    private Long arrival_time;
+    private String arrival_time;
 
     @Column
     private Long departure_door;
@@ -79,19 +79,19 @@ public class Flights {
 		this.destination = Destination;
 	}
 
-	public Long getDeparture_time() {
+	public String getDeparture_time() {
 		return this.departure_time;
 	}
 
-	public void setDeparture_time(Long Departure_time) {
+	public void setDeparture_time(String Departure_time) {
 		this.departure_time = Departure_time;
 	}
 
-	public Long getArrival_time() {
+	public String getArrival_time() {
 		return this.arrival_time;
 	}
 
-	public void setArrival_time(Long Arrival_time) {
+	public void setArrival_time(String Arrival_time) {
 		this.arrival_time = Arrival_time;
 	}
 
