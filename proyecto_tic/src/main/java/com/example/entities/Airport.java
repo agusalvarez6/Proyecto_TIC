@@ -9,21 +9,23 @@ public class Airport {
     private Long IdAirport;
 
     @Column
-    private String IATA;
+    private String iATA;
     @Column
     private String name;
     @Column
-    private String location;
+    private String country;
+    @Column
+    private String city;
     @Column
     private int jetBridgeNum;
     @Column
     private Long idUser;
 
     public String getIATA(){
-        return this.IATA;
+        return this.iATA;
     }
     public void setIATA(String IATA){
-        this.IATA = IATA;
+        this.iATA = IATA;
     }
     public String getName(){
         return this.name; 
@@ -31,11 +33,17 @@ public class Airport {
     public void setName(String Name){
         this.name = Name;
     }
-    public String getLocation(){
-        return this.location;
+    public String getCountry(){
+        return this.country; 
     }
-    public void setLocation(String Location){
-        this.location = Location;
+    public void setCountry(String Country){
+        this.country = Country;
+    }
+    public String getCity(){
+        return this.city; 
+    }
+    public void setCity(String City){
+        this.city = City;
     }
     public int getJetBridgeNum(){
         return this.jetBridgeNum; 
