@@ -158,7 +158,6 @@ public class adminController {
         if (usuarioGuardado != null) {
             System.out.println("usuario guardado");
         } else {
-            
             // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
         }
 
