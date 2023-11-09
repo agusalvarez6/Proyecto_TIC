@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import net.rgielen.fxweaver.core.FxmlView;
 
 import java.io.IOException;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import net.rgielen.fxweaver.core.FxWeaver;
@@ -18,6 +20,9 @@ import net.rgielen.fxweaver.core.FxmlView;
 import com.example.Main;
 import com.example.entities.Account;
 import com.example.services.AccountService;
+import com.example.entities.Airline;
+import com.example.services.AirlineService;
+
 @Component
 @FxmlView("/com/example/controllers/admin.fxml")
 public class adminController {
@@ -115,11 +120,57 @@ public class adminController {
     @FXML
     private Tab verusuarios_tab;
 
+    @Autowired
+    private AccountService accountService;
+
+    @Autowired
+    private AirlineService airlineService;
+
     @FXML
     void salir(ActionEvent event) {
         FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
         Parent root = fxWeaver.loadView(InicioController.class);
         atras_button.getScene().setRoot(root);
+    }
+
+    @FXML
+    void saveAirline(ActionEvent event){
+        String username = usuarioaerolinea_field.getText();
+        String password = contrasenaaerolinea_field.getText();
+        String name = nameaerolinea_field.getText();
+        // Verifica que las contraseñas coincidan (puedes agregar más validaciones si es necesario)
+        if (!password.equals(contrasenaaerolinea_field.getText())) {
+            // Muestra un mensaje de error o realiza alguna acción apropiada.
+            return;
+        }
+
+        // Crea un nuevo objeto de usuario
+        Account nuevoUsuario = new Account();
+        nuevoUsuario.setUsername(username);
+        nuevoUsuario.setPassword(password);
+        nuevoUsuario.setRole("aerolinea");
+        // Llama al servicio para guardar el usuario
+        Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
+
+        if (usuarioGuardado != null) {
+            System.out.println("usuario guardado");
+        } else {
+            // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+        }
+
+        Airline newAirline = new Airline();
+        newAirline.setName(name);
+        newAirline.setIdAccount(usuarioGuardado.getIdAccount());
+        Airline airlineGuardada = airlineService.saveAirline(newAirline);
+        if (airlineGuardada != null) {
+            System.out.println("aerolinea guardada");
+        } else {
+            // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+        }
+        
+        FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+        Parent root = fxWeaver.loadView(LogInController.class);
+        ingresaraerolinea_button.getScene().setRoot(root);
     }
 
 }

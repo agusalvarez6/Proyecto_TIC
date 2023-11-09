@@ -12,9 +12,6 @@ public class AccountService {
     AccountRepository accountRepository;
 
     @Autowired
-    private AirlineRepository airlineRepository;
-
-    @Autowired
     private AirportRepository airportRepository;
 
     @Autowired
@@ -38,10 +35,6 @@ public class AccountService {
         }
 
         return null;
-    }
-
-    public Airline saveAirline(Airline airline) {
-        return airlineRepository.save(airline);
     }
 
     public Airport saveAirport(Airport airport) {
