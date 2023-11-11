@@ -22,10 +22,6 @@ public class FlightsService {
     private FlightsRepository flightsRepository;
 
     @Autowired
-    private AirportRepository airportRepository;
-
-
-    @Autowired
     private PendingFlightsRepository pendingFlightsRepository;
 
     @Autowired
@@ -49,10 +45,6 @@ public class FlightsService {
 
     public List<Flights> verVuelosAprobadoso(String origen, String destino) {
         return flightsRepository.findByOriginAndDestinationAndState(origen, destino, 1);
-    }
- 
-    public List<PendingFlights> verVuelosDeAeropuerto(String idAeropuerto) {
-        return pendingFlightsRepository.findByOriginOrDestination(idAeropuerto, idAeropuerto);
     }
     
     public List<Flights> verVuelosDeAerolinea(Long idAerolinea) {
@@ -84,10 +76,6 @@ public class FlightsService {
 
     public List<Plane> verTodosLosAviones(Long idAerolinea){
         return planeRepository.findByIdAirline(idAerolinea);
-    }
-    
-   public boolean VerificarDestino(String IATA){
-        return (airportRepository.findByiATA(IATA) != null);
     }
 
     public Plane ComprobarAvion(String Numero,Long idAereolinea){

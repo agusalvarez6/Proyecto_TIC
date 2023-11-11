@@ -213,7 +213,7 @@ public class adminController {
         newAirport.setCity(city);
         newAirport.setCountry(country);
         newAirport.setIATA(iata);
-        newAirport.setIdUser(usuarioGuardado.getIdAccount());
+        newAirport.setIdAccount(usuarioGuardado.getIdAccount());
         Airport airportGuardado = airportService.saveAirport(newAirport);
         if (airportGuardado != null) {
             System.out.println("aeropuerto guardado");

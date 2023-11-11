@@ -1,5 +1,9 @@
 package com.example.controllers;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,20 +14,27 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import net.rgielen.fxweaver.core.FxmlView;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.example.entities.Account;
+import com.example.entities.Airport;
+import com.example.entities.PendingFlights;
+
 import java.io.IOException;
+import java.util.List;
+
 import net.rgielen.fxweaver.core.FxWeaver;
 
 import com.example.Main;
-import com.example.entities.Account;
-import com.example.services.AccountService;
+import com.example.services.AirportService;
 
 @Component
 @FxmlView("/com/example/controllers/landing_aeropuerto.fxml")
 public class landing_aeropuertoController {
+
+    @Autowired
+    private AirportService airportService;
 
     @FXML
     private TableColumn<?, ?> aerolinea_col;
@@ -83,7 +94,7 @@ public class landing_aeropuertoController {
     private Tab vuelos_tab;
 
     @FXML
-    private TableView<?> vuelosaprobados_table;
+    private TableView<PendingFlights> vuelosaprobados_table;
 
     @FXML
     void salir(ActionEvent event) {
@@ -91,8 +102,20 @@ public class landing_aeropuertoController {
         Parent root = fxWeaver.loadView(InicioController.class);
         atras_button.getScene().setRoot(root);
     }
+    
+    Airport Aeropuerto;
+    
+    void initialize(Long idAccount) {
+        Aeropuerto = airportService.getAirport(idAccount);
+        List<PendingFlights> vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
+        ObservableList<PendingFlights> vuelosObs = FXCollections.observableArrayList(vuelos);
 
-    void initialize(String username) {
-        System.out.println("username: " + username);
+        // Asigna los datos a la tabla
+        vuelosaprobados_table.setItems((ObservableList<PendingFlights>) vuelosObs);
+
+        // Vincula las propiedades de PendingFlights a las columnas
+        //numerovuelo_col.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getIdPendingFlights()));
+
     }
 }
+

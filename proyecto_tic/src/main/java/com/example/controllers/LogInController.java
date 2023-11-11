@@ -84,7 +84,7 @@ public class LogInController {
             fxWeaver = Main.getContext().getBean(FxWeaver.class);
             Object controller3 = fxWeaver.loadController(landing_aeropuertoController.class);
             if (controller3 instanceof landing_aeropuertoController) {
-               ((landing_aeropuertoController) controller3).initialize(username);
+               ((landing_aeropuertoController) controller3).initialize(usuarioGuardado.getIdAccount());
             }
             root = fxWeaver.loadView(landing_aeropuertoController.class);
             login_button.getScene().setRoot(root);
