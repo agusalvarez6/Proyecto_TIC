@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -21,6 +22,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.example.entities.Airport;
 import com.example.entities.Flights;
+import com.example.entities.LandingStrip;
+import com.example.entities.ShipmentDoor;
+
 import java.util.List;
 
 import net.rgielen.fxweaver.core.FxWeaver;
@@ -44,12 +48,6 @@ public class landing_aeropuertoController {
 
     @FXML
     private Button agregarpuerta_button;
-
-    @FXML
-    private Tab asignarpuertas_tab;
-
-    @FXML
-    private TableView<?> asignarpuertas_table;
 
     @FXML
     private Button atras_button;
@@ -76,16 +74,7 @@ public class landing_aeropuertoController {
     private TextField numeropuerta_field;
 
     @FXML
-    private TableColumn<Flights, String> numerovuelo_col;
-
-    @FXML
     private TableColumn<Flights, String> origen_col;
-
-    @FXML
-    private TableColumn<Flights, String> pista_col;
-
-    @FXML
-    private TableColumn<Flights, String> puerta_col;
 
     @FXML
     private TableColumn<Flights, String> salida_col;
@@ -104,24 +93,43 @@ public class landing_aeropuertoController {
     }
     
     Airport Aeropuerto;
-
     @FXML
     void initialize(Long idAccount) {
-        Aeropuerto = airportService.getAirport(idAccount);
-        List<Flights> vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
-        ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(vuelos);
+            
+            Aeropuerto = airportService.getAirport(idAccount);
+    /* 
+            List<Flights> vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
+    */
+            ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(
+                new Flights(1L,"BUE","MIA","2021-06-01 10:00:00","2021-06-01 15:00:00","AA123"),
+                new Flights(1L,"MIA","BUE","2021-06-01 16:00:00","2021-06-01 21:00:00","AA124"),
+                new Flights(1L,"BUE","MIA","2021-06-02 10:00:00","2021-06-02 15:00:00","AA125")
+            );
 
-        vuelosaprobados_table.setItems(vuelosObs);
-
-        numerovuelo_col.setCellValueFactory(new PropertyValueFactory<>("code"));
-        origen_col.setCellValueFactory(new PropertyValueFactory<>("origin"));
-        destino_col.setCellValueFactory(new PropertyValueFactory<>("destination"));
-        salida_col.setCellValueFactory(new PropertyValueFactory<>("departure_time"));
-        llegada_col.setCellValueFactory(new PropertyValueFactory<>("arrival_time"));
-        aerolinea_col.setCellValueFactory(new PropertyValueFactory<>("idAirline"));
-        
-        vuelosaprobados_table.refresh();
-
+            nrovuelo_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("code"));
+            origen_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("origin"));
+            destino_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("destination"));
+            salida_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("departure_time"));
+            llegada_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("arrival_time"));
+            aerolinea_col.setCellValueFactory(new PropertyValueFactory<Flights,Long>("idAirline"));
+            vuelosaprobados_table.setItems(vuelosObs);
     }
+
+    @FXML
+    void agregarpuerta(ActionEvent event) {
+        ShipmentDoor puerta = new ShipmentDoor(numeropuerta_field.getText(), Aeropuerto.getIdAirport());
+
+        airportService.saveShipmentDoor(puerta);
+        System.out.println("Puerta agregada");
+    }
+
+    @FXML
+    void agregarpista(ActionEvent event) {
+        LandingStrip pista = new LandingStrip(numeropista_field.getText(), Aeropuerto.getIdAirport());
+
+        airportService.saveLandingStrip(pista);
+        System.out.println("Pista agregada");
+    }
+    
 }
 

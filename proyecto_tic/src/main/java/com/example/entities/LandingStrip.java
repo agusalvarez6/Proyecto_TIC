@@ -8,12 +8,17 @@ public class LandingStrip {
     @GeneratedValue(strategy = GenerationType.SEQUENCE) // Configura la estrategia de generación de identificadores
     private Long IdLandingStrip;
 
+	@Column
+	private String numberLandingStrip;
+
     @Column
     private Long IdAirport;
 
-    @Column
-    private String Status;
-
+	public LandingStrip(String numberLandingStrip, Long IdAirport) {
+		this.numberLandingStrip = numberLandingStrip;
+		this.IdAirport = IdAirport;
+	
+	}
 	public Long getIdLandingStrip() {
 		return this.IdLandingStrip;
 	}
@@ -22,20 +27,20 @@ public class LandingStrip {
 		this.IdLandingStrip = IdLandingStrip;
 	}
 
+	public String getNumberLandingStrip() {
+		return this.numberLandingStrip;
+	}
+
+	public void setNumberLandingStrip(String numberLandingStrip) {
+		this.numberLandingStrip = numberLandingStrip;
+	}
+
 	public Long getIdAirport() {
 		return this.IdAirport;
 	}
 
 	public void setIdAirport(Long IdAirport) {
 		this.IdAirport = IdAirport;
-	}
-
-	public String getStatus() {
-		return this.Status;
-	}
-
-	public void setStatus(String Status) {
-		this.Status = Status;
 	}
 
 }

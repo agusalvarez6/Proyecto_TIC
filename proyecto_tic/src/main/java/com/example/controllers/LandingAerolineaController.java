@@ -1,14 +1,18 @@
 package com.example.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import net.rgielen.fxweaver.core.FxmlView;
 
 import java.io.IOException;
@@ -66,10 +70,7 @@ public class LandingAerolineaController {
     private TextField llegada_field;
 
     @FXML
-    private TableColumn<?, ?> destino_col;
-
-    @FXML
-    private TableColumn<?, ?> estadovuelo_col;
+    private TableColumn<Flights, String> destino_col;
 
     @FXML
     private TextField horallegada_field;
@@ -78,7 +79,7 @@ public class LandingAerolineaController {
     private TextField horasalida_field;
 
     @FXML
-    private TableColumn<?, ?> llegada_col;
+    private TableColumn<Flights, String> llegada_col;
 
     @FXML
     private TextField nroavion_field;
@@ -87,22 +88,22 @@ public class LandingAerolineaController {
     private TextField numeroavion_field;
 
     @FXML
-    private TableColumn<?, ?> numerovuelo_col;
+    private TableColumn<Flights, String> numerovuelo_col;
 
     @FXML
     private TextField numerovuelo_field;
 
     @FXML
-    private TableColumn<?, ?> origen_col;
+    private TableColumn<Flights, String> origen_col;
 
     @FXML
-    private TableColumn<?, ?> salida_col;
+    private TableColumn<Flights, String> salida_col;
 
     @FXML
     private Tab vuelosagendados_tab;
 
     @FXML
-    private TableView<?> vuelosagendados_table;
+    private TableView<Flights> vuelosagendados_table;
 
     @Autowired
     private FlightsService flightsService;
@@ -120,7 +121,7 @@ public class LandingAerolineaController {
     @FXML
     void saveFlight(ActionEvent event){
         int state = 0;
-        Flights vuelo  = new Flights();
+        Flights vuelo = new Flights();
 
         vuelo.setCode(numerovuelo_field.getText());
         vuelo.setDestination(aeropdestino_field.getText());
@@ -128,6 +129,7 @@ public class LandingAerolineaController {
         vuelo.setArrival_time(llegada_field.getText());
         vuelo.setDeparture_time(salida_field.getText());
         vuelo.setState(0);
+        vuelo.setIdAirline(id);
         //vuelo.setIdPlane(nroavion_field.getText());
         Plane avion = flightsService.ComprobarAvion(nroavion_field.getText(), id);
         
@@ -140,8 +142,32 @@ public class LandingAerolineaController {
     } 
 
     Long id;
+    @FXML
     void initialize(Long username) {
         id = airlineService.getAirlineId(username);
+        ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(
+                new Flights(1L,"BUE","MIA","2021-06-01 10:00:00","2021-06-01 15:00:00","AA123"),
+                new Flights(1L,"MIA","BUE","2021-06-01 16:00:00","2021-06-01 21:00:00","AA124"),
+                new Flights(1L,"BUE","MIA","2021-06-02 10:00:00","2021-06-02 15:00:00","AA125")
+            );
+    
+            numerovuelo_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("code"));
+            origen_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("origin"));
+            destino_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("destination"));
+            salida_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("departure_time"));
+            llegada_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("arrival_time"));
+            vuelosagendados_table.setItems(vuelosObs);
+            vuelosagendados_table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
+
+    @FXML
+    void savePlane(ActionEvent event){
+        Plane avion = new Plane();
+        avion.setCapacity(capacidadavion_field.getText());
+        avion.setIdAirline(id);
+        avion.setNumero(numeroavion_field.getText());
+        flightsService.savePlane(avion);
+        System.out.println("Avion guardado");
     }
 
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.entities.Account;
 import com.example.entities.Flights;
 import com.example.entities.PendingFlights;
 import com.example.entities.Plane;
@@ -69,8 +68,8 @@ public class FlightsService {
         flightsRepository.delete(flights);
     }
 
-    public Plane savePlane(Plane plane){
-        return planeRepository.save(plane);
+    public void savePlane(Plane plane){
+        planeRepository.save(plane);
     }
 
     public List<Plane> verTodosLosAviones(Long idAerolinea){

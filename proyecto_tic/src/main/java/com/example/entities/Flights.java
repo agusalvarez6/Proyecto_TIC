@@ -39,6 +39,17 @@ public class Flights {
     @Column
     private Long idPlane;
 
+	public Flights(Long idAirline, String origin, String destination, String departure_time,
+			String arrival_time,String code) {
+		this.idAirline = idAirline;
+		this.origin = origin;
+		this.destination = destination;
+		this.departure_time = departure_time;
+		this.arrival_time = arrival_time;
+		this.state = 0;
+		this.code = code;
+
+	}
 	public Flights() {
 	}
 

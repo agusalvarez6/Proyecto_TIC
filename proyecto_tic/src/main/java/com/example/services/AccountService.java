@@ -48,11 +48,11 @@ public class AccountService {
         return airportRepository.save(airport);
     }
 
-    public AirportEmployee registerAirportEmployee(AirportEmployee airportEmployee) {
-        return airportEmployeeRepository.save(airportEmployee);
+    public void registerAirportEmployee(AirportEmployee airportEmployee) {
+        airportEmployeeRepository.save(airportEmployee);
     }
 
-    public Shop registerShop(Shop shop) {
-        return shopRepository.save(shop);
+    public void registerShop(Shop shop) {
+        shopRepository.save(shop);
     }
 }

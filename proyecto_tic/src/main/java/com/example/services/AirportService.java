@@ -14,6 +14,12 @@ public class AirportService {
     AirportRepository airportRepository;
 
     @Autowired
+    ShipmentDoorRepository shipmentDoorRepository;
+
+    @Autowired
+    LandingStripRepository landingStripRepository;
+
+    @Autowired
     private FlightsRepository flightsRepository;
 
     public Airport saveAirport(Airport airport) {
@@ -38,5 +44,13 @@ public class AirportService {
         }else{
             return null;
         }
+    }
+
+    public void saveShipmentDoor(ShipmentDoor shipmentDoor) {
+        shipmentDoorRepository.save(shipmentDoor);
+    }
+
+    public void saveLandingStrip(LandingStrip landingStrip) {
+        landingStripRepository.save(landingStrip);
     }
 }

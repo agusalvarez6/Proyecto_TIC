@@ -15,7 +15,7 @@ public class Shop {
     private String ShopName;
 
     @Column
-    private Long IdAirline;
+    private String iataAirport;
 
     @Column
     private Long IdAccount;
@@ -44,12 +44,12 @@ public class Shop {
 		this.ShopName = ShopName;
 	}
 
-	public Long getIdAirline() {
-		return this.IdAirline;
+	public String getIataAirport() {
+		return this.iataAirport;
 	}
 
-	public void setIdAirline(Long IdAirline) {
-		this.IdAirline = IdAirline;
+	public void setIataAirport(String IataAirport) {
+		this.iataAirport = IataAirport;
 	}
 
 	public Long getIdAccount() {
