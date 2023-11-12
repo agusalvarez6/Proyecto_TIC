@@ -22,10 +22,18 @@ public class AccountService {
 
     public Account saveAccount(Account account) {
         if (accountRepository.findByUsername(account.getUsername()) == null) {
-            return accountRepository.save(account);
+            if(account.getRole() == "usuario"){
+                if(accountRepository.findByPassport(account.getPassport()) == null){
+                    return accountRepository.save(account);
+                }
+            }else{
+                return accountRepository.save(account);
+            }
         }
         return null;
     }
+
+    
 
     public Account userAuthentication(String username, String password) {
         Account account = accountRepository.findByUsername(username);

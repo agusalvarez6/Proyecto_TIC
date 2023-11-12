@@ -52,11 +52,11 @@ public class Account {
         this.role = role;
     }
 
-    public String getPasport() {
+    public String getPassport() {
         return passport;
     }
 
-    public void setPasport(String pasport) {
-        this.passport = pasport;
+    public void setPassport(String Passport) {
+        this.passport = Passport;
     }
 }

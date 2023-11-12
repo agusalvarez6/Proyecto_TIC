@@ -31,6 +31,9 @@ public class SignInController {
     @FXML
     private TextField usuario_signin_field;
 
+    @FXML
+    private TextField pasaporte_signin_field;
+
     @Autowired
     private AccountService accountService;
 
@@ -50,6 +53,7 @@ public class SignInController {
         nuevoUsuario.setUsername(username);
         nuevoUsuario.setPassword(password);
         nuevoUsuario.setRole("usuario");
+        nuevoUsuario.setPassport(pasaporte_signin_field.getText());
         // Llama al servicio para guardar el usuario
         Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
 
