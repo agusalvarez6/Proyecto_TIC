@@ -9,7 +9,6 @@ import com.example.entities.Account;
 import com.example.entities.Flights;
 import com.example.entities.PendingFlights;
 import com.example.entities.Plane;
-import com.example.repository.AirportRepository;
 import com.example.repository.FlightsRepository;
 import com.example.repository.PendingFlightsRepository;
 import com.example.repository.PlaneRepository;

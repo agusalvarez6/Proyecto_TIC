@@ -15,7 +15,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="vuelosaprobados_table" layoutX="15.0" layoutY="30.0" prefHeight="218.0" prefWidth="569.0">
+                  <TableView fx:id="vuelosaprobados_table" layoutX="57.0" layoutY="43.0" prefHeight="218.0" prefWidth="485.0">
                     <columns>
                       <TableColumn fx:id="nrovuelo_col" prefWidth="104.6666259765625" text="Número de vuelo" />
                       <TableColumn fx:id="origen_col" prefWidth="76.66668701171875" text="Origen" />
@@ -23,10 +23,9 @@
                         <TableColumn fx:id="aerolinea_col" prefWidth="77.3333740234375" text="Aerolínea" />
                         <TableColumn fx:id="salida_col" prefWidth="70.6666259765625" text="Salida" />
                         <TableColumn fx:id="llegada_col" prefWidth="87.33331298828125" text="Llegada" />
-                        <TableColumn fx:id="estado_col" prefWidth="85.33333333333337" text="Estado" />
                     </columns>
                   </TableView>
-                  <Button fx:id="atras_button" layoutX="32.0" layoutY="315.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="90.0" text="Atrás" onAction="#salir"/>
+                  <Button fx:id="atras_button" layoutX="32.0" layoutY="315.0" mnemonicParsing="false" onAction="#salir" prefHeight="28.0" prefWidth="90.0" text="Atrás" />
                </children></AnchorPane>
       </content>
     </Tab>

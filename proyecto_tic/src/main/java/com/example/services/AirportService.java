@@ -14,7 +14,7 @@ public class AirportService {
     AirportRepository airportRepository;
 
     @Autowired
-    private PendingFlightsRepository pendingFlightsRepository;
+    private FlightsRepository flightsRepository;
 
     public Airport saveAirport(Airport airport) {
         if (airportRepository.findByiATA(airport.getIATA()) == null) {
@@ -27,8 +27,8 @@ public class AirportService {
         return (airportRepository.findByiATA(IATA) != null);
     }
 
-     public List<PendingFlights> verVuelosDeAeropuerto(String idAeropuerto) {
-        return pendingFlightsRepository.findByOriginOrDestination(idAeropuerto, idAeropuerto);
+     public List<Flights> verVuelosDeAeropuerto(String idAeropuerto) {
+        return flightsRepository.findByOriginOrDestinationAndState(idAeropuerto, idAeropuerto,0);
     }
 
     public Airport getAirport(Long idAccount){

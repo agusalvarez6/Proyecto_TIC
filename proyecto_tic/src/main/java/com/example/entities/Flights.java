@@ -39,6 +39,9 @@ public class Flights {
     @Column
     private Long idPlane;
 
+	public Flights() {
+	}
+
 	public String getCode() {
 		return this.code;
 	}

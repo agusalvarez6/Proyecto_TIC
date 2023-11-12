@@ -14,20 +14,20 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import net.rgielen.fxweaver.core.FxmlView;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.example.entities.Airport;
-import com.example.entities.PendingFlights;
-
-import java.io.IOException;
+import com.example.entities.Flights;
 import java.util.List;
 
 import net.rgielen.fxweaver.core.FxWeaver;
 
 import com.example.Main;
 import com.example.services.AirportService;
+
 
 @Component
 @FxmlView("/com/example/controllers/landing_aeropuerto.fxml")
@@ -37,7 +37,7 @@ public class landing_aeropuertoController {
     private AirportService airportService;
 
     @FXML
-    private TableColumn<?, ?> aerolinea_col;
+    private TableColumn<Flights, Long> aerolinea_col;
 
     @FXML
     private Button agregarpista_button;
@@ -55,19 +55,19 @@ public class landing_aeropuertoController {
     private Button atras_button;
 
     @FXML
-    private TableColumn<?, ?> destino_col;
+    private TableColumn<Flights, String> destino_col;
 
     @FXML
-    private TableColumn<?, ?> estado_col;
+    private TableColumn<Flights, String> estado_col;
 
     @FXML
-    private TableColumn<?, ?> llegada_col;
+    private TableColumn<Flights, String> llegada_col;
 
     @FXML
     private Tab management_tab;
 
     @FXML
-    private TableColumn<?, ?> nrovuelo_col;
+    private TableColumn<Flights, String> nrovuelo_col;
 
     @FXML
     private TextField numeropista_field;
@@ -76,25 +76,25 @@ public class landing_aeropuertoController {
     private TextField numeropuerta_field;
 
     @FXML
-    private TableColumn<?, ?> numerovuelo_col;
+    private TableColumn<Flights, String> numerovuelo_col;
 
     @FXML
-    private TableColumn<?, ?> origen_col;
+    private TableColumn<Flights, String> origen_col;
 
     @FXML
-    private TableColumn<?, ?> pista_col;
+    private TableColumn<Flights, String> pista_col;
 
     @FXML
-    private TableColumn<?, ?> puerta_col;
+    private TableColumn<Flights, String> puerta_col;
 
     @FXML
-    private TableColumn<?, ?> salida_col;
+    private TableColumn<Flights, String> salida_col;
 
     @FXML
     private Tab vuelos_tab;
 
     @FXML
-    private TableView<PendingFlights> vuelosaprobados_table;
+    private TableView<Flights> vuelosaprobados_table;
 
     @FXML
     void salir(ActionEvent event) {
@@ -104,17 +104,23 @@ public class landing_aeropuertoController {
     }
     
     Airport Aeropuerto;
-    
+
+    @FXML
     void initialize(Long idAccount) {
         Aeropuerto = airportService.getAirport(idAccount);
-        List<PendingFlights> vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
-        ObservableList<PendingFlights> vuelosObs = FXCollections.observableArrayList(vuelos);
+        List<Flights> vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
+        ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(vuelos);
 
-        // Asigna los datos a la tabla
-        vuelosaprobados_table.setItems((ObservableList<PendingFlights>) vuelosObs);
+        vuelosaprobados_table.setItems(vuelosObs);
 
-        // Vincula las propiedades de PendingFlights a las columnas
-        //numerovuelo_col.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getIdPendingFlights()));
+        numerovuelo_col.setCellValueFactory(new PropertyValueFactory<>("code"));
+        origen_col.setCellValueFactory(new PropertyValueFactory<>("origin"));
+        destino_col.setCellValueFactory(new PropertyValueFactory<>("destination"));
+        salida_col.setCellValueFactory(new PropertyValueFactory<>("departure_time"));
+        llegada_col.setCellValueFactory(new PropertyValueFactory<>("arrival_time"));
+        aerolinea_col.setCellValueFactory(new PropertyValueFactory<>("idAirline"));
+        
+        vuelosaprobados_table.refresh();
 
     }
 }
