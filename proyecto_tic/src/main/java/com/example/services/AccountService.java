@@ -33,6 +33,14 @@ public class AccountService {
         return null;
     }
 
+    public boolean existAccount(String username) {
+        return accountRepository.findByUsername(username) != null;
+    }
+
+    public Account getAccount(String username) {
+        return accountRepository.findByUsername(username);
+    }
+
     
 
     public Account userAuthentication(String username, String password) {

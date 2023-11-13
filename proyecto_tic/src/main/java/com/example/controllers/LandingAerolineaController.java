@@ -111,6 +111,16 @@ public class LandingAerolineaController {
     @Autowired
     private AirlineService airlineService;
 
+    @Autowired
+    private AccountService accountService;
+
+    Long id;
+
+    void initialize(String username) {
+        id = accountService.getAccount(username).getIdAccount();
+        System.out.println("username: " + username+ " id: "+id);
+    }
+
     @FXML
     void salir(ActionEvent event) {
         FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
@@ -141,7 +151,7 @@ public class LandingAerolineaController {
         System.out.println("Todo anda bien");
     } 
 
-    Long id;
+    
     @FXML
     void initialize(Long username) {
         id = airlineService.getAirlineId(username);
@@ -168,6 +178,13 @@ public class LandingAerolineaController {
         avion.setNumero(numeroavion_field.getText());
         flightsService.savePlane(avion);
         System.out.println("Avion guardado");
+        printAviones();
+    }
+    private void printAviones(){
+        System.out.println("Todos los aviones registrados: ");
+        for (Plane avion : flightsService.verTodosLosAviones(id)) {
+            System.out.println(avion.getIdPlane()+" "+avion.getNumero()+" "+avion.getCapacity()+" "+avion.getIdAirline());
+        }
     }
 
 }

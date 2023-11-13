@@ -41,6 +41,11 @@ public class SignInController {
     void saveUser(ActionEvent event) {
         String username = usuario_signin_field.getText();
         String password = contrasena1_signin_field.getText();
+
+        if(accountService.existAccount(username)){
+            System.out.println("Nombre de usuario no valido");// Muestra un mensaje de error o realiza alguna acción apropiada.
+            return;
+        }
         
         // Verifica que las contraseñas coincidan (puedes agregar más validaciones si es necesario)
         if (!password.equals(contrasena2_signin_field.getText())) {

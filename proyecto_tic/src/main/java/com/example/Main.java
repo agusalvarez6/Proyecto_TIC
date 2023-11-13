@@ -16,8 +16,11 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import com.example.entities.Account;
+import com.example.entities.Airport;
 import com.example.repository.AccountRepository;
 import com.example.services.AccountService;
+import com.example.repository.AirportRepository;
+import com.example.services.AirportService;
 
 import jakarta.annotation.PostConstruct;
 
@@ -47,6 +50,8 @@ public class Main {
     private AccountRepository accountRepository;
     @Autowired
     private AccountService accountService;
+    @Autowired
+    private AirportService airportService;
 
     @PostConstruct
     public void initializeUsers() {
@@ -94,9 +99,20 @@ public class Main {
             Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
 
             if (usuarioGuardado != null) {
-                System.out.println("aeropuerto created");
+                System.out.println("usuario aeropuerto created");
+                Airport newAirport = new Airport();
+                newAirport.setName("aeropuerto prueba");
+                newAirport.setCity("city prueba");
+                newAirport.setCountry("country prueba");
+                newAirport.setIATA("IATA");
+                newAirport.setIdAccount(usuarioGuardado.getIdAccount());
+                Airport airportGuardado = airportService.saveAirport(newAirport);
+                if (airportGuardado != null) {
+                    System.out.println("aeropuerto created");
+                } else {
+                    // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+                }
             }
-        }
-        
+        }        
     }
 }
