@@ -19,8 +19,14 @@ public class Airport {
     @Column
     private int jetBridgeNum;
     @Column
-    private Long idUser;
+    private Long idAccount;
 
+    public Long  getIdAirport() {
+        return this.IdAirport;
+    }
+    public void setIdAirport(Long IdAirport) {
+        this.IdAirport = IdAirport;
+    }
     public String getIATA(){
         return this.iATA;
     }
@@ -51,10 +57,10 @@ public class Airport {
     public void setJetBridgeNum(int JetBridgeNum){
         this.jetBridgeNum = JetBridgeNum;
     }
-    public Long getIdUser(){
-        return this.idUser; 
+    public Long getIdAccount(){
+        return this.idAccount; 
     }
-    public void setIdUser(Long IdUser){
-        this.idUser = IdUser;
+    public void setIdAccount(Long IdAccount){
+        this.idAccount = IdAccount;
     }
 }

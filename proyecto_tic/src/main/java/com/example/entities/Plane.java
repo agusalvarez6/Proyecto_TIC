@@ -14,9 +14,6 @@ public class Plane {
 	@Column
     private String numero;
 
-    @Column
-    private String current_Airport;
-
 	@Column
     private String capacity;
 
@@ -34,14 +31,6 @@ public class Plane {
 
 	public void setIdAirline(Long IdAirline) {
 		this.idAirline = IdAirline;
-	}
-
-	public String getCurrent_Airport() {
-		return this.current_Airport;
-	}
-
-	public void setCurrent_Airport(String Current_Airport) {
-		this.current_Airport = Current_Airport;
 	}
 
 	public String getCapacity() {

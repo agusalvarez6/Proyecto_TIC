@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.entities.Account;
 import com.example.entities.Flights;
 import com.example.entities.PendingFlights;
 import com.example.entities.Plane;
@@ -22,14 +21,13 @@ public class FlightsService {
     private FlightsRepository flightsRepository;
 
     @Autowired
-    private AirportRepository airportRepository;
-
-
-    @Autowired
     private PendingFlightsRepository pendingFlightsRepository;
 
     @Autowired
     private PlaneRepository planeRepository;
+    
+    @Autowired
+    private AirportRepository airportRepository;
 
 
     public Flights saveFlights(Flights flights) {
@@ -49,10 +47,6 @@ public class FlightsService {
 
     public List<Flights> verVuelosAprobadoso(String origen, String destino) {
         return flightsRepository.findByOriginAndDestinationAndState(origen, destino, 1);
-    }
- 
-    public List<PendingFlights> verVuelosDeAeropuerto(String idAeropuerto) {
-        return pendingFlightsRepository.findByOriginOrDestination(idAeropuerto, idAeropuerto);
     }
     
     public List<Flights> verVuelosDeAerolinea(Long idAerolinea) {
@@ -78,20 +72,27 @@ public class FlightsService {
         flightsRepository.delete(flights);
     }
 
-    public Plane savePlane(Plane plane){
-        return planeRepository.save(plane);
+    public void savePlane(Plane plane){
+        planeRepository.save(plane);
     }
-
+    public boolean existPlane(String numero){
+        Plane plane = planeRepository.findByNumero(numero);
+        if(plane!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public List<Plane> verTodosLosAviones(Long idAerolinea){
         return planeRepository.findByIdAirline(idAerolinea);
-    }
-    
-   public boolean VerificarDestino(String IATA){
-        return (airportRepository.findByiATA(IATA) != null);
     }
 
     public Plane ComprobarAvion(String Numero,Long idAereolinea){
         return planeRepository.findByNumeroAndIdAirline(Numero, idAereolinea);
+    }
+
+    public boolean existFlight(String code) {
+        return (flightsRepository.findByCode(code) != null);
     }
 
 }

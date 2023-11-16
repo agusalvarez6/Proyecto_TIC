@@ -17,6 +17,9 @@ public class Account {
     @Column
     private String role;
 
+    @Column
+    private String passport;
+
     public Long getIdAccount() { // Cambiado de getIdUser a getIdAccount
         return idAccount;
     }
@@ -47,5 +50,13 @@ public class Account {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPassport() {
+        return passport;
+    }
+
+    public void setPassport(String Passport) {
+        this.passport = Passport;
     }
 }

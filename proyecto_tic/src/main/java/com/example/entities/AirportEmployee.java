@@ -6,69 +6,69 @@ import jakarta.persistence.*;
 public class AirportEmployee {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) // Configura la estrategia de generación de identificadores
-    private Long IdAirportEmployee;
+    private Long idAirportEmployee;
 
     @Column
-    private String Salary;
+    private String salary;
 
     @Column
-    private String Name;
+    private String name;
 
     @Column
-    private String Rol;
+    private String rol;
 
     @Column
-    private Long IdAirline;
+    private String iataAirport;
 
     @Column
-    private Long IdAccount;
+    private Long idAccount;
 
 	public Long getIdAirportEmployee() {
-		return this.IdAirportEmployee;
+		return this.idAirportEmployee;
 	}
 
 	public void setIdAirportEmployee(Long IdAirportEmployee) {
-		this.IdAirportEmployee = IdAirportEmployee;
+		this.idAirportEmployee = IdAirportEmployee;
 	}
 
 	public String getSalary() {
-		return this.Salary;
+		return this.salary;
 	}
 
 	public void setSalary(String Salary) {
-		this.Salary = Salary;
+		this.salary = Salary;
 	}
 
 	public String getName() {
-		return this.Name;
+		return this.name;
 	}
 
 	public void setName(String Name) {
-		this.Name = Name;
+		this.name = Name;
 	}
 
 	public String getRol() {
-		return this.Rol;
+		return this.rol;
 	}
 
 	public void setRol(String Rol) {
-		this.Rol = Rol;
+		this.rol = Rol;
 	}
 
-	public Long getIdAirline() {
-		return this.IdAirline;
+	public String getIataAirport() {
+		return this.iataAirport;
 	}
 
-	public void setIdAirline(Long IdAirline) {
-		this.IdAirline = IdAirline;
+	public void setIataAirport(String IataAirport) {
+		this.iataAirport = IataAirport;
 	}
 
 	public Long getIdAccount() {
-		return this.IdAccount;
+		return this.idAccount;
 	}
 
 	public void setIdAccount(Long IdAccount) {
-		this.IdAccount = IdAccount;
+		this.idAccount = IdAccount;
 	}
 
 

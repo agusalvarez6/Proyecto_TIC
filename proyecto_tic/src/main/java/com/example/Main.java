@@ -16,8 +16,13 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import com.example.entities.Account;
+import com.example.entities.Airline;
+import com.example.entities.Airport;
 import com.example.repository.AccountRepository;
 import com.example.services.AccountService;
+import com.example.services.AirlineService;
+import com.example.repository.AirportRepository;
+import com.example.services.AirportService;
 
 import jakarta.annotation.PostConstruct;
 
@@ -47,6 +52,10 @@ public class Main {
     private AccountRepository accountRepository;
     @Autowired
     private AccountService accountService;
+    @Autowired
+    private AirportService airportService;
+    @Autowired
+    private AirlineService airlineService;
 
     @PostConstruct
     public void initializeUsers() {
@@ -82,7 +91,17 @@ public class Main {
             Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
 
             if (usuarioGuardado != null) {
-                System.out.println("aerolinea created");
+                System.out.println("usuario aerolinea created");
+                Airline newAirline = new Airline();
+                newAirline.setName("aerolinea prueba");
+                newAirline.setIdAccount(usuarioGuardado.getIdAccount());
+                Airline airlineGuardado = airlineService.saveAirline(newAirline);
+                if (airlineGuardado != null) {
+                    System.out.println("entidad aerolinea created");
+                } else {
+                    // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+                }
+                
             }
         }
         // Aeropuerto de prueba
@@ -94,9 +113,20 @@ public class Main {
             Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
 
             if (usuarioGuardado != null) {
-                System.out.println("aeropuerto created");
+                System.out.println("usuario aeropuerto created");
+                Airport newAirport = new Airport();
+                newAirport.setName("aeropuerto prueba");
+                newAirport.setCity("city prueba");
+                newAirport.setCountry("country prueba");
+                newAirport.setIATA("IATA");
+                newAirport.setIdAccount(usuarioGuardado.getIdAccount());
+                Airport airportGuardado = airportService.saveAirport(newAirport);
+                if (airportGuardado != null) {
+                    System.out.println("entidad aeropuerto created");
+                } else {
+                    // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+                }
             }
-        }
-        
+        }        
     }
 }

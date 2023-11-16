@@ -24,6 +24,8 @@ import com.example.entities.Account;
 import com.example.services.AccountService;
 import com.example.entities.Airline;
 import com.example.entities.Airport;
+import com.example.entities.AirportEmployee;
+import com.example.entities.Shop;
 import com.example.services.AirlineService;
 import com.example.services.AirportService;
 
@@ -125,6 +127,9 @@ public class adminController {
     private TextField usuariolocal_field;
 
     @FXML
+    private TextField iataEmpleado;
+
+    @FXML
     private Tab verusuarios_tab;
 
     @Autowired
@@ -206,7 +211,8 @@ public class adminController {
             // Muestra un mensaje de error o realiza alguna acción apropiada.
             return;
         }
-
+        if (!airportService.VerificarDestino(iata)) {
+                
         Alert alert = new Alert(AlertType.INFORMATION);
     alert.setTitle("Aeropuerto Guardado");
     alert.setHeaderText(null);
@@ -221,31 +227,107 @@ public class adminController {
     paisaeropuerto_field.setText("");
     codigoiata_field.setText("");
 
-        // Crea un nuevo objeto de usuario
-        Account nuevoUsuario = new Account();
-        nuevoUsuario.setUsername(username);
-        nuevoUsuario.setPassword(password);
-        nuevoUsuario.setRole("aeropuerto");
-        // Llama al servicio para guardar el usuario
-        Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
+            // Crea un nuevo objeto de usuario
+            Account nuevoUsuario = new Account();
+            nuevoUsuario.setUsername(username);
+            nuevoUsuario.setPassword(password);
+            nuevoUsuario.setRole("aeropuerto");
+            // Llama al servicio para guardar el usuario
+            Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
 
-        if (usuarioGuardado != null) {
-            System.out.println("usuario guardado");
-        } else {
-            // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+            if (usuarioGuardado != null) {
+                System.out.println("usuario guardado");
+                Airport newAirport = new Airport();
+                newAirport.setName(name);
+                newAirport.setCity(city);
+                newAirport.setCountry(country);
+                newAirport.setIATA(iata);
+                newAirport.setIdAccount(usuarioGuardado.getIdAccount());
+                Airport airportGuardado = airportService.saveAirport(newAirport);
+                if (airportGuardado != null) {
+                    System.out.println("aeropuerto guardado");
+                } else {
+                    // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+                }
+            } else {
+                // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+            }
+        }
+    }
+
+    @FXML
+    void saveEmployee(ActionEvent event){
+        String username = usuarioempleado_field.getText();
+        String password = contrasenaempleado_field.getText();
+        String name = nameempleado_field.getText();
+        String role = rolempleado_field.getText();
+        String salary = sueldoempleado_field.getText();
+        String iata = iataEmpleado.getText();
+        // Verifica que las contraseñas coincidan (puedes agregar más validaciones si es necesario)
+        if (username.equals("") || password.equals("") || name.equals("") || role.equals("") || salary.equals("") || iata.equals("") ) {
+            // Muestra un mensaje de error o realiza alguna acción apropiada.
+            return;
         }
 
-        Airport newAirport = new Airport();
-        newAirport.setName(name);
-        newAirport.setCity(city);
-        newAirport.setCountry(country);
-        newAirport.setIATA(iata);
-        newAirport.setIdUser(usuarioGuardado.getIdAccount());
-        Airport airportGuardado = airportService.saveAirport(newAirport);
-        if (airportGuardado != null) {
-            System.out.println("aeropuerto guardado");
-        } else {
-            // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+        // Crea un nuevo objeto de usuario
+        if(airportService.VerificarDestino(iata)){
+            Account nuevoUsuario = new Account();
+            nuevoUsuario.setUsername(username);
+            nuevoUsuario.setPassword(password);
+            nuevoUsuario.setRole("empleado");
+            // Llama al servicio para guardar el usuario
+            Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
+            if (usuarioGuardado != null) {
+                AirportEmployee newEmployee = new AirportEmployee();
+                newEmployee.setName(name);
+                newEmployee.setRol(role);
+                newEmployee.setSalary(salary);
+                newEmployee.setIdAccount(usuarioGuardado.getIdAccount());
+                newEmployee.setIataAirport(iata);
+
+                accountService.registerAirportEmployee(newEmployee);
+                System.out.println("empleado guardado");
+            } else {
+                System.out.println("empleado no guardado");
+                // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+            }
+        }
+    }
+
+    @FXML
+    void saveLocal(ActionEvent event){
+        String username = usuariolocal_field.getText();
+        String password = contrasenalocal_field.getText();
+        String name = namelocal_field.getText();
+        String type = tipolocal_field.getText();
+        String iata = iatalocal_field.getText();
+        // Verifica que las contraseñas coincidan (puedes agregar más validaciones si es necesario)
+         if (username.equals("") || password.equals("") || name.equals("") || type.equals("") || iata.equals("")) {
+            // Muestra un mensaje de error o realiza alguna acción apropiada.
+            return;
+        }
+        if(airportService.VerificarDestino(iata)){
+            // Crea un nuevo objeto de usuario
+            Account nuevoUsuario = new Account();
+            nuevoUsuario.setUsername(username);
+            nuevoUsuario.setPassword(password);
+            nuevoUsuario.setRole("local");
+            // Llama al servicio para guardar el usuario
+            Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
+
+            if (usuarioGuardado != null && airportService.VerificarDestino(iata)) {
+                Shop newShop = new Shop();
+                newShop.setShopName(name);
+                newShop.setType(type);
+                newShop.setIataAirport(iata);
+                newShop.setIdAccount(usuarioGuardado.getIdAccount());
+
+                accountService.registerShop(newShop);
+                System.out.println("local guardado");
+            } else {
+                System.out.println("local no guardado");
+                // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+            }
         }
     }
 

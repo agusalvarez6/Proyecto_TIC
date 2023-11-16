@@ -75,8 +75,9 @@ public class landing_controller {
         salir_button.getScene().setRoot(root);
     }
 
-    void initialize(String username) {
+    String initialize(String username) {
         System.out.println("username: " + username);
+        return username;
     }
 
 }

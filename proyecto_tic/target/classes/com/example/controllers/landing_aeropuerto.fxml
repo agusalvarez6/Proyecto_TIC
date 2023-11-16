@@ -15,7 +15,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="vuelosaprobados_table" layoutX="15.0" layoutY="30.0" prefHeight="218.0" prefWidth="569.0">
+                  <TableView fx:id="vuelosaprobados_table" layoutX="57.0" layoutY="43.0" prefHeight="218.0" prefWidth="485.0">
                     <columns>
                       <TableColumn fx:id="nrovuelo_col" prefWidth="104.6666259765625" text="Número de vuelo" />
                       <TableColumn fx:id="origen_col" prefWidth="76.66668701171875" text="Origen" />
@@ -23,38 +23,22 @@
                         <TableColumn fx:id="aerolinea_col" prefWidth="77.3333740234375" text="Aerolínea" />
                         <TableColumn fx:id="salida_col" prefWidth="70.6666259765625" text="Salida" />
                         <TableColumn fx:id="llegada_col" prefWidth="87.33331298828125" text="Llegada" />
-                        <TableColumn fx:id="estado_col" prefWidth="85.33333333333337" text="Estado" />
                     </columns>
                   </TableView>
-                  <Button fx:id="atras_button" layoutX="32.0" layoutY="315.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="90.0" text="Atrás" onAction="#salir"/>
+                  <Button fx:id="atras_button" layoutX="32.0" layoutY="315.0" mnemonicParsing="false" onAction="#salir" prefHeight="28.0" prefWidth="90.0" text="Atrás" />
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab fx:id="asignarpuertas_tab" text="Asignar puertas">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <TableView fx:id="asignarpuertas_table" layoutX="165.0" layoutY="60.0" prefHeight="200.0" prefWidth="269.0">
-                    <columns>
-                      <TableColumn fx:id="numerovuelo_col" prefWidth="107.3333740234375" text="Número de vuelo" />
-                      <TableColumn fx:id="puerta_col" prefWidth="75.3333740234375" text="Puerta" />
-                        <TableColumn fx:id="pista_col" prefWidth="83.33331298828125" text="Pista" />
-                    </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-        </content>
-      </Tab>
     <Tab fx:id="management_tab" text="Management">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <Text layoutX="104.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nueva puerta:" />
                   <Text layoutX="114.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nueva pista:" />
-                  <TextField fx:id="numeropuerta_field" layoutX="184.0" layoutY="90.0" text="Número" />
-                  <TextField fx:id="numeropista_field" layoutX="184.0" layoutY="172.0" text="Número" />
-                  <Button fx:id="agregarpuerta_button" layoutX="349.0" layoutY="90.0" mnemonicParsing="false" text="Agregar puerta" />
-                  <Button fx:id="agregarpista_button" layoutX="349.0" layoutY="172.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Agregar pista" />
+                  <TextField fx:id="numeropuerta_field" layoutX="184.0" layoutY="90.0" promptText="Número" />
+                  <TextField fx:id="numeropista_field" layoutX="184.0" layoutY="172.0" promptText="Número" />
+                  <Button fx:id="agregarpuerta_button" layoutX="349.0" layoutY="90.0" mnemonicParsing="false" onAction="#agregarpuerta" text="Agregar puerta" />
+                  <Button fx:id="agregarpista_button" layoutX="349.0" layoutY="172.0" mnemonicParsing="false" onAction="#agregarpista" prefHeight="25.0" prefWidth="98.0" text="Agregar pista" />
                </children></AnchorPane>
       </content>
     </Tab>

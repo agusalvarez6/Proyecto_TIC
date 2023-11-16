@@ -8,11 +8,16 @@ public class ShipmentDoor {
     @GeneratedValue(strategy = GenerationType.SEQUENCE) // Configura la estrategia de generación de identificadores
     private Long IdDoor;
 
+	@Column
+    private String numberDoor;
+
     @Column
     private Long IdAirport;
 
-    @Column
-    private String Status;
+	public ShipmentDoor(String numberDoor, Long IdAirport) {
+		this.numberDoor = numberDoor;
+		this.IdAirport = IdAirport;
+	}
 
 	public Long getIdDoor() {
 		return this.IdDoor;
@@ -22,20 +27,19 @@ public class ShipmentDoor {
 		this.IdDoor = IdDoor;
 	}
 
+	public String getNumberDoor() {
+		return this.numberDoor;
+	}
+
+	public void setNumberDoor(String numberDoor) {
+		this.numberDoor = numberDoor;
+	}
 	public Long getIdAirport() {
 		return this.IdAirport;
 	}
 
 	public void setIdAirport(Long IdAirport) {
 		this.IdAirport = IdAirport;
-	}
-
-	public String getStatus() {
-		return this.Status;
-	}
-
-	public void setStatus(String Status) {
-		this.Status = Status;
 	}
 
 }

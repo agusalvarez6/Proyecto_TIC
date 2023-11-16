@@ -13,4 +13,6 @@ public interface PlaneRepository extends JpaRepository<Plane, Long> {
     List<Plane> findByIdAirline(Long idAerolinea);
 
     Plane findByNumeroAndIdAirline(String numero, Long idAereolinea);
+
+    Plane findByNumero(String numero);
 }

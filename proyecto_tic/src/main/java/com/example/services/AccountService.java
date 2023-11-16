@@ -22,10 +22,26 @@ public class AccountService {
 
     public Account saveAccount(Account account) {
         if (accountRepository.findByUsername(account.getUsername()) == null) {
-            return accountRepository.save(account);
+            if(account.getRole() == "usuario"){
+                if(accountRepository.findByPassport(account.getPassport()) == null){
+                    return accountRepository.save(account);
+                }
+            }else{
+                return accountRepository.save(account);
+            }
         }
         return null;
     }
+
+    public boolean existAccount(String username) {
+        return accountRepository.findByUsername(username) != null;
+    }
+
+    public Account getAccount(String username) {
+        return accountRepository.findByUsername(username);
+    }
+
+    
 
     public Account userAuthentication(String username, String password) {
         Account account = accountRepository.findByUsername(username);
@@ -40,11 +56,11 @@ public class AccountService {
         return airportRepository.save(airport);
     }
 
-    public AirportEmployee registerAirportEmployee(AirportEmployee airportEmployee) {
-        return airportEmployeeRepository.save(airportEmployee);
+    public void registerAirportEmployee(AirportEmployee airportEmployee) {
+        airportEmployeeRepository.save(airportEmployee);
     }
 
-    public Shop registerShop(Shop shop) {
-        return shopRepository.save(shop);
+    public void registerShop(Shop shop) {
+        shopRepository.save(shop);
     }
 }
