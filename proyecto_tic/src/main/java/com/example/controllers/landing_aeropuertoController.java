@@ -1,5 +1,6 @@
 package com.example.controllers;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -32,6 +33,7 @@ import net.rgielen.fxweaver.core.FxWeaver;
 
 import com.example.Main;
 import com.example.services.AirportService;
+import com.example.services.FlightsService;
 
 
 @Component
@@ -40,6 +42,9 @@ public class landing_aeropuertoController {
 
     @Autowired
     private AirportService airportService;
+
+    @Autowired
+    private FlightsService flightsService;
 
     @FXML
     private TableColumn<Flights, Long> aerolinea_col;
@@ -85,6 +90,12 @@ public class landing_aeropuertoController {
 
     @FXML
     private TableView<Flights> vuelosaprobados_table;
+
+    @FXML
+    private Button rechazar_Button;
+
+    @FXML
+    private Button aceptar_Button;
 
     @FXML
     void salir(ActionEvent event) {
@@ -133,6 +144,24 @@ public class landing_aeropuertoController {
 
         airportService.saveLandingStrip(pista);
         System.out.println("Pista agregada");
+    }
+
+    
+    @FXML
+    void rechazar() {
+        Flights vueloSeleccionado = vuelosaprobados_table.getSelectionModel().getSelectedItem();
+        if (vueloSeleccionado != null) {
+            flightsService.RechazarVuelo(vueloSeleccionado);
+
+            vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
+
+            ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(vuelos);
+            vuelosaprobados_table.setItems(vuelosObs);
+
+            Platform.runLater(() -> vuelosaprobados_table.refresh());
+        } else {
+            System.out.println("Por favor, selecciona un vuelo para rechazar.");
+        }
     }
     
 }
