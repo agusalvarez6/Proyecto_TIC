@@ -114,6 +114,15 @@ public class LandingAerolineaController {
     @FXML
     private TableView<Flights> vuelosagendados_table;
 
+    @FXML
+    private TextField tiempodesembarque_field;
+
+    @FXML
+    private TextField tiempoembarque_field;
+
+    @FXML
+    private TextField tiempopista_field;
+
     @Autowired
     private FlightsService flightsService;
 

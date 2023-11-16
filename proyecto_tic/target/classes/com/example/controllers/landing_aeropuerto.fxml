@@ -26,6 +26,8 @@
                     </columns>
                   </TableView>
                   <Button fx:id="atras_button" layoutX="32.0" layoutY="315.0" mnemonicParsing="false" onAction="#salir" prefHeight="28.0" prefWidth="90.0" text="Atrás" />
+                  <Button fx:id="aceptar_button" layoutX="331.0" layoutY="293.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="103.0" text="Aceptar" />
+                  <Button fx:id="rechazar_button" layoutX="454.0" layoutY="293.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="103.0" text="Rechazar" />
                </children></AnchorPane>
       </content>
     </Tab>

@@ -83,6 +83,12 @@ public class landing_aeropuertoController {
     private Tab vuelos_tab;
 
     @FXML
+    private Button rechazar_button;
+
+    @FXML
+    private Button aceptar_button;
+
+    @FXML
     private TableView<Flights> vuelosaprobados_table;
 
     @FXML
