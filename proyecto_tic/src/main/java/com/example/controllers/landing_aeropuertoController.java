@@ -25,6 +25,7 @@ import com.example.entities.Flights;
 import com.example.entities.LandingStrip;
 import com.example.entities.ShipmentDoor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.rgielen.fxweaver.core.FxWeaver;
@@ -83,12 +84,6 @@ public class landing_aeropuertoController {
     private Tab vuelos_tab;
 
     @FXML
-    private Button rechazar_button;
-
-    @FXML
-    private Button aceptar_button;
-
-    @FXML
     private TableView<Flights> vuelosaprobados_table;
 
     @FXML
@@ -99,18 +94,20 @@ public class landing_aeropuertoController {
     }
     
     Airport Aeropuerto;
+    List<Flights> vuelos;
+    Long setUsuario(Long usuario){
+        Aeropuerto = airportService.getAirport(usuario);
+        vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
+        return usuario;
+    }
+
     @FXML
-    void initialize(Long idAccount) {
-            
-            Aeropuerto = airportService.getAirport(idAccount);
-    /* 
-            List<Flights> vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
-    */
-            ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(
-                new Flights(1L,"BUE","MIA","2021-06-01 10:00:00","2021-06-01 15:00:00","AA123"),
-                new Flights(1L,"MIA","BUE","2021-06-01 16:00:00","2021-06-01 21:00:00","AA124"),
-                new Flights(1L,"BUE","MIA","2021-06-02 10:00:00","2021-06-02 15:00:00","AA125")
-            );
+    void initialize() {
+        if(vuelos!=null){
+            ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(vuelos);
+
+            vuelosaprobados_table.setItems(vuelosObs);
+
 
             nrovuelo_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("code"));
             origen_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("origin"));
@@ -118,7 +115,8 @@ public class landing_aeropuertoController {
             salida_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("departure_time"));
             llegada_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("arrival_time"));
             aerolinea_col.setCellValueFactory(new PropertyValueFactory<Flights,Long>("idAirline"));
-            vuelosaprobados_table.setItems(vuelosObs);
+            vuelosaprobados_table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        }
     }
 
     @FXML
