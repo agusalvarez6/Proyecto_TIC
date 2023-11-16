@@ -29,6 +29,9 @@ public class SignInController {
     private Button signin_button;
 
     @FXML
+    private Button tengo_cuenta_button;
+
+    @FXML
     private TextField usuario_signin_field;
 
     @FXML
@@ -36,7 +39,14 @@ public class SignInController {
 
     @Autowired
     private AccountService accountService;
-
+    
+    @FXML
+    void salir(ActionEvent event) {
+        FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+        Parent root = fxWeaver.loadView(InicioController.class);
+        tengo_cuenta_button.getScene().setRoot(root);
+    }
+    
     @FXML
     void saveUser(ActionEvent event) {
         String username = usuario_signin_field.getText();
