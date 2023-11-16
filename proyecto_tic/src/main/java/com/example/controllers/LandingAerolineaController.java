@@ -26,11 +26,15 @@ import net.rgielen.fxweaver.core.FxmlView;
 import com.example.Main;
 import com.example.entities.Account;
 import com.example.entities.Airline;
+import com.example.entities.Airport;
 import com.example.entities.Flights;
 import com.example.entities.Plane;
 import com.example.services.AccountService;
 import com.example.services.AirlineService;
+import com.example.services.AirportService;
 import com.example.services.FlightsService;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 @Component
 @FxmlView("/com/example/controllers/landing_aerolinea.fxml")
 public class LandingAerolineaController {
@@ -114,6 +118,9 @@ public class LandingAerolineaController {
     @Autowired
     private AccountService accountService;
 
+    @Autowired
+    private AirportService airportService;
+
     Long id;
 
     void initialize(String username) {
@@ -142,11 +149,28 @@ public class LandingAerolineaController {
         vuelo.setIdAirline(id);
         //vuelo.setIdPlane(nroavion_field.getText());
         Plane avion = flightsService.ComprobarAvion(nroavion_field.getText(), id);
-        
-        
-        //if(FlightsService.VerificarDestino(destino) && FlightsService.VerificarDestino(origen)){
-            
-        //}
+        if (avion==null){
+            System.out.println("Avion no encontrado");
+            return;
+        }
+        if (flightsService.existFlight(vuelo.getCode())==true){
+            System.out.println("Vuelo ya existente");
+            return;
+        }
+        if (airportService.existAirport(vuelo.getOrigin())==false){
+            System.out.println("Aeropuerto de origen no encontrado");
+            return;
+        }
+        if (airportService.existAirport(vuelo.getDestination())==false){
+            System.out.println("Aeropuerto de destino no encontrado");
+            return;
+        }
+        LocalDateTime departureTime = LocalDateTime.parse(vuelo.getDeparture_time(), DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+        LocalDateTime arrivalTime = LocalDateTime.parse(vuelo.getArrival_time(), DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+        if (departureTime.isAfter(arrivalTime)){
+            System.out.println("Horario no valido");
+            return;
+        }
         Flights vueloGuardado = flightsService.saveFlights(vuelo);
         System.out.println("Todo anda bien");
     } 
@@ -155,6 +179,7 @@ public class LandingAerolineaController {
     @FXML
     void initialize(Long username) {
         id = airlineService.getAirlineId(username);
+        System.out.println("username: " + username+ " id: "+id);
         ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(
                 new Flights(1L,"BUE","MIA","2021-06-01 10:00:00","2021-06-01 15:00:00","AA123"),
                 new Flights(1L,"MIA","BUE","2021-06-01 16:00:00","2021-06-01 21:00:00","AA124"),
@@ -176,8 +201,13 @@ public class LandingAerolineaController {
         avion.setCapacity(capacidadavion_field.getText());
         avion.setIdAirline(id);
         avion.setNumero(numeroavion_field.getText());
-        flightsService.savePlane(avion);
-        System.out.println("Avion guardado");
+        if (flightsService.existPlane(avion.getNumero())==false){
+            flightsService.savePlane(avion);
+            System.out.println("Avion guardado");
+        }
+        else{
+            System.out.println("Numero ya existente");
+        }        
         printAviones();
     }
     private void printAviones(){

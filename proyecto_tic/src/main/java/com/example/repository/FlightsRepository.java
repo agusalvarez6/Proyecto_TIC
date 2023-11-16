@@ -15,5 +15,7 @@ public interface FlightsRepository extends JpaRepository<Flights, Long> {
     List<Flights> findByIdAirline(Long idAerolinea);
 
     List<Flights> findByOriginOrDestinationAndState(String idAeropuerto, String idAeropuerto2, int i);
+
+    Flights findByCode(String code);
     
 }

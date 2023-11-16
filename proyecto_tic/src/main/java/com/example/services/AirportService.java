@@ -46,6 +46,10 @@ public class AirportService {
         }
     }
 
+    public boolean existAirport(String IATA){
+        return (airportRepository.findByiATA(IATA) != null);
+    }
+
     public void saveShipmentDoor(ShipmentDoor shipmentDoor) {
         shipmentDoorRepository.save(shipmentDoor);
     }
@@ -53,4 +57,6 @@ public class AirportService {
     public void saveLandingStrip(LandingStrip landingStrip) {
         landingStripRepository.save(landingStrip);
     }
+
+    
 }

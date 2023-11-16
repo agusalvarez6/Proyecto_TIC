@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.entities.Flights;
 import com.example.entities.PendingFlights;
 import com.example.entities.Plane;
+import com.example.repository.AirportRepository;
 import com.example.repository.FlightsRepository;
 import com.example.repository.PendingFlightsRepository;
 import com.example.repository.PlaneRepository;
@@ -24,6 +25,9 @@ public class FlightsService {
 
     @Autowired
     private PlaneRepository planeRepository;
+    
+    @Autowired
+    private AirportRepository airportRepository;
 
 
     public Flights saveFlights(Flights flights) {
@@ -71,13 +75,24 @@ public class FlightsService {
     public void savePlane(Plane plane){
         planeRepository.save(plane);
     }
-
+    public boolean existPlane(String numero){
+        Plane plane = planeRepository.findByNumero(numero);
+        if(plane!=null){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public List<Plane> verTodosLosAviones(Long idAerolinea){
         return planeRepository.findByIdAirline(idAerolinea);
     }
 
     public Plane ComprobarAvion(String Numero,Long idAereolinea){
         return planeRepository.findByNumeroAndIdAirline(Numero, idAereolinea);
+    }
+
+    public boolean existFlight(String code) {
+        return (flightsRepository.findByCode(code) != null);
     }
 
 }
