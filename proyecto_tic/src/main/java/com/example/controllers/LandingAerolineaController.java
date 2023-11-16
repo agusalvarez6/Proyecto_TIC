@@ -1,5 +1,6 @@
 package com.example.controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -161,7 +162,7 @@ public class LandingAerolineaController {
         vuelo.setArrival_time(llegada_field.getText());
         vuelo.setDeparture_time(salida_field.getText());
         vuelo.setState(0);
-        vuelo.setIdAirline(id);
+        vuelo.setIdAirline(aerolinea.getIdAirline());
         //vuelo.setIdPlane(nroavion_field.getText());
         Plane avion = flightsService.ComprobarAvion(nroavion_field.getText(), id);
         if (avion==null){
@@ -241,7 +242,7 @@ public class LandingAerolineaController {
     void savePlane(ActionEvent event){
         Plane avion = new Plane();
         avion.setCapacity(capacidadavion_field.getText());
-        avion.setIdAirline(id);
+        avion.setIdAirline(aerolinea.getIdAirline());
         avion.setNumero(numeroavion_field.getText());
         if (flightsService.existPlane(avion.getNumero())==false){
             flightsService.savePlane(avion);
@@ -254,7 +255,7 @@ public class LandingAerolineaController {
     }
     private void printAviones(){
         System.out.println("Todos los aviones registrados: ");
-        for (Plane avion : flightsService.verTodosLosAviones(id)) {
+        for (Plane avion : flightsService.verTodosLosAviones(aerolinea.getIdAirline())) {
             System.out.println(avion.getIdPlane()+" "+avion.getNumero()+" "+avion.getCapacity()+" "+avion.getIdAirline());
         }
     }
