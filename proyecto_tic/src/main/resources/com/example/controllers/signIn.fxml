@@ -24,15 +24,20 @@
          <children>
             <Pane layoutX="313.0" layoutY="50.0" prefHeight="249.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);; -fx-border-color: #243a69;">
                <children>
-                  <TextField id="usuario_signin_field" fx:id="usuario_signin_field" layoutX="28.0" layoutY="32.0" promptText="Usuario" />
-                  <PasswordField id="contrasena1_signin_field" fx:id="contrasena1_signin_field" layoutX="28.0" layoutY="100.0" promptText="Contraseña" />
-                  <Button id="signin_button" fx:id="signin_button" layoutX="28.0" layoutY="181.0" mnemonicParsing="false" onAction="#saveUser" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #5b88a5; -fx-border-color: #ffffff;" text="Crear cuenta nueva" textFill="WHITE">
+                  <TextField id="usuario_signin_field" fx:id="usuario_signin_field" layoutX="28.0" layoutY="30.0" promptText="Usuario" />
+                  <PasswordField id="contrasena1_signin_field" fx:id="contrasena1_signin_field" layoutX="28.0" layoutY="90.0" promptText="Contraseña" />
+                  <Button id="signin_button" fx:id="signin_button" layoutX="28.0" layoutY="161.0" mnemonicParsing="false" onAction="#saveUser" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #5b88a5; -fx-border-color: #ffffff;" text="Crear cuenta nueva" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Button>
-                  <PasswordField id="contrasena2_signin_field" fx:id="contrasena2_signin_field" layoutX="28.0" layoutY="132.0" promptText="Contraseña" />
-                  <TextField id="pasaporte_signin_field" fx:id="pasaporte_signin_field" layoutX="28.0" layoutY="68.0" promptText="Pasaporte" />
+                  <PasswordField id="contrasena2_signin_field" fx:id="contrasena2_signin_field" layoutX="28.0" layoutY="120.0" promptText="Contraseña" />
+                  <TextField id="pasaporte_signin_field" fx:id="pasaporte_signin_field" layoutX="28.0" layoutY="60.0" promptText="Pasaporte" />
+                  <Button id="tengo_cuenta_button" fx:id="tengo_cuenta_button" layoutX="28.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #5b88a5; -fx-border-color: #ffffff;" text="Ya tengo cuenta" textFill="WHITE" onAction="#salir">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children>

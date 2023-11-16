@@ -17,10 +17,10 @@ public class AirlineService {
         return null;
     }
 
-    public Long getAirlineId(Long idAccount){
+    public Airline getAirlineId(Long idAccount){
         Airline aerolinea = airlineRepository.findByIdAccount(idAccount);
         if(aerolinea!=null){
-            return aerolinea.getIdAirline();
+            return aerolinea;
         }else{
             return null;
         }
