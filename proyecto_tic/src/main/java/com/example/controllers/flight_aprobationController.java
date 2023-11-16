@@ -1,13 +1,14 @@
+package com.example.controllers;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-public class PleaseProvideControllerClassName {
+public class flight_aprobationController {
 
     @FXML
     private TableColumn<?, ?> aerolinea_column;
-
     @FXML
     private TableColumn<?, ?> destino_column;
 

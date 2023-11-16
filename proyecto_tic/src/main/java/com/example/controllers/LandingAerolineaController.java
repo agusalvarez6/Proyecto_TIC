@@ -37,6 +37,7 @@ import com.example.services.AirportService;
 import com.example.services.FlightsService;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 @Component
 @FxmlView("/com/example/controllers/landing_aerolinea.fxml")
 public class LandingAerolineaController {
