@@ -39,6 +39,15 @@ public class Flights {
     @Column
     private Long idPlane;
 
+	@Column
+	private String boardingTime;
+
+	@Column
+	private String takeOffTime;
+
+	@Column
+	private String landingTime;
+
 	public Flights(Long idAirline, String origin, String destination, String departure_time,
 			String arrival_time,String code) {
 		this.idAirline = idAirline;
@@ -140,4 +149,29 @@ public class Flights {
 		this.state = state;
 	}
 
+	public String getBoardingTime() {
+		return this.boardingTime;
+	}
+
+	public void setBoardingTime(String boardingTime) {
+		this.boardingTime = boardingTime;
+	}
+
+	public String getTakeOffTime() {
+		return this.takeOffTime;
+	}
+
+	public void setTakeOffTime(String takeOffTime) {
+		this.takeOffTime = takeOffTime;
+	}
+
+	public String getLandingTime() {
+		return this.landingTime;
+	}
+
+	public void setLandingTime(String landingTime) {
+		this.landingTime = landingTime;
+	}
+
+	
 }
