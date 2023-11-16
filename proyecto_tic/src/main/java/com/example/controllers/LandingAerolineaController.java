@@ -204,31 +204,37 @@ public class LandingAerolineaController {
     llegada_field.setText("");
     salida_field.setText("");
     nroavion_field.setText("");
+    vuelos = flightsService.verVuelosDeAerolinea(aerolinea.getIdAirline());
 
+      ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(vuelos);
+      vuelosagendados_table.setItems(vuelosObs);
+
+      Platform.runLater(() -> vuelosagendados_table.refresh());  
     } 
 
     
     List<Flights> vuelos;
+    Airline aerolinea;
     Long setUsuario(Long usuario){
-        id = airlineService.getAirlineId(usuario);
-        //vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
+        aerolinea = airlineService.getAirlineId(usuario);
+        vuelos = flightsService.verVuelosDeAerolinea(aerolinea.getIdAirline());
         return usuario;
     }
     @FXML
     void initialize() {
-        ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(
-                new Flights(1L,"BUE","MIA","2021-06-01 10:00:00","2021-06-01 15:00:00","AA123"),
-                new Flights(1L,"MIA","BUE","2021-06-01 16:00:00","2021-06-01 21:00:00","AA124"),
-                new Flights(1L,"BUE","MIA","2021-06-02 10:00:00","2021-06-02 15:00:00","AA125")
-            );
-    
+        if(vuelos!=null){
+            ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(vuelos);
+
+            vuelosagendados_table.setItems(vuelosObs);
+
+
             numerovuelo_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("code"));
             origen_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("origin"));
             destino_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("destination"));
             salida_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("departure_time"));
             llegada_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("arrival_time"));
-            vuelosagendados_table.setItems(vuelosObs);
             vuelosagendados_table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        }
     }
 
     @FXML
