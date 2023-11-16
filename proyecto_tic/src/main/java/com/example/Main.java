@@ -70,6 +70,7 @@ public class Main {
                 System.out.println("admin created");
             }
         }
+        /* 
         // Usuario de prueba
         if (accountRepository.findByUsername("usuario") == null) {
             Account nuevoUsuario = new Account();
@@ -127,6 +128,7 @@ public class Main {
                     // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
                 }
             }
-        }        
+        }
+        */      
     }
 }
