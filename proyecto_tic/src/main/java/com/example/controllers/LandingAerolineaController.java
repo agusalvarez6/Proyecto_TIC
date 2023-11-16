@@ -207,10 +207,14 @@ public class LandingAerolineaController {
     } 
 
     
+    List<Flights> vuelos;
+    Long setUsuario(Long usuario){
+        id = airlineService.getAirlineId(usuario);
+        //vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
+        return usuario;
+    }
     @FXML
-    void initialize(Long username) {
-        id = airlineService.getAirlineId(username);
-        System.out.println("username: " + username+ " id: "+id);
+    void initialize() {
         ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(
                 new Flights(1L,"BUE","MIA","2021-06-01 10:00:00","2021-06-01 15:00:00","AA123"),
                 new Flights(1L,"MIA","BUE","2021-06-01 16:00:00","2021-06-01 21:00:00","AA124"),

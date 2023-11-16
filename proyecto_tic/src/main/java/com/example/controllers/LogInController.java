@@ -75,7 +75,7 @@ public class LogInController {
             fxWeaver = Main.getContext().getBean(FxWeaver.class);
             Object controller2 = fxWeaver.loadController(LandingAerolineaController.class);
             if (controller2 instanceof LandingAerolineaController) {
-               ((LandingAerolineaController) controller2).initialize(usuarioGuardado.getIdAccount());
+               ((LandingAerolineaController) controller2).setUsuario(usuarioGuardado.getIdAccount());
             }
             root = fxWeaver.loadView(LandingAerolineaController.class);
             login_button.getScene().setRoot(root);
@@ -84,7 +84,7 @@ public class LogInController {
             fxWeaver = Main.getContext().getBean(FxWeaver.class);
             Object controller3 = fxWeaver.loadController(landing_aeropuertoController.class);
             if (controller3 instanceof landing_aeropuertoController) {
-               ((landing_aeropuertoController) controller3).initialize(usuarioGuardado.getIdAccount());
+               ((landing_aeropuertoController) controller3).setUsuario(usuarioGuardado.getIdAccount());
             }
             root = fxWeaver.loadView(landing_aeropuertoController.class);
             login_button.getScene().setRoot(root);
