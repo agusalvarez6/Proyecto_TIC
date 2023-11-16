@@ -3,6 +3,8 @@ package com.example.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
@@ -152,6 +154,17 @@ public class adminController {
             return;
         }
 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Aerolínea Guardada");
+    alert.setHeaderText(null);
+    alert.setContentText("La aerolínea se ha guardado exitosamente.");
+
+    alert.showAndWait();
+
+    usuarioaerolinea_field.setText("");
+    contrasenaaerolinea_field.setText("");
+    nameaerolinea_field.setText("");
+
         // Crea un nuevo objeto de usuario
         Account nuevoUsuario = new Account();
         nuevoUsuario.setUsername(username);
@@ -176,9 +189,9 @@ public class adminController {
             // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
         }
         
-        FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+      /*   FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
         Parent root = fxWeaver.loadView(LogInController.class);
-        ingresaraerolinea_button.getScene().setRoot(root);
+        ingresaraerolinea_button.getScene().setRoot(root); */
     }
     @FXML
     void saveAirport(ActionEvent event){
@@ -193,6 +206,20 @@ public class adminController {
             // Muestra un mensaje de error o realiza alguna acción apropiada.
             return;
         }
+
+        Alert alert = new Alert(AlertType.INFORMATION);
+    alert.setTitle("Aeropuerto Guardado");
+    alert.setHeaderText(null);
+    alert.setContentText("El aeropuerto se ha guardado exitosamente.");
+    // Mostrar el cuadro de diálogo
+    alert.showAndWait();
+    
+    usuarioaerop_field.setText("");
+    contrasenaaeropuerto_field.setText("");
+    nameaeropuerto_field.setText("");
+    ciudadaeropuerto_field.setText("");
+    paisaeropuerto_field.setText("");
+    codigoiata_field.setText("");
 
         // Crea un nuevo objeto de usuario
         Account nuevoUsuario = new Account();

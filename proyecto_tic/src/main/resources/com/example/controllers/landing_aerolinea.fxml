@@ -33,12 +33,12 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="numerovuelo_field" layoutX="129.0" layoutY="64.0" promptText="LLLNNNN" />
+                  <TextField fx:id="numerovuelo_field" layoutX="129.0" layoutY="64.0" />
                   <Text layoutX="28.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número de vuelo:" />
                   <Text layoutX="20.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha y hora salida:" />
-                  <Text layoutX="17.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha y hora legada:" />
-                  <TextField fx:id="salida_field" layoutX="129.0" layoutY="116.0" promptText="DD/MM/AAA hh" />
-                  <TextField fx:id="llegada_field" layoutX="129.0" layoutY="168.0" promptText="DD/MM/AAA hh" />
+                  <Text layoutX="14.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha y hora llegada:" />
+                  <TextField fx:id="salida_field" layoutX="129.0" layoutY="116.0" promptText="dd-mm-aaaa hh:mm" />
+                  <TextField fx:id="llegada_field" layoutX="129.0" layoutY="168.0" promptText="dd-mm-aaaa hh:mm" />
                   <Text layoutX="294.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aeropuerto de origen:" />
                   <Text layoutX="306.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aeropuerto destino:" />
                   <TextField fx:id="aeroporigen_field" layoutX="421.0" layoutY="64.0" promptText="IATA" />
@@ -57,9 +57,11 @@
                   <Text layoutX="162.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad:" />
                   <TextField fx:id="numeroavion_field" layoutX="225.0" layoutY="103.0" />
                   <TextField fx:id="capacidadavion_field" layoutX="225.0" layoutY="143.0" />
-                  <Button fx:id="agregaravion_button" layoutX="247.0" layoutY="230.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" text="Agregar" />
-                  <TextField fx:id="aeropincial_field" layoutX="225.0" layoutY="183.0" />
+                  <Button fx:id="agregaravion_button" layoutX="247.0" layoutY="285.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" text="Agregar" />
+                  <TextField fx:id="aeropincial_field" layoutX="225.0" layoutY="183.0" promptText="IATA" />
                   <Text layoutX="124.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aeropuerto inicial:" />
+                  <TextField fx:id="fechainicialavion_field" layoutX="225.0" layoutY="223.0" promptText="dd-mm-aaaa hh:mm" />
+                  <Text layoutX="155.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha inicial:" />
                </children></AnchorPane>
         </content>
       </Tab>

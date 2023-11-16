@@ -3,6 +3,8 @@ package com.example.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Tab;
@@ -90,6 +92,9 @@ public class LandingAerolineaController {
     private TableColumn<?, ?> numerovuelo_col;
 
     @FXML
+    private TextField fechainicialavion_field;
+
+    @FXML
     private TextField numerovuelo_field;
 
     @FXML
@@ -137,6 +142,23 @@ public class LandingAerolineaController {
         //}
         Flights vueloGuardado = flightsService.saveFlights(vuelo);
         System.out.println("Todo anda bien");
+
+         // Mostrar una alerta indicando que el vuelo se ha agendado
+    Alert alert = new Alert(AlertType.INFORMATION);
+    alert.setTitle("Vuelo Agendado");
+    alert.setHeaderText(null);
+    alert.setContentText("El vuelo se ha agendado exitosamente.");
+
+    alert.showAndWait();
+
+    // Limpiar los campos de texto después de agendar el vuelo
+    numerovuelo_field.setText("");
+    aeropdestino_field.setText("");
+    aeroporigen_field.setText("");
+    llegada_field.setText("");
+    salida_field.setText("");
+    nroavion_field.setText("");
+
     } 
 
     Long id;
