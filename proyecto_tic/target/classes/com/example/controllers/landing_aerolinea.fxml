@@ -15,8 +15,8 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="atras_button" layoutX="44.0" layoutY="308.0" mnemonicParsing="false" onAction="#salir" prefHeight="26.0" prefWidth="107.0" text="Atrás" />
-                  <TableView fx:id="vuelosagendados_table" layoutX="44.0" layoutY="57.0" prefHeight="200.0" prefWidth="511.0">
+                  <Button fx:id="atras_button" layoutX="44.0" layoutY="308.0" mnemonicParsing="false" onAction="#salir" prefHeight="26.0" prefWidth="107.0" text="Atrás" AnchorPane.bottomAnchor="36.666666666666686" />
+                  <TableView fx:id="vuelosagendados_table" layoutX="44.0" layoutY="57.0" prefHeight="200.0" prefWidth="511.0" AnchorPane.bottomAnchor="113.66666666666669" AnchorPane.topAnchor="57.0">
                     <columns>
                       <TableColumn fx:id="numerovuelo_col" prefWidth="111.99996948242188" text="Número de vuelo" />
                       <TableColumn fx:id="origen_col" prefWidth="64.0" text="Origen" />

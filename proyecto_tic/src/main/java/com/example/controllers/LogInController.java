@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -57,6 +58,15 @@ public class LogInController {
       }
          else{
          System.out.println("todo anda mal");
+
+         Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Inicio de sesión fallido");
+            alert.setHeaderText(null);
+            alert.setContentText("Usuario o contraseña incorrectos.");
+    
+            alert.showAndWait();
+
+            contrasena_field.setText("");
       }
       
       

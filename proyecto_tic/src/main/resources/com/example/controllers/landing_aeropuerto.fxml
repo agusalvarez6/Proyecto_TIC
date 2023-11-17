@@ -15,7 +15,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="vuelosaprobados_table" layoutX="57.0" layoutY="43.0" prefHeight="218.0" prefWidth="485.0">
+                  <TableView fx:id="vuelosaprobados_table" layoutX="57.0" layoutY="43.0" prefHeight="218.0" prefWidth="485.0" AnchorPane.bottomAnchor="109.66666666666669" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="43.0">
                     <columns>
                       <TableColumn fx:id="nrovuelo_col" prefWidth="104.6666259765625" text="Número de vuelo" />
                       <TableColumn fx:id="origen_col" prefWidth="76.66668701171875" text="Origen" />
@@ -25,9 +25,9 @@
                         <TableColumn fx:id="llegada_col" prefWidth="87.33331298828125" text="Llegada" />
                     </columns>
                   </TableView>
-                  <Button fx:id="atras_button" layoutX="32.0" layoutY="315.0" mnemonicParsing="false" onAction="#salir" prefHeight="28.0" prefWidth="90.0" text="Atrás" />
-                  <Button fx:id="aceptar_button" layoutX="331.0" layoutY="293.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="103.0" text="Aceptar" />
-                  <Button fx:id="rechazar_button" layoutX="454.0" layoutY="293.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="103.0" text="Rechazar" onAction="#rechazar" />
+                  <Button fx:id="atras_button" layoutX="32.0" layoutY="315.0" mnemonicParsing="false" onAction="#salir" prefHeight="28.0" prefWidth="90.0" text="Atrás" AnchorPane.bottomAnchor="30.33333333333335" />
+                  <Button fx:id="aceptar_button" layoutX="331.0" layoutY="293.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="103.0" text="Aceptar" AnchorPane.bottomAnchor="30.33333333333335" AnchorPane.leftAnchor="331.0" />
+                  <Button fx:id="rechazar_button" layoutX="454.0" layoutY="293.0" mnemonicParsing="false" onAction="#rechazar" prefHeight="47.0" prefWidth="103.0" text="Rechazar" AnchorPane.bottomAnchor="30.33333333333335" />
                </children></AnchorPane>
       </content>
     </Tab>
