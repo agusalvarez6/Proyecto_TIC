@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Tab;
@@ -136,6 +137,17 @@ public class landing_aeropuertoController {
 
         airportService.saveShipmentDoor(puerta);
         System.out.println("Puerta agregada");
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Puerta Guardada");
+    alert.setHeaderText(null);
+    alert.setContentText("La puerta se ha guardado exitosamente.");
+
+    alert.showAndWait();
+
+    // Limpiar los campos de texto después de agendar el vuelo
+    numeropuerta_field.setText("");
+
     }
 
     @FXML
@@ -144,6 +156,17 @@ public class landing_aeropuertoController {
 
         airportService.saveLandingStrip(pista);
         System.out.println("Pista agregada");
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Pista Guardada");
+    alert.setHeaderText(null);
+    alert.setContentText("La pista se ha guardado exitosamente.");
+
+    alert.showAndWait();
+
+    // Limpiar los campos de texto después de agendar el vuelo
+    numeropista_field.setText("");
+    
     }
 
     
@@ -161,6 +184,13 @@ public class landing_aeropuertoController {
             Platform.runLater(() -> vuelosaprobados_table.refresh());
         } else {
             System.out.println("Por favor, selecciona un vuelo para rechazar.");
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Vuelo no seleccionado");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecciona un vuelo para rechazar.");
+    
+            alert.showAndWait();
         }
     }
     
