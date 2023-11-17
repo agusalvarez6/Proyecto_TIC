@@ -125,6 +125,9 @@ public class LandingAerolineaController {
     @FXML
     private TextField tiempopista_field;
 
+    @FXML
+    private TextField modeloavion_field;
+
     @Autowired
     private FlightsService flightsService;
 
@@ -252,7 +255,23 @@ public class LandingAerolineaController {
             System.out.println("Numero ya existente");
         }        
         printAviones();
+    
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Avión Guardado");
+    alert.setHeaderText(null);
+    alert.setContentText("El avión se ha guardado exitosamente.");
+
+    alert.showAndWait();
+
+    // Limpiar los campos de texto después de agendar el vuelo
+    capacidadavion_field.setText("");
+    numeroavion_field.setText("");
+    fechainicialavion_field.setText("");
+    aeropincial_field.setText("");
+    modeloavion_field.setText("");
+    
     }
+    
     private void printAviones(){
         System.out.println("Todos los aviones registrados: ");
         for (Plane avion : flightsService.verTodosLosAviones(aerolinea.getIdAirline())) {
