@@ -33,7 +33,7 @@
                   </Button>
                   <PasswordField id="contrasena2_signin_field" fx:id="contrasena2_signin_field" layoutX="28.0" layoutY="120.0" promptText="Contraseña" />
                   <TextField id="pasaporte_signin_field" fx:id="pasaporte_signin_field" layoutX="28.0" layoutY="60.0" promptText="Pasaporte" />
-                  <Button id="tengo_cuenta_button" fx:id="tengo_cuenta_button" layoutX="28.0" layoutY="209.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #5b88a5; -fx-border-color: #ffffff;" text="Ya tengo cuenta" textFill="WHITE" onAction="#salir">
+                  <Button id="tengo_cuenta_button" fx:id="tengo_cuenta_button" layoutX="28.0" layoutY="209.0" mnemonicParsing="false" onAction="#salir" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #5b88a5; -fx-border-color: #ffffff;" text="Ya tengo cuenta" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
