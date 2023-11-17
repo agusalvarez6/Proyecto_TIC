@@ -63,11 +63,13 @@
                   <Text layoutX="162.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacidad:" />
                   <TextField fx:id="numeroavion_field" layoutX="225.0" layoutY="103.0" />
                   <TextField fx:id="capacidadavion_field" layoutX="225.0" layoutY="143.0" />
-                  <Button fx:id="agregaravion_button" layoutX="247.0" layoutY="285.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="105.0" text="Agregar" onAction="#savePlane"/>
+                  <Button fx:id="agregaravion_button" layoutX="247.0" layoutY="285.0" mnemonicParsing="false" onAction="#savePlane" prefHeight="37.0" prefWidth="105.0" text="Agregar" />
                   <TextField fx:id="aeropincial_field" layoutX="225.0" layoutY="183.0" promptText="IATA" />
                   <Text layoutX="124.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aeropuerto inicial:" />
                   <TextField fx:id="fechainicialavion_field" layoutX="225.0" layoutY="223.0" promptText="dd-mm-aaaa hh:mm" />
                   <Text layoutX="155.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha inicial:" />
+                  <TextField fx:id="modeloavion_field" layoutX="225.0" layoutY="63.0" />
+                  <Text layoutX="178.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modelo:" />
                </children></AnchorPane>
         </content>
       </Tab>
