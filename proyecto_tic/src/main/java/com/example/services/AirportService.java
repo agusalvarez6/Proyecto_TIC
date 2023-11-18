@@ -58,5 +58,13 @@ public class AirportService {
         landingStripRepository.save(landingStrip);
     }
 
+    public List<ShipmentDoor> getShipmentDoors(String IATA) {
+        return shipmentDoorRepository.findByIdAirport(IATA);
+    }
+
+    public List<LandingStrip> getLandingStrips(String IATA) {
+        return landingStripRepository.findByIdAirport(IATA);
+    }
+
     
 }

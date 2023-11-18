@@ -96,13 +96,49 @@ public class landing_aeropuertoController {
     private Button rechazar_Button;
 
     @FXML
-    private Button aceptar_Button;
+    private Button aceptar_button;
 
     @FXML
     void salir(ActionEvent event) {
         FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
         Parent root = fxWeaver.loadView(InicioController.class);
         atras_button.getScene().setRoot(root);
+    }
+    String location;
+    @FXML
+    void aceptar(ActionEvent event) {
+        Flights vueloSeleccionado = vuelosaprobados_table.getSelectionModel().getSelectedItem();
+        if (vueloSeleccionado != null) {
+            FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+            Object controller = fxWeaver.loadController(flight_aprobationController.class);
+            if (controller instanceof flight_aprobationController) {
+                if(vueloSeleccionado.getOrigin().equals(Aeropuerto.getIATA())){
+                    location = "Origen"; 
+                }else{
+                    location = "Destino";
+                }
+                
+               ((flight_aprobationController) controller).VueloGuardado(vueloSeleccionado , location);
+            }
+            Parent root = fxWeaver.loadView(flight_aprobationController.class);
+            aceptar_button.getScene().setRoot(root);
+
+            vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
+
+            ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(vuelos);
+            vuelosaprobados_table.setItems(vuelosObs);
+
+            Platform.runLater(() -> vuelosaprobados_table.refresh());
+        } else {
+            System.out.println("Por favor, selecciona un vuelo para aceptar.");
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Vuelo no seleccionado");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecciona un vuelo para aceptar.");
+    
+            alert.showAndWait();
+        }
     }
     
     Airport Aeropuerto;
@@ -133,7 +169,7 @@ public class landing_aeropuertoController {
 
     @FXML
     void agregarpuerta(ActionEvent event) {
-        ShipmentDoor puerta = new ShipmentDoor(numeropuerta_field.getText(), Aeropuerto.getIdAirport());
+        ShipmentDoor puerta = new ShipmentDoor(numeropuerta_field.getText(), Aeropuerto.getIATA());
 
         airportService.saveShipmentDoor(puerta);
         System.out.println("Puerta agregada");
@@ -152,7 +188,7 @@ public class landing_aeropuertoController {
 
     @FXML
     void agregarpista(ActionEvent event) {
-        LandingStrip pista = new LandingStrip(numeropista_field.getText(), Aeropuerto.getIdAirport());
+        LandingStrip pista = new LandingStrip(numeropista_field.getText(), Aeropuerto.getIATA());
 
         airportService.saveLandingStrip(pista);
         System.out.println("Pista agregada");

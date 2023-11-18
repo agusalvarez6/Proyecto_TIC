@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="285.0" prefWidth="513.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.flight_aprobationController">
    <children>
       <Button fx:id="reservar_button" layoutX="403.0" layoutY="229.0" mnemonicParsing="false" text="Reservar" />
       <TableView fx:id="pistas_table" layoutX="147.0" layoutY="110.0" prefHeight="153.0" prefWidth="77.0">
