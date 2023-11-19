@@ -41,6 +41,10 @@ public class AccountService {
         return accountRepository.findByUsername(username);
     }
 
+    public Account getAccount(Long id) {
+        return accountRepository.findByIdAccount(id);
+    }
+
     public Boolean existPasaport(String passport){
         return accountRepository.findByPassport(passport) != null;
     }

@@ -54,6 +54,10 @@ public class AirportService {
         return (airportRepository.findByiATA(IATA) != null);
     }
 
+    public Airport getAirport(String IATA){
+        return airportRepository.findByiATA(IATA);
+    }
+
     public void saveShipmentDoor(ShipmentDoor shipmentDoor) {
         shipmentDoorRepository.save(shipmentDoor);
     }

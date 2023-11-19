@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.Main;
+import com.example.entities.Airport;
 import com.example.entities.Flights;
 import com.example.entities.LandingStrip;
 import com.example.entities.ShipmentDoor;
@@ -119,29 +120,35 @@ public class flight_aprobationController {
 
     @FXML
     void reservar() {
-        System.out.println("Reservar");
         ShipmentDoor doorSeleccionado = puertas_table.getSelectionModel().getSelectedItem();
         LandingStrip pistaSeleccionado = pistas_table.getSelectionModel().getSelectedItem();
         if (doorSeleccionado != null && pistaSeleccionado != null) {
-            System.out.println("Reservado2");
             if (Location == "Origen") {
-                System.out.println("Reservado3");
                 vuelo.setDeparture_door(doorSeleccionado.getIdDoor());
                 vuelo.setDeparture_LandingStrip(pistaSeleccionado.getIdLandingStrip());
             } else {
-                System.out.println("Reservado4");
                 vuelo.setArrival_door(doorSeleccionado.getIdDoor());
                 vuelo.setArrival_LandingStrip(pistaSeleccionado.getIdLandingStrip());
             }
             flightsService.confirmarVuelo(vuelo, Location);
         }
-        System.out.println(vuelo.getDeparture_door() + " " + vuelo.getArrival_door() + " " + vuelo.getDeparture_LandingStrip() + " " + vuelo.getArrival_LandingStrip()); 
     }
 
     @FXML
     void salir(ActionEvent event) {
+        String IATA;
+        if(Location=="Origen"){
+            IATA= vuelo.getOrigin();
+        }else{
+            IATA= vuelo.getDestination();
+        }
+        Airport aeropuerto = airportService.getAirport(IATA);
         FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
-        Parent root = fxWeaver.loadView(InicioController.class);
+        Object controller3 = fxWeaver.loadController(landing_aeropuertoController.class);
+        if (controller3 instanceof landing_aeropuertoController) {
+            ((landing_aeropuertoController) controller3).setUsuario(aeropuerto.getIdAccount());
+        }
+        Parent root = fxWeaver.loadView(landing_aeropuertoController.class);
         atras_button.getScene().setRoot(root);
     }
 }

@@ -128,7 +128,6 @@ public class FlightsService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
         for (Flights existingFlight : flights) {
-            System.out.println("Checking overlap with existing flight: " + existingFlight.getIdFlights());
 
             LocalDateTime currentFlightDeparture = parseDateTime(flight.getDeparture_time(), formatter);
             LocalDateTime currentFlightArrival = parseDateTime(flight.getArrival_time(), formatter);
@@ -144,8 +143,7 @@ public class FlightsService {
             LocalDateTime existingFlightArrivalTime = existingFlightArrival.plusMinutes(turnaroundTime);
 
             if (isOverlap(currentFlightTurnaroundStart, currentFlightTurnaroundEnd, existingFlightDepartureTime, existingFlightArrivalTime)) {
-                System.out.println("Overlap detected with existing flight: " + existingFlight.getIdFlights());
-                System.out.println(existingFlight.getDeparture_door() + " " + existingFlight.getArrival_door());
+            
                 ShipmentDoor door;
                 if (location.equals("Origen")) {
                     door = airportService.getShipmentDoor(existingFlight.getDeparture_door());
@@ -156,17 +154,7 @@ public class FlightsService {
                 removeDoorIfPresent(availableDoors, door);
             }
         }
-
-        System.out.println("Available Doors after processing: " + availableDoors);
         return availableDoors;
-    }
-
-    private List<Flights> getLocationFlights(String location) {
-        if (location.equals("Origen")) {
-            return flightsRepository.findByOriginAndStateOrigin(location, 1);
-        } else {
-            return flightsRepository.findByDestinationAndStateDestination(location, 1);
-        }
     }
 
     private LocalDateTime parseDateTime(String dateTime, DateTimeFormatter formatter) {
@@ -175,7 +163,6 @@ public class FlightsService {
 
     private void removeDoorIfPresent(List<ShipmentDoor> doors, ShipmentDoor doorToRemove) {
         if (doorToRemove != null) {
-            System.out.println("Removing door " + doorToRemove.getNumberDoor());
             doors.removeIf(door -> door.getNumberDoor().equals(doorToRemove.getNumberDoor()));
         } else {
             System.out.println("Door is null");
@@ -183,8 +170,6 @@ public class FlightsService {
     }
 
     private boolean isOverlap(LocalDateTime start1, LocalDateTime end1, LocalDateTime start2, LocalDateTime end2) {
-        System.out.println("Interval 1: " + start1 + " to " + end1);
-        System.out.println("Interval 2: " + start2 + " to " + end2);
         return start1.isBefore(end2) && end1.isAfter(start2);
     }
 
@@ -201,7 +186,6 @@ public class FlightsService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
 
         for (Flights existingFlight : flights) {
-            System.out.println("Checking overlap with existing flight: " + existingFlight.getIdFlights());
 
             LocalDateTime currentFlightDeparture = parseDateTime(flight.getDeparture_time(), formatter);
             LocalDateTime currentFlightArrival = parseDateTime(flight.getArrival_time(), formatter);
@@ -217,8 +201,6 @@ public class FlightsService {
             LocalDateTime existingFlightArrivalTime = existingFlightArrival.plusMinutes(turnaroundTime);
 
             if (isOverlap(currentFlightTurnaroundStart, currentFlightTurnaroundEnd, existingFlightDepartureTime, existingFlightArrivalTime)) {
-                System.out.println("Overlap detected with existing flight: " + existingFlight.getIdFlights());
-                System.out.println(existingFlight.getDeparture_LandingStrip() + " " + existingFlight.getArrival_LandingStrip());
                 LandingStrip strip;
                 if (location.equals("Origen")) {
                     strip = airportService.getLandingStrip(existingFlight.getDeparture_LandingStrip());
@@ -229,14 +211,11 @@ public class FlightsService {
                 removeStripIfPresent(availableStrips, strip);
             }
         }
-
-        System.out.println("Available Strips after processing: " + availableStrips);
         return availableStrips;
     }
 
     private void removeStripIfPresent(List<LandingStrip> strips, LandingStrip stripToRemove) {
         if (stripToRemove != null) {
-            System.out.println("Removing strip " + stripToRemove.getNumberLandingStrip());
             strips.removeIf(strip -> strip.getNumberLandingStrip().equals(stripToRemove.getNumberLandingStrip()));
         } else {
             System.out.println("Strip is null");
