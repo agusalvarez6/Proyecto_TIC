@@ -174,6 +174,7 @@ public class adminController {
         if (usuarioGuardado != null) {
             Airline newAirline = new Airline();
             newAirline.setName(name);
+            newAirline.setIdAccount(usuarioGuardado.getIdAccount());
             Airline airlineGuardada = airlineService.saveAirline(newAirline);
             if (airlineGuardada != null) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);

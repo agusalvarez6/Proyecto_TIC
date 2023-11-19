@@ -11,4 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface LandingStripRepository extends JpaRepository<LandingStrip, Long> {
 
     List<LandingStrip> findByIdAirport(String iATA);
+
+    LandingStrip findByIdLandingStrip(Long id);
 }

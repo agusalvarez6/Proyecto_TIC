@@ -122,13 +122,6 @@ public class landing_aeropuertoController {
             }
             Parent root = fxWeaver.loadView(flight_aprobationController.class);
             aceptar_button.getScene().setRoot(root);
-
-            vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
-
-            ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(vuelos);
-            vuelosaprobados_table.setItems(vuelosObs);
-
-            Platform.runLater(() -> vuelosaprobados_table.refresh());
         } else {
             System.out.println("Por favor, selecciona un vuelo para aceptar.");
 
@@ -145,10 +138,29 @@ public class landing_aeropuertoController {
     List<Flights> vuelos;
     Long setUsuario(Long usuario){
         Aeropuerto = airportService.getAirport(usuario);
-        vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
+        vuelos = getVuelos();
+
         return usuario;
     }
 
+    List<Flights> getVuelos(){
+        List<Flights> vuelosN = new ArrayList<Flights>();
+        List<Flights> vuelosO = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA(),"Origen");
+        List<Flights> vuelosD = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA(),"Destino");
+        for (Flights vuelo : vuelosO) {
+            System.out.println(vuelo.getStateOrigin()+" "+vuelo.getCode());
+            if(vuelo.getStateOrigin()==0){
+                vuelosN.add(vuelo);
+            }
+        }
+        for (Flights vuelo : vuelosD) {
+            System.out.println(vuelo.getStateDestination()+" "+vuelo.getCode());
+            if(vuelo.getStateDestination()==0){
+                vuelosN.add(vuelo);
+            }
+        }
+        return vuelosN;
+    }
     @FXML
     void initialize() {
         if(vuelos!=null){
@@ -212,7 +224,7 @@ public class landing_aeropuertoController {
         if (vueloSeleccionado != null) {
             flightsService.RechazarVuelo(vueloSeleccionado);
 
-            vuelos = airportService.verVuelosDeAeropuerto(Aeropuerto.getIATA());
+            vuelos = getVuelos();
 
             ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(vuelos);
             vuelosaprobados_table.setItems(vuelosObs);

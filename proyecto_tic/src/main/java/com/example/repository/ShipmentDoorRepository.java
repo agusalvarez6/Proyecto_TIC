@@ -11,4 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface ShipmentDoorRepository extends JpaRepository<ShipmentDoor, Long> {
 
     List<ShipmentDoor> findByIdAirport(String iATA);
+
+    ShipmentDoor findByIdDoor(Long id);
 }

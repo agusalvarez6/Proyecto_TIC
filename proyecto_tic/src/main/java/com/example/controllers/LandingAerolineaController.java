@@ -156,7 +156,6 @@ public class LandingAerolineaController {
 
     @FXML
     void saveFlight(ActionEvent event){
-        int state = 0;
         Flights vuelo = new Flights();
 
         vuelo.setCode(numerovuelo_field.getText());
@@ -164,7 +163,8 @@ public class LandingAerolineaController {
         vuelo.setOrigin(aeroporigen_field.getText());
         vuelo.setArrival_time(llegada_field.getText());
         vuelo.setDeparture_time(salida_field.getText());
-        vuelo.setState(0);
+        vuelo.setStateDestination(0);
+        vuelo.setStateOrigin(0);
         vuelo.setIdAirline(aerolinea.getIdAirline());
         //vuelo.setIdPlane(nroavion_field.getText());
         Plane avion = flightsService.ComprobarAvion(nroavion_field.getText(), id);

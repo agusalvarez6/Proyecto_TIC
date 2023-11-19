@@ -30,8 +30,17 @@ public class Flights {
     @Column
     private Long arrival_door;
 
+	@Column
+    private Long departure_LandingStrip;
+
     @Column
-    private int state;
+    private Long arrival_LandingStrip;
+
+    @Column
+    private Integer stateOrigin;
+
+    @Column
+    private Integer stateDestination;
 
     @Column
     private String code;
@@ -55,7 +64,8 @@ public class Flights {
 		this.destination = destination;
 		this.departure_time = departure_time;
 		this.arrival_time = arrival_time;
-		this.state = 0;
+		this.stateOrigin = 0;
+		this.stateDestination = 0;
 		this.code = code;
 
 	}
@@ -141,12 +151,20 @@ public class Flights {
 	public void setIdPlane(Long IdPlane) {
 		this.idPlane = IdPlane;
 	}
-	public int getState() {
-		return this.state;
+	public int getStateOrigin() {
+		return this.stateOrigin;
 	}
 
-	public void setState(int state) {
-		this.state = state;
+	public void setStateOrigin(int StateOrigin) {
+		this.stateOrigin = StateOrigin;
+	}
+
+	public int getStateDestination() {
+		return this.stateDestination;
+	}
+
+	public void setStateDestination(int i) {
+		this.stateDestination = i;
 	}
 
 	public String getBoardingTime() {
@@ -173,5 +191,19 @@ public class Flights {
 		this.landingTime = landingTime;
 	}
 
-	
+	public Long getDeparture_LandingStrip() {
+		return this.departure_LandingStrip;
+	}
+
+	public void setDeparture_LandingStrip(Long Departure_LandingStrip) {
+		this.departure_LandingStrip = Departure_LandingStrip;
+	}
+
+	public Long getArrival_LandingStrip() {
+		return this.arrival_LandingStrip;
+	}
+
+	public void setArrival_LandingStrip(Long Arrival_LandingStrip) {
+		this.arrival_LandingStrip = Arrival_LandingStrip;
+	}
 }
