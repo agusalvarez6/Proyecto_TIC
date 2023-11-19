@@ -18,6 +18,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -131,6 +133,37 @@ public class flight_aprobationController {
                 vuelo.setArrival_LandingStrip(pistaSeleccionado.getIdLandingStrip());
             }
             flightsService.confirmarVuelo(vuelo, Location);
+
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Reserva exitosa");
+            alert.setHeaderText(null);
+            alert.setContentText("¡Puerta y pista reservadas con éxito!");
+
+            alert.showAndWait();
+
+            // Volver a la pantalla de aprobación de vuelos al igual que lo hace el botón "Atrás"
+            String IATA;
+            if(Location=="Origen"){
+                IATA= vuelo.getOrigin();
+            }else{
+                IATA= vuelo.getDestination();
+            }
+            Airport aeropuerto = airportService.getAirport(IATA);
+            FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+            Object controller3 = fxWeaver.loadController(landing_aeropuertoController.class);
+            if (controller3 instanceof landing_aeropuertoController) {
+                ((landing_aeropuertoController) controller3).setUsuario(aeropuerto.getIdAccount());
+            }
+            Parent root = fxWeaver.loadView(landing_aeropuertoController.class);
+            atras_button.getScene().setRoot(root);
+            
+        } else {
+             Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecciona una puerta y una pista.");
+
+            alert.showAndWait();
         }
     }
 
