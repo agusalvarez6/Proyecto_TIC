@@ -6,25 +6,27 @@ import jakarta.persistence.*;
 public class ShipmentDoor {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) // Configura la estrategia de generación de identificadores
-    private Long IdDoor;
+    private Long idDoor;
 
 	@Column
     private String numberDoor;
 
     @Column
-    private Long IdAirport;
+    private String idAirport;
 
-	public ShipmentDoor(String numberDoor, Long IdAirport) {
+	public ShipmentDoor(String numberDoor, String IdAirport) {
 		this.numberDoor = numberDoor;
-		this.IdAirport = IdAirport;
+		this.idAirport = IdAirport;
 	}
 
+	public ShipmentDoor() {
+	}
 	public Long getIdDoor() {
-		return this.IdDoor;
+		return this.idDoor;
 	}
 
 	public void setIdDoor(Long IdDoor) {
-		this.IdDoor = IdDoor;
+		this.idDoor = IdDoor;
 	}
 
 	public String getNumberDoor() {
@@ -34,12 +36,12 @@ public class ShipmentDoor {
 	public void setNumberDoor(String numberDoor) {
 		this.numberDoor = numberDoor;
 	}
-	public Long getIdAirport() {
-		return this.IdAirport;
+	public String getIdAirport() {
+		return this.idAirport;
 	}
 
-	public void setIdAirport(Long IdAirport) {
-		this.IdAirport = IdAirport;
+	public void setIdAirport(String IdAirport) {
+		this.idAirport = IdAirport;
 	}
 
 }

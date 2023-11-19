@@ -6,25 +6,29 @@ import jakarta.persistence.*;
 public class LandingStrip {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) // Configura la estrategia de generación de identificadores
-    private Long IdLandingStrip;
+    private Long idLandingStrip;
 
 	@Column
 	private String numberLandingStrip;
 
     @Column
-    private Long IdAirport;
+    private String idAirport;
 
-	public LandingStrip(String numberLandingStrip, Long IdAirport) {
+	public LandingStrip(String numberLandingStrip, String IdAirport) {
 		this.numberLandingStrip = numberLandingStrip;
-		this.IdAirport = IdAirport;
+		this.idAirport = IdAirport;
 	
 	}
+
+	public LandingStrip() {
+	}
+	
 	public Long getIdLandingStrip() {
-		return this.IdLandingStrip;
+		return this.idLandingStrip;
 	}
 
 	public void setIdLandingStrip(Long IdLandingStrip) {
-		this.IdLandingStrip = IdLandingStrip;
+		this.idLandingStrip = IdLandingStrip;
 	}
 
 	public String getNumberLandingStrip() {
@@ -35,12 +39,12 @@ public class LandingStrip {
 		this.numberLandingStrip = numberLandingStrip;
 	}
 
-	public Long getIdAirport() {
-		return this.IdAirport;
+	public String getIdAirport() {
+		return this.idAirport;
 	}
 
-	public void setIdAirport(Long IdAirport) {
-		this.IdAirport = IdAirport;
+	public void setIdAirport(String IdAirport) {
+		this.idAirport = IdAirport;
 	}
 
 }

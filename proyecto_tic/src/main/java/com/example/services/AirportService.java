@@ -33,8 +33,12 @@ public class AirportService {
         return (airportRepository.findByiATA(IATA) != null);
     }
 
-     public List<Flights> verVuelosDeAeropuerto(String idAeropuerto) {
-        return flightsRepository.findByOriginOrDestinationAndState(idAeropuerto, idAeropuerto,0);
+     public List<Flights> verVuelosDeAeropuerto(String idAeropuerto, String location) {
+        if(location.equals("Origen")){
+            return flightsRepository.findByOriginAndStateOrigin(idAeropuerto,0);
+        }else{
+            return flightsRepository.findByDestinationAndStateDestination(idAeropuerto,0);
+        }
     }
 
     public Airport getAirport(Long idAccount){
@@ -58,5 +62,19 @@ public class AirportService {
         landingStripRepository.save(landingStrip);
     }
 
-    
+    public List<ShipmentDoor> getShipmentDoors(String IATA) {
+        return shipmentDoorRepository.findByIdAirport(IATA);
+    }
+
+    public List<LandingStrip> getLandingStrips(String IATA) {
+        return landingStripRepository.findByIdAirport(IATA);
+    }
+
+    public ShipmentDoor getShipmentDoor(Long id) {
+        return shipmentDoorRepository.findByIdDoor(id);
+    }
+
+    public LandingStrip getLandingStrip(Long id) {
+        return landingStripRepository.findByIdLandingStrip(id);
+    }
 }

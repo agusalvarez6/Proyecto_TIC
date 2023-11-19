@@ -159,13 +159,6 @@ public class adminController {
             return;
         }
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle("Aerolínea Guardada");
-    alert.setHeaderText(null);
-    alert.setContentText("La aerolínea se ha guardado exitosamente.");
-
-    alert.showAndWait();
-
     usuarioaerolinea_field.setText("");
     contrasenaaerolinea_field.setText("");
     nameaerolinea_field.setText("");
@@ -179,20 +172,24 @@ public class adminController {
         Account usuarioGuardado = accountService.saveAccount(nuevoUsuario);
 
         if (usuarioGuardado != null) {
-            System.out.println("usuario guardado");
+            Airline newAirline = new Airline();
+            newAirline.setName(name);
+            newAirline.setIdAccount(usuarioGuardado.getIdAccount());
+            Airline airlineGuardada = airlineService.saveAirline(newAirline);
+            if (airlineGuardada != null) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Aerolínea Guardada");
+                alert.setHeaderText(null);
+                alert.setContentText("La aerolínea se ha guardado exitosamente.");
+
+                alert.showAndWait();
+            } else {
+                // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
+            }
         } else {
             // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
         }
 
-        Airline newAirline = new Airline();
-        newAirline.setName(name);
-        newAirline.setIdAccount(usuarioGuardado.getIdAccount());
-        Airline airlineGuardada = airlineService.saveAirline(newAirline);
-        if (airlineGuardada != null) {
-            System.out.println("aerolinea guardada");
-        } else {
-            // Ocurrió un error al guardar el usuario, muestra un mensaje de error o realiza alguna acción apropiada.
-        }
         
       /*   FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
         Parent root = fxWeaver.loadView(LogInController.class);
