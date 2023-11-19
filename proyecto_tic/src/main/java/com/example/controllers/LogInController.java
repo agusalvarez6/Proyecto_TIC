@@ -76,7 +76,7 @@ public class LogInController {
             FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
             Object controller = fxWeaver.loadController(landing_controller.class);
             if (controller instanceof landing_controller) {
-               ((landing_controller) controller).initialize(username);
+               ((landing_controller) controller).setUsuario(usuarioGuardado);
            }
             Parent root = fxWeaver.loadView(landing_controller.class);
             login_button.getScene().setRoot(root);

@@ -44,6 +44,10 @@ public class FlightsService {
         return flightsRepository.findAll();
     }
 
+    public Flights geFlights(Long idFlights) {
+        return flightsRepository.findByIdFlights(idFlights);
+    }
+
     public List<Flights> verVuelosAprobadoso(String origen, String destino) {
         return flightsRepository.findByOriginAndDestinationAndStateOriginAndStateDestination(origen, destino, 1 ,1);
     }
@@ -237,6 +241,15 @@ public class FlightsService {
         } else {
             System.out.println("Strip is null");
         }
+    }
+
+    public List<Flights> getFlightsByPassport(String passport) {
+        List<Tickets> Tickets=ticketsRepository.findByPasaport(passport);
+        List<Flights> Flights = new ArrayList<>();
+        for (Tickets tickets2 : Tickets) {
+            Flights.add(geFlights(tickets2.getIdFlight()));
+        }
+        return Flights;
     }
 }
 

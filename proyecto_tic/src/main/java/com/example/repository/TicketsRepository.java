@@ -11,4 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface TicketsRepository extends JpaRepository<Tickets, Long> {
 
     List<Tickets> findByIdFlight(Long idFlights);
+
+    List<Tickets> findByPasaport(String passport);
 }
