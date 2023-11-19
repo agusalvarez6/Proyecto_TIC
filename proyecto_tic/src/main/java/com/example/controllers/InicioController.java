@@ -2,6 +2,10 @@ package com.example.controllers;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.stereotype.Component;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +13,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import net.rgielen.fxweaver.core.FxWeaver;
+import net.rgielen.fxweaver.core.FxmlView;
 
+import com.example.Main;
+import com.example.entities.Account;
+
+import java.io.IOException;
+
+@Component
+@FxmlView("/com/example/controllers/inicio.fxml")
 public class InicioController {
 
     @FXML
@@ -20,37 +33,24 @@ public class InicioController {
 
     @FXML
     void GoToLogIn(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/login.fxml"));
-            Parent logInRoot = loader.load();
-
-            Stage logInStage = new Stage();
-            logInStage.setTitle("Log In"); // Set a title for the new window
-
-            Scene logInScene = new Scene(logInRoot);
-
-            logInStage.setScene(logInScene);
-            logInStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            
+            FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+            Parent root = fxWeaver.loadView(LogInController.class);
+            ingresar_button.getScene().setRoot(root);
     }
 
     @FXML
     void GoToSignIn(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/signin.fxml"));
-            Parent signInRoot = loader.load();
-
-            Stage signInStage = new Stage();
-            signInStage.setTitle("Sign In"); // Set a title for the new window
-
-            Scene signInScene = new Scene(signInRoot);
-
-            signInStage.setScene(signInScene);
-            signInStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FxWeaver fxWeaver = Main.getContext().getBean(FxWeaver.class);
+        Parent root = fxWeaver.loadView(SignInController.class);
+        registrarse_button.getScene().setRoot(root);
+            
     }
+
+    public static ConfigurableApplicationContext getContext() {
+        return Main.getContext();
+    }
+   
+
+    
 }
