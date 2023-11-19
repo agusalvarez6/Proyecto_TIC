@@ -181,40 +181,52 @@ public class landing_aeropuertoController {
 
     @FXML
     void agregarpuerta(ActionEvent event) {
-        ShipmentDoor puerta = new ShipmentDoor(numeropuerta_field.getText(), Aeropuerto.getIATA());
+        String numeroPuerta = numeropuerta_field.getText();
+        if (numeroPuerta.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Campo de puerta vacío");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, ingresa un número de puerta.");
 
-        airportService.saveShipmentDoor(puerta);
-        System.out.println("Puerta agregada");
+            alert.showAndWait();
+        } else {
+            ShipmentDoor puerta = new ShipmentDoor(numeroPuerta, Aeropuerto.getIATA());
+            airportService.saveShipmentDoor(puerta);
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle("Puerta Guardada");
-    alert.setHeaderText(null);
-    alert.setContentText("La puerta se ha guardado exitosamente.");
+            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+            successAlert.setTitle("Puerta Guardada");
+            successAlert.setHeaderText(null);
+            successAlert.setContentText("La puerta se ha guardado exitosamente.");
 
-    alert.showAndWait();
+            successAlert.showAndWait();
 
-    // Limpiar los campos de texto después de agendar el vuelo
-    numeropuerta_field.setText("");
-
+            numeropuerta_field.setText("");
+        }
     }
 
     @FXML
     void agregarpista(ActionEvent event) {
-        LandingStrip pista = new LandingStrip(numeropista_field.getText(), Aeropuerto.getIATA());
+        String numeroPista = numeropista_field.getText();
+        if (numeroPista.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Campo de pista vacío");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, ingresa un número de pista.");
 
-        airportService.saveLandingStrip(pista);
-        System.out.println("Pista agregada");
+            alert.showAndWait();
+        } else {
+            LandingStrip pista = new LandingStrip(numeroPista, Aeropuerto.getIATA());
+            airportService.saveLandingStrip(pista);
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle("Pista Guardada");
-    alert.setHeaderText(null);
-    alert.setContentText("La pista se ha guardado exitosamente.");
+            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+            successAlert.setTitle("Pista Guardada");
+            successAlert.setHeaderText(null);
+            successAlert.setContentText("La pista se ha guardado exitosamente.");
 
-    alert.showAndWait();
+            successAlert.showAndWait();
 
-    // Limpiar los campos de texto después de agendar el vuelo
-    numeropista_field.setText("");
-    
+            numeropista_field.setText("");
+        }
     }
 
     

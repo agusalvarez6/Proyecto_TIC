@@ -211,6 +211,10 @@ public class LandingAerolineaController {
     llegada_field.setText("");
     salida_field.setText("");
     nroavion_field.setText("");
+    tiempodesembarque_field.setText("");
+    tiempoembarque_field.setText("");
+    tiempopista_field.setText("");
+
     vuelos = flightsService.verVuelosDeAerolinea(aerolinea.getIdAirline());
 
       ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(vuelos);
