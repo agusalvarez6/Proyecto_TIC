@@ -41,6 +41,9 @@ public class AccountService {
         return accountRepository.findByUsername(username);
     }
 
+    public Boolean existPasaport(String passport){
+        return accountRepository.findByPassport(passport) != null;
+    }
     
 
     public Account userAuthentication(String username, String password) {

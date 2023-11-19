@@ -9,27 +9,23 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import net.rgielen.fxweaver.core.FxmlView;
 
-import java.io.IOException;
-
+import org.apache.commons.lang3.ObjectUtils.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import net.rgielen.fxweaver.core.FxWeaver;
-import net.rgielen.fxweaver.core.FxmlView;
 
 import com.example.Main;
-import com.example.entities.Account;
 import com.example.entities.Airline;
-import com.example.entities.Airport;
 import com.example.entities.Flights;
 import com.example.entities.Plane;
 import com.example.services.AccountService;
@@ -128,6 +124,18 @@ public class LandingAerolineaController {
     @FXML
     private TextField modeloavion_field;
 
+    @FXML
+    private Button Eliminar_Vuelo;
+
+    @FXML
+    private Button Agregar_Pasajero;
+
+    @FXML
+    private TableColumn<Flights, String> estadovuelo_col;
+
+    @FXML
+    private TextField Pasaporte;
+
     @Autowired
     private FlightsService flightsService;
 
@@ -139,13 +147,6 @@ public class LandingAerolineaController {
 
     @Autowired
     private AirportService airportService;
-
-    Long id;
-
-    void initialize(String username) {
-        id = accountService.getAccount(username).getIdAccount();
-        System.out.println("username: " + username+ " id: "+id);
-    }
 
     @FXML
     void salir(ActionEvent event) {
@@ -167,10 +168,12 @@ public class LandingAerolineaController {
         vuelo.setStateOrigin(0);
         vuelo.setIdAirline(aerolinea.getIdAirline());
         //vuelo.setIdPlane(nroavion_field.getText());
-        Plane avion = flightsService.ComprobarAvion(nroavion_field.getText(), id);
+        Plane avion = flightsService.ComprobarAvion(nroavion_field.getText(), aerolinea.getIdAirline());
         if (avion==null){
             System.out.println("Avion no encontrado");
             return;
+        }else{
+            vuelo.setIdPlane(avion.getIdPlane());
         }
         if (flightsService.existFlight(vuelo.getCode())==true){
             System.out.println("Vuelo ya existente");
@@ -190,7 +193,7 @@ public class LandingAerolineaController {
             System.out.println("Horario no valido");
             return;
         }
-        Flights vueloGuardado = flightsService.saveFlights(vuelo);
+        flightsService.saveFlights(vuelo);
         System.out.println("Todo anda bien");
 
          // Mostrar una alerta indicando que el vuelo se ha agendado
@@ -237,6 +240,7 @@ public class LandingAerolineaController {
             destino_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("destination"));
             salida_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("departure_time"));
             llegada_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("arrival_time"));
+            estadovuelo_col.setCellValueFactory(new PropertyValueFactory<Flights,String>("state"));
             vuelosagendados_table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         }
     }
@@ -279,4 +283,70 @@ public class LandingAerolineaController {
         }
     }
 
+    @FXML
+    void deleteFlight(ActionEvent event){
+        Flights vuelo = vuelosagendados_table.getSelectionModel().getSelectedItem();
+        if (vuelo!=null){
+            flightsService.RechazarVuelo(vuelo);
+            System.out.println("Vuelo eliminado");
+            vuelos = flightsService.verVuelosDeAerolinea(aerolinea.getIdAirline());
+            ObservableList<Flights> vuelosObs = FXCollections.observableArrayList(vuelos);
+            vuelosagendados_table.setItems(vuelosObs);
+            Platform.runLater(() -> vuelosagendados_table.refresh());  
+        }else{
+            System.out.println("Por favor, selecciona un vuelo para rechazar.");
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Vuelo no seleccionado");
+            alert.setHeaderText(null);
+            alert.setContentText("Por favor, selecciona un vuelo para rechazar.");
+    
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    void addPassenger(ActionEvent event){
+        Flights vuelo = vuelosagendados_table.getSelectionModel().getSelectedItem();
+        if (vuelo!=null){
+            if(vuelo.getState().equals("Aprobado")){
+                String pasaporte = Pasaporte.getText();
+                if (accountService.existPasaport(pasaporte)){
+                    if(flightsService.buyTicket(vuelo,pasaporte, aerolinea.getIdAirline())){
+                        System.out.println("Pasajero agregado");
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Pasajero agregado");
+                        alert.setHeaderText(null);
+                        alert.setContentText("El pasajero se ha agregado exitosamente.");
+                        alert.showAndWait();
+                    }else{
+                        System.out.println("Pasajero no agregado");
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Pasajero no agregado");
+                        alert.setHeaderText(null);
+                        alert.setContentText("La capacidad del vuelo esta completa.");
+                        alert.showAndWait();
+                    }
+                }else{
+                    System.out.println("Pasajero no existente");
+
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Pasajero no encontrado");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Por favor, selecciona ingrese un pasaporte vigente.");
+            
+                    alert.showAndWait();
+                }
+            }
+        }else{
+                System.out.println("Por favor, selecciona un vuelo para agregar pasajeros.");
+
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Vuelo no seleccionado");
+                alert.setHeaderText(null);
+                alert.setContentText("Por favor, selecciona un vuelo para agregar pasajeros.");
+        
+                alert.showAndWait();
+        }
+    }
 }
