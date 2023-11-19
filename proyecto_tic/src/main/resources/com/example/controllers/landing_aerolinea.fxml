@@ -26,6 +26,9 @@
                         <TableColumn fx:id="estadovuelo_col" prefWidth="114.00006103515625" text="Estado" />
                     </columns>
                   </TableView>
+                  <Button fx:id="Eliminar_Vuelo" layoutX="158.0" layoutY="308.0" mnemonicParsing="false" onAction="#deleteFlight" prefHeight="25.0" prefWidth="103.0" text="Eliminar vuelo" />
+                  <Button fx:id="Agregar_Pasajero" layoutX="463.0" layoutY="308.0" mnemonicParsing="false" onAction="#addPassenger" text="Agregar Pasajero" />
+                  <TextField fx:id="Pasaporte" layoutX="300.0" layoutY="308.0" promptText="Pasaporte" />
                </children></AnchorPane>
       </content>
     </Tab>

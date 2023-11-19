@@ -206,4 +206,11 @@ public class Flights {
 	public void setArrival_LandingStrip(Long Arrival_LandingStrip) {
 		this.arrival_LandingStrip = Arrival_LandingStrip;
 	}
+
+	private String state;
+
+	public String getState() {
+		state = (stateDestination == 1 && stateOrigin == 1) ? "Aprobado" : "Pendiente";
+        return state;
+    }
 }

@@ -12,9 +12,12 @@ import com.example.entities.Flights;
 import com.example.entities.LandingStrip;
 import com.example.entities.Plane;
 import com.example.entities.ShipmentDoor;
+import com.example.entities.Tickets;
 import com.example.repository.AirportRepository;
 import com.example.repository.FlightsRepository;
 import com.example.repository.PlaneRepository;
+import com.example.repository.TicketsRepository;
+
 import java.util.Optional;
 
 
@@ -25,11 +28,13 @@ public class FlightsService {
     private FlightsRepository flightsRepository;
 
     @Autowired
+    private TicketsRepository ticketsRepository;
+
+    @Autowired
     private PlaneRepository planeRepository;
 
     @Autowired
     private AirportService airportService;
-
 
     public Flights saveFlights(Flights flights) {
         return flightsRepository.save(flights);
@@ -78,6 +83,28 @@ public class FlightsService {
 
     public Plane ComprobarAvion(String Numero,Long idAereolinea){
         return planeRepository.findByNumeroAndIdAirline(Numero, idAereolinea);
+    }
+
+    public Plane getPlane(Long idPlane){
+        Plane plane = planeRepository.findByIdPlane(idPlane);
+        return plane;
+    }
+
+    public boolean buyTicket(Flights flight, String passport , Long idAirline) {
+        System.out.println(flight.getIdPlane());
+        Plane plane = getPlane(flight.getIdPlane());
+        int capacity = Integer.parseInt(plane.getCapacity()) - ticketsRepository.findByIdFlight(flight.getIdFlights()).size();
+        
+        if(capacity > 0){
+            Tickets ticket = new Tickets();
+            ticket.setIdFlight(flight.getIdFlights());
+            ticket.setPasaport(passport);
+            ticket.setIdAirline(idAirline);
+            ticketsRepository.save(ticket);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public boolean existFlight(String code) {
