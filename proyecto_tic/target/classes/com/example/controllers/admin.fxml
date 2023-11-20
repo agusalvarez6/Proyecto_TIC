@@ -16,17 +16,17 @@
                <children>
                   <Button fx:id="ingresaraeropuerto_button" layoutX="468.0" layoutY="287.0" mnemonicParsing="false" onAction="#saveAirport" prefHeight="53.0" prefWidth="102.0" text="Ingresar" />
                   <TextField fx:id="nameaeropuerto_field" layoutX="130.0" layoutY="59.0" />
+                  <TextField fx:id="usuarioaerop_field" layoutX="130.0" layoutY="100.0" />
+                  <TextField fx:id="contrasenaaeropuerto_field" layoutX="130.0" layoutY="141.0" prefWidth="149.0" />
                   <Text layoutX="73.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="48.80340576171875" />
                   <Text layoutX="95.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="País:" wrappingWidth="27.470062255859375" />
                   <TextField fx:id="paisaeropuerto_field" layoutX="130.0" layoutY="182.0" />
                   <TextField fx:id="ciudadaeropuerto_field" layoutX="130.0" layoutY="223.0" />
                   <Text layoutX="80.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ciudad:" />
-                  <TextField fx:id="contrasenaaeropuerto_field" layoutX="130.0" layoutY="141.0" prefWidth="149.0" />
                   <Text layoutX="60.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" />
                   <TextField fx:id="codigoiata_field" layoutX="382.0" layoutY="59.0" />
                   <Text layoutX="306.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Código IATA:" />
                   <Button fx:id="atras_button" layoutX="57.0" layoutY="308.0" mnemonicParsing="false" onAction="#salir" prefHeight="31.0" prefWidth="119.0" text="Atrás" />
-                  <TextField fx:id="usuarioaerop_field" layoutX="130.0" layoutY="100.0" />
                   <Text layoutX="79.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" />
                </children></AnchorPane>
       </content>
@@ -35,10 +35,10 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
+                  <TextField fx:id="nameaerolinea_field" layoutX="130.0" layoutY="59.0" prefWidth="149.0" />
                   <TextField fx:id="usuarioaerolinea_field" layoutX="130.0" layoutY="101.0" />
                   <Text layoutX="73.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" wrappingWidth="48.80340576171875" />
                   <TextField fx:id="contrasenaaerolinea_field" layoutX="130.0" layoutY="143.0" />
-                  <TextField fx:id="nameaerolinea_field" layoutX="130.0" layoutY="59.0" prefWidth="149.0" />
                   <Text layoutX="59.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" />
                   <Button fx:id="ingresaraerolinea_button" layoutX="468.0" layoutY="287.0" mnemonicParsing="false" onAction="#saveAirline" prefHeight="53.0" prefWidth="102.0" text="Ingresar" />
                   <Text layoutX="79.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" />
